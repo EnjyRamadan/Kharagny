@@ -1,0 +1,75 @@
+
+.box {
+    background-color: rgba(0, 0, 0, 0.388);
+}
+
+div.scroll-container {
+    display: flex;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+div.category::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+div.category::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+div.category::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+/* Hide scrollbar for Firefox */
+div.category {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+
+div.category {
+    padding: 10px;
+}
+
+.top {
+    color: #fff;
+}
+
+.description {
+    color: #fff;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+section {
+    margin: 20px;
+}
+
+h2 {
+    color: #fff;
+}
+
+.category {
+    overflow: auto;
+    display: flex;
+}
+
+.menu-item {
+    width: 300px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.menu-item img {
+    margin-right: 10px;
+}

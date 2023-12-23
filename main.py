@@ -14,7 +14,7 @@ def category():
 
 @app.route("/place.html")
 def place():
-    return render_template("categories.html")
+    return render_template("place.html")
 
 
 

@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'poppins', 'san-serif';
+  font-family: 'inria sans';
   box-sizing: border-box;
   color: white;
 }
@@ -51,7 +51,7 @@ body {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  background: #fff;
+  background: #ffffffab;
 }
 
 /* .new-badge {
@@ -99,12 +99,16 @@ body::-webkit-scrollbar-thumb:hover {
   font-size: 2em;
   cursor: pointer;
   margin-left: 20px;
+  
   /* Spacing between the container and the arrow */
+}
+.fa-arrow-left, .fa-arrow-right, .price-icon, .location-icon{
+  color:var(--light) ;
 }
 
 p,
 h3 {
-  color: black;
+  color: white;
 }
 
 h3 {
@@ -119,7 +123,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 50px;
  
 }
 
@@ -127,7 +131,7 @@ h3 {
   font-size: 60px;
   padding: 0 10px;
   text-transform: uppercase;
-  color: #fff;
+  color: white;
   animation: zoomup 2s linear infinite;
   animation-delay: calc(200ms * var(--i));
 }
@@ -135,19 +139,21 @@ h3 {
 @keyframes zoomup {
   0%,
   100% {
-    color: #A2678A;
+    color: #634e99;
     filter: blur(1px);
-    text-shadow: 0 0 10px #A2678A, 0 0 20px #A2678A, 0 0 30px #A2678A,
-      0 0 40px #A2678A, 0 0 60px #A2678A, 0 0 80px #A2678A, 0 0 100px #A2678A,
-      0 0 120px #A2678A;
+    text-shadow: 0 0 10px #634e99, 0 0 20px #634e99, 0 0 30px #634e99,
+      0 0 40px #634e99, 0 0 60px #634e99, 0 0 80px #634e99, 0 0 100px #634e99,
+      0 0 120px #634e99;
+      color: black;
   }
 
   5%,
   95% {
     filter: blur(0);
-    color: #fff;
+    color: white;
     text-shadow: none;
   }
+  
 }
 
 @media screen and (max-width: 600px) {

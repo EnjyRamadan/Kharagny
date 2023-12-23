@@ -24,7 +24,7 @@
 body {
     margin: 0;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.695);
+    background-color: rgba(0, 0, 0, 0.826);
 }
 
 #loader {
@@ -47,7 +47,7 @@ body {
 
 .logo {
     margin-left: 20px;
-    font-size: 27px;
+    font-size: 30px;
     color: #fff;
     text-shadow:
         0 0 7px #A2678A,

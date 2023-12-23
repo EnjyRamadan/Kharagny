@@ -15,6 +15,7 @@
     <title>Kharagny</title>
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='section.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav.css')}}" />
+    
   </head>
   <body>
    
@@ -24,10 +25,10 @@
           <l-hourglass size="40"
             bg-opacity="0.5"
             speed="1.75"
-            color="white"></l-hourglass>
+            color="purple"></l-hourglass>
           <p class="logo pulsate">Kharagny</p>
           <ul class="nav">
-            <li><a href="index.html" class="blue">Home</a></li>
+            <li><a href="/" class="blue">Home</a></li>
             <li><a href class="blue">About</a></li>
             <li><a href="categories.html" class="blue">Category</a></li>
             <li><a href class="blue"></a></li>
@@ -57,8 +58,10 @@
             <div class="product-card">
               <h3>Product 1</h3>
               <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 1 Image">
-             
-              <p>This is product 1.</p>
+              <p>
+             <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+              <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+              </p>
             </div>
            
             <div class="product-card">

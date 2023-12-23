@@ -1,0 +1,43 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  padding: 20px; /* Adjust padding as needed */
+}
+
+@media only screen and (max-width: 735px) {
+  .gallery {
+    gap: 3px;
+  }
+}
+
+.gallery-item {
+  position: relative;
+  text-align: center;
+}
+
+.gallery-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px; /* Optionally adjust border radius */
+}
+
+.item-content {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+}
+
+.info {
+  margin-top: 10px;
+}
+
+.info h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.info p {
+  font-size: 14px;
+}

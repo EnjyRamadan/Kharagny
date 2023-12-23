@@ -1,60 +1,63 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'poppins', 'san-serif';
-    box-sizing: border-box;
-    color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'poppins', 'san-serif';
+  box-sizing: border-box;
+  color: white;
 }
 
-:root {
+
+  :root {
   --color-background: #000119;
-  --stroke-width: calc(1em / 16);
-  --font-size: 5vmin;
+  --font-size: 40px;
+  --stroke-width: 4px; 
   --font-weight: 700;
-  --letter-spacing: calc(1em / 8);
-  
+  --letter-spacing: 2px; 
+  }
 
-}
+
+
 body {
-    background: #1D1E22;
-  }
+  background: #1D1E22;
+}
 
-  .section-container {
-    max-width: 100%;
-    /* background: #595959; */
-    margin: auto;
-    padding: 20px;
-    display: flex;
-    align-items: center; 
-  }
-  
-  .product-list-container-Adventures,.product-list-container-Date {
-    position: relative;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: thin;
-    scrollbar-color: #333 #ccc;
-    cursor: pointer;
-  }
-  
-  .product-list {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .product-card {
-    position: relative;
-    flex: 0 0 auto;
-    width: 250px;
-    height: 250px;
-    margin: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-        background: #fff;
-  }
-  
-  /* .new-badge {
+.section-container {
+  max-width: 100%;
+  /* background: #595959; */
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.product-list-container-Adventures,
+.product-list-container-Date {
+  position: relative;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: #333 #ccc;
+  cursor: pointer;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 250px;
+  height: 250px;
+  margin: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* .new-badge {
     position: absolute;
     top: 5px;
     left: 5px;
@@ -65,58 +68,75 @@ body {
     font-size: 0.8em;
   }
    */
-  .product-card img {
-    width: 100%;
-    height: auto;
-  }
-  
-  
-  .product-list-container-Adventures::-webkit-scrollbar , .product-list-container-Date::-webkit-scrollbar,body::-webkit-scrollbar {
-    width: 0.5em;
-  }
-  
-  .product-list-container-Adventures::-webkit-scrollbar-thumb,.product-list-container-Date::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb{
-    background-color: transparent;
-  }
-  
-  .product-list-container-Adventures::-webkit-scrollbar-thumb:hover,.product-list-container-Date::-webkit-scrollbar-thumb:hover , body::-webkit-scrollbar-thumb:hover {
-    background-color: transparent;
-  }
-  
-  .product-list-container-Adventures::-webkit-scrollbar-track, .product-list-container-Date::-webkit-scrollbar-track , body::-webkit-scrollbar-thumb:hover {
-    background-color: transparent;
-  }
-  
-  .scroll-icon {
-    font-size: 2em;
-    cursor: pointer;
-    margin-left: 20px; /* Spacing between the container and the arrow */
-  }
-  p,h3{
-    color: black;
-  }
-  h3{
-    justify-content: center;
-    text-align: center;
-  }
-  .Category{
-    display: grid;
-    background-clip: text;
-  background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
-  color: var(--color-background);
+.product-card img {
+  width: 100%;
+  height: auto;
+}
+
+
+.product-list-container-Adventures::-webkit-scrollbar,
+.product-list-container-Date::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.product-list-container-Adventures::-webkit-scrollbar-thumb,
+.product-list-container-Date::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.product-list-container-Adventures::-webkit-scrollbar-thumb:hover,
+.product-list-container-Date::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+
+.product-list-container-Adventures::-webkit-scrollbar-track,
+.product-list-container-Date::-webkit-scrollbar-track,
+body::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+
+.scroll-icon {
+  font-size: 2em;
+  cursor: pointer;
+  margin-left: 20px;
+  /* Spacing between the container and the arrow */
+}
+
+p,
+h3 {
+  color: black;
+}
+
+h3 {
+  justify-content: center;
+  text-align: center;
+}
+
+.Category {
+ 
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  place-items: left;
+  margin-bottom: 0;
+  padding: 5vmin;
+  background-clip: text;
+  background-image: linear-gradient(to right, #ff00d2, #00a2ff, #ff00d2, #fed90f);
+  color: transparent; 
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   letter-spacing: var(--letter-spacing);
-  padding: calc(--stroke-width / 2);
-  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-color: var(--color-background);
   -webkit-text-stroke-width: var(--stroke-width);
-      
-   
+
+
+}
+
+@media screen and (max-width: 600px) {
+  .product-card {
+    width: 90%;
+    margin: 10px;
   }
-  @media screen and (max-width: 600px) {
-    .product-card {
-      width: 90%;
-      margin: 10px;
-    }
-  }
-  
+}

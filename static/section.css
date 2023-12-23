@@ -1,75 +1,122 @@
-
-.box {
-    background-color: rgba(0, 0, 0, 0.388);
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', 'san-serif';
+    box-sizing: border-box;
+    color: white;
 }
 
-div.scroll-container {
+:root {
+  --color-background: #000119;
+  --stroke-width: calc(1em / 16);
+  --font-size: 5vmin;
+  --font-weight: 700;
+  --letter-spacing: calc(1em / 8);
+  
+
+}
+body {
+    background: #1D1E22;
+  }
+
+  .section-container {
+    max-width: 100%;
+    /* background: #595959; */
+    margin: auto;
+    padding: 20px;
     display: flex;
-    overflow: auto;
+    align-items: center; 
+  }
+  
+  .product-list-container-Adventures,.product-list-container-Date {
+    position: relative;
+    overflow-x: auto;
     white-space: nowrap;
-    padding: 10px;
-}
-
-/* Hide scrollbar for Chrome, Safari, and Edge */
-div.category::-webkit-scrollbar {
-    width: 0.5em;
-}
-
-div.category::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-div.category::-webkit-scrollbar-thumb {
-    background-color: transparent;
-}
-
-/* Hide scrollbar for Firefox */
-div.category {
     scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
-}
-
-
-div.category {
-    padding: 10px;
-}
-
-.top {
-    color: #fff;
-}
-
-.description {
-    color: #fff;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-}
-
-section {
-    margin: 20px;
-}
-
-h2 {
-    color: #fff;
-}
-
-.category {
-    overflow: auto;
+    scrollbar-color: #333 #ccc;
+    cursor: pointer;
+  }
+  
+  .product-list {
     display: flex;
-}
-
-.menu-item {
-    width: 300px;
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 10px;
-    background-color: #fff;
-}
-
-.menu-item img {
-    margin-right: 10px;
-}
+    flex-direction: row;
+  }
+  
+  .product-card {
+    position: relative;
+    flex: 0 0 auto;
+    width: 250px;
+    height: 250px;
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+        background: #fff;
+  }
+  
+  /* .new-badge {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #FF5733;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 0.8em;
+  }
+   */
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  
+  .product-list-container-Adventures::-webkit-scrollbar , .product-list-container-Date::-webkit-scrollbar,body::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  
+  .product-list-container-Adventures::-webkit-scrollbar-thumb,.product-list-container-Date::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb{
+    background-color: transparent;
+  }
+  
+  .product-list-container-Adventures::-webkit-scrollbar-thumb:hover,.product-list-container-Date::-webkit-scrollbar-thumb:hover , body::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+  }
+  
+  .product-list-container-Adventures::-webkit-scrollbar-track, .product-list-container-Date::-webkit-scrollbar-track , body::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+  }
+  
+  .scroll-icon {
+    font-size: 2em;
+    cursor: pointer;
+    margin-left: 20px; /* Spacing between the container and the arrow */
+  }
+  p,h3{
+    color: black;
+  }
+  h3{
+    justify-content: center;
+    text-align: center;
+  }
+  .Category{
+    display: grid;
+    background-clip: text;
+  background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+  color: var(--color-background);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  padding: calc(--stroke-width / 2);
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: var(--stroke-width);
+      
+   
+  }
+  @media screen and (max-width: 600px) {
+    .product-card {
+      width: 90%;
+      margin: 10px;
+    }
+  }
+  

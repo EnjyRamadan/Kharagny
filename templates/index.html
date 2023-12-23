@@ -9,17 +9,15 @@
     <script
       type="module"
       src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/newtonsCradle.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kharagny</title>
-    <link rel="stylesheet" type="text/css" href="../css/section.css" />
-    <link rel="stylesheet" type="text/css" href="../css/nav.css" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='section.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav.css')}}" />
   </head>
   <body>
-    <!-- <video id="video-background" autoplay loop muted>
-      <source src="/../images/vid2.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video> -->
+   
     <div class="container">
       <div class="box">
         <nav>
@@ -36,318 +34,161 @@
           </ul>
         </nav>
       </div>
-      <section id="section">
-        <h2>Adventures</h2>
-        <div class="category">
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Main Course 1">
-            <h3>Main Course 1</h3>
-            <p>Description of Main Course 1. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.</p>
-            <p>Price: $19.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
+      <h2 class="Category">Adventures</h2>
+      <section class="section-container">
+        
+        <div id="scrollLeftAdventures" class="scroll-icon">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="product-list-container-Adventures">
+          <div class="product-list" id="productList">
+            <div class="product-card">
+              <h3>Product 1</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 1 Image">
+             
+              <p>This is product 1.</p>
+            </div>
+           
+            <div class="product-card">
+              <h3>Product 2</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 2 Image">
+              
+              <p>This is product 2.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 3</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 3 Image">
+              
+              <p>This is product 3.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 4</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 4 Image">
+             
+              <p>This is product 4.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 5</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 5 Image">
+              
+              <p>This is product 5.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 6</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 6 Image">
+              
+              <p>This is product 6.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 7</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 7 Image">
+              
+              <p>This is product 7.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 8</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 8 Image">
+              
+              <p>This is product 8.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 9</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 9 Image">
+             
+              <p>This is product 9.</p>
+            </div>
           </div>
         </div>
-      </section>
-      <section id="section">
-        <h2>Date</h2>
-        <div class="category">
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Main Course 1">
-            <h3>Main Course 1</h3>
-            <p>Description of Main Course 1. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.</p>
-            <p>Price: $19.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-        </div>
-      </section>
-      <section id="section">
-        <h2>Food</h2>
-        <div class="category">
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Main Course 1">
-            <h3>Main Course 1</h3>
-            <p>Description of Main Course 1. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.</p>
-            <p>Price: $19.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-        </div>
-      </section>
-      <section id="section">
-        <h2>Cinema</h2>
-        <div class="category">
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Main Course 1">
-            <h3>Main Course 1</h3>
-            <p>Description of Main Course 1. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.</p>
-            <p>Price: $19.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-        </div>
-      </section>
-      <section id="section">
-        <h2>Late Night</h2>
-        <div class="category">
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Main Course 1">
-            <h3>Main Course 1</h3>
-            <p>Description of Main Course 1. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.</p>
-            <p>Price: $19.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-        </div>
-      </section>
-      <section id="section">
-        <h2>Fun</h2>
-        <div class="category">
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Main Course 1">
-            <h3>Main Course 1</h3>
-            <p>Description of Main Course 1. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.</p>
-            <p>Price: $19.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-          <div class="menu-item">
-            <img src="../images/download.jpg" alt="Dessert 1">
-            <h3>Dessert 1</h3>
-            <p>Description of Dessert 1. Lorem ipsum dolor sit amet,
-              consectetur
-              adipiscing elit.</p>
-            <p>Price: $7.99</p>
-          </div>
-        </div>
-      </section>
+        <div id="scrollRightAdventures" class="scroll-icon">
+      <i class="fas fa-arrow-right"></i>
     </div>
+    </div>
+      </section>
+      <h2>Date</h2>
+      <section class="section-container">
+        
+        <div id="scrollLeftDate" class="scroll-icon">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="product-list-container-Date">
+          <div class="product-list" id="productList">
+            <div class="product-card">
+              <h3>Product 1</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 1 Image">
+              
+              <p>This is product 1.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 2</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 2 Image">
+              
+              <p>This is product 2.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 3</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 3 Image">
+              
+              <p>This is product 3.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 4</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 4 Image">
+              
+              <p>This is product 4.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 5</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 5 Image">
+             
+              <p>This is product 5.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 6</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 6 Image">
+              
+              <p>This is product 6.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 7</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 7 Image">
+              
+              <p>This is product 7.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 8</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 8 Image">
+              
+              <p>This is product 8.</p>
+            </div>
+            
+            <div class="product-card">
+              <h3>Product 9</h3>
+              <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 9 Image">
+              
+              <p>This is product 9.</p>
+            </div>
+          </div>
+        </div>
+        <div id="scrollRightDate" class="scroll-icon">
+      <i class="fas fa-arrow-right"></i>
+    </div>
+    </div>
+      </section>
+      <script type="module" src="{{url_for('static',filename='section.js')}}"></script>
+
   </body>
 </html>

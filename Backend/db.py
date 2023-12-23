@@ -1,0 +1,93 @@
+from calendar import c
+from http import client
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from bson.objectid import ObjectId
+
+
+class Database:
+    _instance = None
+    dbName = "Kharagny"
+    client = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            uri = "mongodb+srv://Kharagny:5zh43sraskP9x2YU@kharagny.ac1lbwv.mongodb.net/?retryWrites=true&w=majority"
+            cls._instance.client = MongoClient(uri, server_api=ServerApi("1"))
+        return cls._instance
+
+    @staticmethod
+    def getInstance():
+        return Database()._instance
+
+    def getCollection(self, collection):
+        return self.client[Database.dbName][collection]
+
+    @staticmethod
+    def Insert(collectionName, document):
+        collection = Database().getCollection(collectionName)
+        insertID = collection.insert_one(document).inserted_id
+        return insertID
+
+    @staticmethod
+    def InsertMany(collectionName, documents):
+        collection = Database().getCollection(collectionName)
+        collection.insert_many(documents)
+
+    @staticmethod
+    def SelectCollection(collectionName, param):
+        collection = Database().getCollection(collectionName)
+        if param:
+            result = collection.find(param)
+        else:
+            result = collection.find()
+        data = list(result)
+        return data
+
+    @staticmethod
+    def SelectRecordCollection(collectionName, param, col):
+        collection = Database().getCollection(collectionName)
+        col = {key: 1 for key in col}
+        if param:
+            result = collection.find({param}, col)
+        else:
+            result = collection.find()
+        data = list(result)
+        return data
+
+    @staticmethod
+    def SelectByID(collectionName, ID):
+        collection = Database().getCollection(collectionName)
+        data = list(collection.find_one({"_id": ObjectId(ID)}))
+        return data
+
+    @staticmethod
+    def Count(collectionName):
+        collection = Database().getCollection(collectionName)
+        return collection.count_documents()
+
+    @staticmethod
+    def DeleteID(collectionName, ID):
+        collection = Database().getCollection(collectionName)
+        collection.delete_one({"_id": ObjectId(ID)})
+
+    @staticmethod
+    def UpdateOne(collectionName, ID, query):
+        collection = Database().getCollection(collectionName)
+        collection.update_one({"_id": ObjectId(ID)}, query)
+
+    @staticmethod
+    def ReplaceOne(collectionName, ID, newData):
+        collection = Database().getCollection(collectionName)
+        collection.replace_one({"_id": ObjectId(ID)}, newData)
+
+    @staticmethod
+    def AddToRecord(collectionName, ID, data):
+        collection = Database().getCollection(collectionName)
+        collection.update_one({"_id": ObjectId(ID)}, {"$addToSet": data})
+
+    @staticmethod
+    def RemoveFromRecord(collectionName, ID, data):
+        collection = Database().getCollection(collectionName)
+        collection.update_one({"_id": ObjectId(ID)}, {"$pull": data})

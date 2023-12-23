@@ -8,13 +8,14 @@ CORS(app)
 def home():
     return render_template("index.html")
 
+@app.route("/categories.html")
+def category():
+    return render_template("categories.html")
 
-@app.route("/vis.html")
-def graph():
-    return render_template("vis.html")
-@app.route("/about.html")
-def about():
-    return render_template("about.html")
+@app.route("/place.html")
+def place():
+    return render_template("categories.html")
+
 
 
 

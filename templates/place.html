@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/quantum.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/hourglass.js"
+    ></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/newtonsCradle.js"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kharagny</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='place.css')}}" />
+  </head>
+  <body>
+    <div class="box">
+      <nav>
+        <l-hourglass
+          size="40"
+          bg-opacity="0.5"
+          speed="1.75"
+          color="white"
+        ></l-hourglass>
+        <p class="logo pulsate">Kharagny</p>
+        <ul class="nav">
+          <li><a href="index.html" class="blue">Home</a></li>
+          <li><a href class="blue">About</a></li>
+          <li><a href="categories.html" class="blue">Category</a></li>
+          <li><a href class="blue"></a></li>
+        </ul>
+      </nav>
+    </div>
+  </body>

@@ -12,10 +12,39 @@ def home():
 def category():
     return render_template("categories.html")
 
+
+
 @app.route("/place.html")
 def place():
     return render_template("place.html")
 
+
+@app.route("/call_function", methods=["POST"])
+def call_function():
+    data = request.get_json()
+    Title = data.get("Title")
+   
+    imageFile = data.get("imageFile")
+    
+    Description = data.get("Description")
+    Location = data.get("Location")
+    
+    result = calling_function(Title,imageFile,Description,Location)
+    return jsonify(result=result)
+
+
+def calling_function(Title,imageFile,Description,Location):
+    # return(imageFile)
+    if imageFile=={}:
+        imageFile.save('static/images/' + imageFile.filename)
+            
+    else: return("kkkk")
+
+        
+          
+    
+
+    
 
 
 

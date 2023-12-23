@@ -8,17 +8,14 @@
 
 
   :root {
-  --color-background: #000119;
-  --font-size: 40px;
-  --stroke-width: 4px; 
-  --font-weight: 700;
-  --letter-spacing: 2px; 
+    --light: #A2678A;
+    --black: hsl(0, 3%, 7%);
   }
 
 
 
 body {
-  background: #1D1E22;
+  background: #1d1e2238;
 }
 
 .section-container {
@@ -115,23 +112,42 @@ h3 {
   text-align: center;
 }
 
-.Category {
+.container1 {
+  
+  
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
  
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  place-items: left;
-  margin-bottom: 0;
-  padding: 5vmin;
-  background-clip: text;
-  background-image: linear-gradient(to right, #ff00d2, #00a2ff, #ff00d2, #fed90f);
-  color: transparent; 
-  font-size: var(--font-size);
-  font-weight: var(--font-weight);
-  letter-spacing: var(--letter-spacing);
-  -webkit-text-stroke-color: var(--color-background);
-  -webkit-text-stroke-width: var(--stroke-width);
+}
 
+.text span {
+  font-size: 60px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  color: #fff;
+  animation: zoomup 2s linear infinite;
+  animation-delay: calc(200ms * var(--i));
+}
 
+@keyframes zoomup {
+  0%,
+  100% {
+    color: #A2678A;
+    filter: blur(1px);
+    text-shadow: 0 0 10px #A2678A, 0 0 20px #A2678A, 0 0 30px #A2678A,
+      0 0 40px #A2678A, 0 0 60px #A2678A, 0 0 80px #A2678A, 0 0 100px #A2678A,
+      0 0 120px #A2678A;
+  }
+
+  5%,
+  95% {
+    filter: blur(0);
+    color: #fff;
+    text-shadow: none;
+  }
 }
 
 @media screen and (max-width: 600px) {

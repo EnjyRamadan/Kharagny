@@ -7,7 +7,7 @@
 }
 
 :root {
-    --light: #0047ab;
+    --light: #A2678A;
     --black: hsl(0, 3%, 7%);
 
 }
@@ -24,7 +24,7 @@
 body {
     margin: 0;
     overflow: auto;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.695);
 }
 
 #loader {
@@ -50,14 +50,14 @@ body {
     font-size: 27px;
     color: #fff;
     text-shadow:
-        0 0 7px #0047ab,
-        0 0 10px #0047ab,
-        0 0 21px #0047ab,
-        0 0 42px #0047ab,
-        0 0 82px #0047ab,
-        0 0 92px #0047ab,
-        0 0 102px #0047ab,
-        0 0 151px #0047ab;
+        0 0 7px #A2678A,
+        0 0 10px #A2678A,
+        0 0 21px #A2678A,
+        0 0 42px #A2678A,
+        0 0 82px #A2678A,
+        0 0 92px #A2678A,
+        0 0 102px #A2678A,
+        0 0 151px #A2678A;
 }
 
 .pulsate {
@@ -70,13 +70,13 @@ body {
 
         text-shadow:
             0 0 4px #fff,
-            0 0 11px #0047ab,
-            0 0 19px #0047ab,
-            0 0 40px #0047ab,
-            0 0 80px #0047ab,
-            0 0 90px #0047ab,
-            0 0 100px #0047ab,
-            0 0 150px #0047ab;
+            0 0 11px #A2678A,
+            0 0 19px #A2678A,
+            0 0 40px #A2678A,
+            0 0 80px #A2678A,
+            0 0 90px #A2678A,
+            0 0 100px #A2678A,
+            0 0 150px #A2678A;
 
     }
 
@@ -86,11 +86,11 @@ body {
             0 0 2px #fff,
             0 0 4px #fff,
             0 0 6px #fff,
-            0 0 10px #0047ab,
-            0 0 45px #0047ab,
-            0 0 55px #0047ab,
-            0 0 70px #0047ab,
-            0 0 80px #0047ab;
+            0 0 10px #A2678A,
+            0 0 45px #A2678A,
+            0 0 55px #A2678A,
+            0 0 70px #A2678A,
+            0 0 80px #A2678A;
 
     }
 }

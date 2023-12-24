@@ -1,83 +1,89 @@
-body{
+body {
   color: black;
 }
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: rgb(237, 166, 178);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .image-upload {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    background-color: white;
-    width: 300px; /* Set a specific width */
-    height: 300px; /* Set a specific height */
-    border: 1px dashed #ccc;
-    border-radius: 5px;
-    margin: 0 auto; /* Center horizontally */
-    margin-bottom: 20px;
 
-  }
-  form{
-    color: black;
-  }
-  .image-upload input[type="file"] {
-    position: absolute;
-    font-size: 0;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
-  
-  .upload-text {
-    display: block;
-    text-align: center;
-    padding: 20px;
-    color: #888;
-  }
-  
-  .upload-text:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .image-upload img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 5px;
-    object-fit: cover; /* Maintain aspect ratio */
-  }
-  input[type="url"],
-  input[type="text"],
-  textarea {
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: black;
-  }
-  
-  button {
-    padding: 8px 16px;
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgb(237, 166, 178);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  width: 300px;
+  /* Set a specific width */
+  height: 300px;
+  /* Set a specific height */
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  margin: 0 auto;
+  /* Center horizontally */
+  margin-bottom: 20px;
+
+}
+
+form {
+  color: black;
+}
+
+.image-upload input[type="file"] {
+  position: absolute;
+  font-size: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.upload-text {
+  display: block;
+  text-align: center;
+  padding: 20px;
+  color: #888;
+}
+
+.upload-text:hover {
+  background-color: #f0f0f0;
+}
+
+.image-upload img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+  object-fit: cover;
+  /* Maintain aspect ratio */
+}
+
+input[type="url"],
+input[type="text"],
+textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: black;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

@@ -6,13 +6,10 @@
   color: white;
 }
 
-
-  :root {
-    --light: #A2678A;
-    --black: hsl(0, 3%, 7%);
-  }
-
-
+:root {
+  --light: #A2678A;
+  --black: hsl(0, 3%, 7%);
+}
 
 body {
   background: #1d1e2238;
@@ -99,11 +96,15 @@ body::-webkit-scrollbar-thumb:hover {
   font-size: 2em;
   cursor: pointer;
   margin-left: 20px;
-  
+
   /* Spacing between the container and the arrow */
 }
-.fa-arrow-left, .fa-arrow-right, .price-icon, .location-icon{
-  color:var(--light) ;
+
+.fa-arrow-left,
+.fa-arrow-right,
+.price-icon,
+.location-icon {
+  color: var(--light);
 }
 
 p,
@@ -117,14 +118,14 @@ h3 {
 }
 
 .container1 {
-  
-  
+
+
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
- 
+
 }
 
 .text span {
@@ -137,6 +138,7 @@ h3 {
 }
 
 @keyframes zoomup {
+
   0%,
   100% {
     color: #634e99;
@@ -144,7 +146,7 @@ h3 {
     text-shadow: 0 0 10px #634e99, 0 0 20px #634e99, 0 0 30px #634e99,
       0 0 40px #634e99, 0 0 60px #634e99, 0 0 80px #634e99, 0 0 100px #634e99,
       0 0 120px #634e99;
-      color: black;
+    color: black;
   }
 
   5%,
@@ -153,7 +155,7 @@ h3 {
     color: white;
     text-shadow: none;
   }
-  
+
 }
 
 @media screen and (max-width: 600px) {

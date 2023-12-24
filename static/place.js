@@ -1,13 +1,10 @@
 function sendData() {
-    const imageFile = document.getElementById('imageFile').files[0];
-    const Title = document.getElementById('Title').value;
-    const Location = document.getElementById('Location').value;
-    const Description = document.getElementById('Description').value;
+  const imageFile = document.getElementById('imageFile').files[0];
+  const Title = document.getElementById('Title').value;
+  const Location = document.getElementById('Location').value;
+  const Description = document.getElementById('Description').value;
   
-    
-   
-  
-    fetch("http://localhost:5000/call_function", {
+  fetch("http://localhost:5000/call_function", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -17,7 +14,7 @@ function sendData() {
       Title: Title,
       Location: Location,
       Description: Description,
-      
+
     }),
   })
     .then((response) => response.json())
@@ -26,5 +23,4 @@ function sendData() {
       console.log("Result:", data.result);
     })
     .catch((error) => console.error("Error:", error));
-  }
-  
+}

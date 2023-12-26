@@ -19,6 +19,14 @@ def about():
 def category():
     return render_template("categories.html")
 
+@app.route("/arcade.html")
+def arcade():
+    return render_template("arcade.html")
+
+@app.route("/cinema.html")
+def cinema():
+    return render_template("cinema.html")
+
 
 @app.route("/place.html")
 def place():

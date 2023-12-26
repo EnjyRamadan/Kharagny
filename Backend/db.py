@@ -8,12 +8,12 @@ from bson.objectid import ObjectId
 class Database:
     _instance = None
     dbName = "Kharagny"
-    client = None
+    client = MongoClient()
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
-            uri = "mongodb+srv://Kharagny:5zh43sraskP9x2YU@kharagny.ac1lbwv.mongodb.net/?retryWrites=true&w=majority"
+            uri = "mongodb+srv://Kharagny:Kharagny221875@kharagny.ac1lbwv.mongodb.net/?retryWrites=true&w=majority"
             cls._instance.client = MongoClient(uri, server_api=ServerApi("1"))
         return cls._instance
 
@@ -59,13 +59,13 @@ class Database:
     @staticmethod
     def SelectByID(collectionName, ID):
         collection = Database().getCollection(collectionName)
-        data = list(collection.find_one({"_id": ObjectId(ID)}))
+        data = collection.find_one({"_id": ObjectId(ID)})
         return data
 
     @staticmethod
     def Count(collectionName):
         collection = Database().getCollection(collectionName)
-        return collection.count_documents()
+        return collection.count_documents(filter={})
 
     @staticmethod
     def DeleteID(collectionName, ID):

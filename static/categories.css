@@ -1,47 +1,48 @@
 .gallery {
   display: grid;
-  
+
   grid-template-columns: repeat(5, 1fr);
   gap: 25px;
-  padding: 40px; /* Adjust padding as needed */
+  padding: 40px;
+  /* Adjust padding as needed */
 }
-
-
 
 .gallery-item {
   /* position: relative; */
   text-align: center;
   width: 250px;
   height: 250px;
-  
+
 }
 
 .gallery-item img {
   max-width: 100%;
   height: auto;
-  border-radius: 1px; /* Optionally adjust border radius */
+  border-radius: 1px;
+  /* Optionally adjust border radius */
 }
 
 .item-content {
   background-color: #fff;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow effect */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  /* Optional shadow effect */
 }
 
 .info {
   margin-top: 10px;
-  color:blueviolet;
+  color: blueviolet;
 }
 
 .info h3 {
   margin-top: 0;
   font-size: 20px;
-  color:blueviolet;
+  color: blueviolet;
 }
 
 .info p {
   font-size: 20px;
-  color:blueviolet;
+  color: blueviolet;
   text-align: left;
 }

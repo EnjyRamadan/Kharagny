@@ -10,32 +10,44 @@
   <title>Kharagny</title>
   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav.css')}}" />
   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='place.css')}}" />
+  <meta charset="UTF-8">
 </head>
 
 <body>
   <div class="box">
     <nav>
-      <l-hourglass size="40" bg-opacity="0.5" speed="1.75" color="white"></l-hourglass>
+      <l-hourglass size="40" bg-opacity="0.5" speed="1.75" color="purple"></l-hourglass>
       <p class="logo pulsate">Kharagny</p>
       <ul class="nav">
-        <li><a href="index.html" class="blue">Home</a></li>
-        <li><a href class="blue">About</a></li>
-        <li><a href="categories.html" class="blue">Category</a></li>
+        <li><a href="/" class="blue">Home</a></li>
+        <li><a href="/about.html" class="blue">About</a></li>
+        <li><div class="dropdown">
+          <button class="dropbtn">Category</button>
+          <div class="dropdown-content">
+            <a href="categories.html" class="blue">Adventures</a>
+            <a href="categories.html" class="blue">Dates</a>
+            <a href="categories.html" class="blue">Food</a>
+            <a href="categories.html" class="blue">Cinema</a>
+            <a href="categories.html" class="blue">Arcade</a>
+            <!-- Add more dropdown items here -->
+          </div>
+        </div></li>
         <li><a href class="blue"></a></li>
       </ul>
     </nav>
   </div>
   <br>
   <div class="container">
-    <h1 style="color: white; text-align: center">ADD NEW PLACE</h1>
+    <h1 style="color: black; text-align: center">ADD NEW PLACE</h1>
     <br>
   
-    <form id="uploadForm" enctype="multipart/form-data" onsubmit="event.preventDefault(); sendData()">
+    <form id="uploadForm" enctype="multipart/form-data" onsubmit=";event.preventDefault(); sendData()">
       <label for="imageFile" class="image-upload">
-        <input type="file" id="imageFile" accept="image/*" required>
-        <span class="upload-text">Upload Picture</span>
+        <input type="file" id="imageFile" accept="image/*" required onchange="previewImage(event)">
+        <!-- <span class="upload-text">Upload Picture</span> -->
         <br>
         <br>
+        <img id="uploadedImage" class="uploaded-image" src="#" alt="Uploaded Image">
       </label>
       <input type="text" id="Title" placeholder="Enter Title" required>
       <input type="text" id="Location" placeholder="Enter Location" required>
@@ -45,7 +57,9 @@
   
     <div id="gallery" class="gallery"></div>
   </div>
+  
   <script src="{{url_for('static',filename='place.js')}}"></script>
+  
   
   
 </body>

@@ -1,3 +1,10 @@
+
+function previewImage(event) {
+  const uploadedImage = document.getElementById('uploadedImage');
+  uploadedImage.style.display = 'block';
+  uploadedImage.src = URL.createObjectURL(event.target.files[0]);
+}
+
 function sendData() {
   const imageFile = document.getElementById('imageFile').files[0];
   const Title = document.getElementById('Title').value;

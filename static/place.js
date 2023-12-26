@@ -20,7 +20,7 @@ function sendData() {
     .then((response) => response.json())
     .then((data) => {
       // Log the result in the console
-      console.log("Result:", data.result);
+      console.log("Result:", data.image,data.Title,data.Desc,data.Loc);
     })
     .catch((error) => console.error("Error:", error));
 }

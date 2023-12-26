@@ -29,21 +29,25 @@
   <div class="container">
     <h1 style="color: white; text-align: center">ADD NEW PLACE</h1>
     <br>
-
-    <label for="imageFile" class="image-upload">
-      <input type="file" id="imageFile" accept="image/*" required>
-      <span class="upload-text">Upload Picture</span>
-      <br>
-      <br>
-    </label>
-    <input type="text" id="Title" placeholder="Enter Title" required>
-    <input type="text" id="Location" placeholder="Enter Location" required>
-    <textarea id="Description" placeholder="Enter Description" required></textarea>
-    <button onclick="sendData()">Add Place</button>
-
+  
+    <form id="uploadForm" enctype="multipart/form-data" onsubmit="event.preventDefault(); sendData()">
+      <label for="imageFile" class="image-upload">
+        <input type="file" id="imageFile" accept="image/*" required>
+        <span class="upload-text">Upload Picture</span>
+        <br>
+        <br>
+      </label>
+      <input type="text" id="Title" placeholder="Enter Title" required>
+      <input type="text" id="Location" placeholder="Enter Location" required>
+      <textarea id="Description" placeholder="Enter Description" required></textarea>
+      <button type="submit">Add Place</button>
+    </form>
+  
     <div id="gallery" class="gallery"></div>
   </div>
   <script src="{{url_for('static',filename='place.js')}}"></script>
+  
+  
 </body>
 
 </html>

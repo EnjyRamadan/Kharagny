@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Modern CSS Basics - Instagram Profile Page (Syntax - Class)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{url_for('static',filename='profile.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav.css')}}" />
 </head>
@@ -14,21 +15,34 @@
 <body>
     <div class="box">
         <nav>
-            <l-hourglass size="40" bg-opacity="0.5" speed="1.75" color="white"></l-hourglass>
+            <l-hourglass size="40" bg-opacity="0.5" speed="1.75" color="purple"></l-hourglass>
             <p class="logo pulsate">Kharagny</p>
             <ul class="nav">
-                <li><a href="index.html" class="blue">Home</a></li>
-                <li><a href class="blue">About</a></li>
-                <li><a href="vis.html" class="blue">Category</a></li>
-                <li><a href class="blue"></a></li>
-            </ul>
+                <li><a href="/" class="blue">Home</a></li>
+                <li><a href="/about.html" class="blue">About</a></li>
+                <li><div class="dropdown">
+                  <button class="dropbtn">Category</button>
+                  <div class="dropdown-content">
+                    <a href="categories.html" class="blue">Adventures</a>
+                    <a href="categories.html" class="blue">Dates</a>
+                    <a href="categories.html" class="blue">Food</a>
+                    <a href="categories.html" class="blue">Cinema</a>
+                    <a href="categories.html" class="blue">Arcade</a>
+                  </div>
+                </div></li>
+                <li><a href="/profile.html">
+                  <div class="profile-picture">
+                    <img src="static\images\profile.jpeg" alt="Profile">
+                  </div>
+                </a></li>
+              </ul>
         </nav>
     </div>
     <main>
         <header>
             <div class="header-wrap">
                 <div class="profile-pic">
-                    <img src="/images/profile-logo.jpg" alt="profile-logo" />
+                    <img src="static\images\profile.jpeg" alt="profile-logo" />
                 </div>
                 <div class="profile-info">
                     <div class="title row">
@@ -103,53 +117,87 @@
 
         <div class="gallery">
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
                 <span class="media-icon"></span>
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
                 <span class="media-icon"></span>
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
                 <span class="media-icon"></span>
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
                 <span class="media-icon"></span>
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
                 <span class="media-icon"></span>
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
                 <span class="media-icon"></span>
             </div>
             <div class="gallery-item">
-                <img alt="gallery-post" src="../images/download.jpg" />
+                <img alt="gallery-post" src="{{url_for('static',filename='images/download.jpg')}}" />
                 <span class="media-icon"></span>
             </div>
         </div>
     </main>
+    <footer class="footer">
+        <div class="container2">
+          <div class="row">
+            
+            <div class="footer-col">
+              <h4>Company</h4>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+                
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Category</h4>
+              <ul>
+                <li><a href="/categories.html">Adventure</a></li>
+                <li><a href="/categories.html">Dates</a></li>
+                <li><a href="/categories.html">Food</a></li>
+                <li><a href="/categories.html">Cinema</a></li>
+                <li><a href="/categories.html">Arcade</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>follow us</h4>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+     </footer>
 </body>
 
 </html>

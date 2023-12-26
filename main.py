@@ -10,6 +10,10 @@ CORS(app)
 def home():
     return render_template("index.html")
 
+@app.route("/about.html")
+def about():
+    return render_template("profile.html")
+
 
 @app.route("/categories.html")
 def category():

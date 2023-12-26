@@ -29,8 +29,18 @@
           <p class="logo pulsate">Kharagny</p>
           <ul class="nav">
             <li><a href="/" class="blue">Home</a></li>
-            <li><a href class="blue">About</a></li>
-            <li><a href="categories.html" class="blue">Category</a></li>
+            <li><a href="/about.html" class="blue">About</a></li>
+            <li><div class="dropdown">
+              <button class="dropbtn">Category</button>
+              <div class="dropdown-content">
+                <a href="categories.html" class="blue">Adventures</a>
+                <a href="categories.html" class="blue">Dates</a>
+                <a href="categories.html" class="blue">Food</a>
+                <a href="categories.html" class="blue">Cinema</a>
+                <a href="categories.html" class="blue">Arcade</a>
+                <!-- Add more dropdown items here -->
+              </div>
+            </div></li>
             <li><a href class="blue"></a></li>
           </ul>
         </nav>
@@ -68,14 +78,20 @@
               <h3>Product 2</h3>
               <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 2 Image">
               
-              <p>This is product 2.</p>
+              <p>
+                <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                 <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                 </p>
             </div>
             
             <div class="product-card">
               <h3>Product 3</h3>
               <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 3 Image">
               
-              <p>This is product 3.</p>
+              <p>
+                <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                 <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                 </p>
             </div>
             
             <div class="product-card">
@@ -147,14 +163,20 @@
               <h3>Product 1</h3>
               <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 1 Image">
               
-              <p>This is product 1.</p>
+              <p>
+                <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                 <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                 </p>
             </div>
             
             <div class="product-card">
               <h3>Product 2</h3>
               <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 2 Image">
               
-              <p>This is product 2.</p>
+              <p>
+                <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                 <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                 </p>
             </div>
             
             <div class="product-card">
@@ -168,7 +190,10 @@
               <h3>Product 4</h3>
               <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 4 Image">
               
-              <p>This is product 4.</p>
+              <p>
+                <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                 <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                 </p>
             </div>
             
             <div class="product-card">
@@ -182,7 +207,10 @@
               <h3>Product 6</h3>
               <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 6 Image">
               
-              <p>This is product 6.</p>
+              <p>
+                <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                 <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                 </p>
             </div>
             
             <div class="product-card">
@@ -212,7 +240,295 @@
     </div>
     </div>
       </section>
-      <script type="module" src="{{url_for('static',filename='section.js')}}"></script>
+
+      <div class="container1">
+        <div class="text">
+          <span style="--i:1">F</span>
+          <span style="--i:2">o</span>
+          <span style="--i:3">o</span>
+          <span style="--i:4">d</span>
+          
+        </div>
+      </div>
+        <section class="section-container">
+          
+          <div id="scrollLeftFood" class="scroll-icon">
+            <i class="fas fa-arrow-left"></i>
+          </div>
+          <div class="product-list-container-Food">
+            <div class="product-list" id="productList">
+              <div class="product-card">
+                <h3>Product 1</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 1 Image">
+                <p>
+               <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                </p>
+              </div>
+             
+              <div class="product-card">
+                <h3>Product 2</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 2 Image">
+                
+                <p>
+                  <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                   <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                   </p>
+              </div>
+              
+              <div class="product-card">
+                <h3>Product 3</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 3 Image">
+                
+                <p>
+                  <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                   <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                   </p>
+              </div>
+              
+              <div class="product-card">
+                <h3>Product 4</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 4 Image">
+               
+                <p>This is product 4.</p>
+              </div>
+              
+              <div class="product-card">
+                <h3>Product 5</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 5 Image">
+                
+                <p>This is product 5.</p>
+              </div>
+              
+              <div class="product-card">
+                <h3>Product 6</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 6 Image">
+                
+                <p>This is product 6.</p>
+              </div>
+              
+              <div class="product-card">
+                <h3>Product 7</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 7 Image">
+                
+                <p>This is product 7.</p>
+              </div>
+              
+              <div class="product-card">
+                <h3>Product 8</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 8 Image">
+                
+                <p>This is product 8.</p>
+              </div>
+              
+              <div class="product-card">
+                <h3>Product 9</h3>
+                <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 9 Image">
+               
+                <p>This is product 9.</p>
+              </div>
+            </div>
+          </div>
+          <div id="scrollRightFood" class="scroll-icon">
+        <i class="fas fa-arrow-right"></i>
+      </div>
+      </div>
+        </section>
+
+        <div class="container1">
+          <div class="text">
+            <span style="--i:1">C</span>
+            <span style="--i:2">i</span>
+            <span style="--i:3">n</span>
+            <span style="--i:4">e</span>
+            <span style="--i:5">m</span>
+            <span style="--i:6">a</span>
+          </div>
+        </div>
+          <section class="section-container">
+            
+            <div id="scrollLeftCinema" class="scroll-icon">
+              <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="product-list-container-Cinema">
+              <div class="product-list" id="productList">
+                <div class="product-card">
+                  <h3>Product 1</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 1 Image">
+                  <p>
+                 <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                  <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                  </p>
+                </div>
+               
+                <div class="product-card">
+                  <h3>Product 2</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 2 Image">
+                  
+                  <p>
+                    <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                     <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                     </p>
+                </div>
+                
+                <div class="product-card">
+                  <h3>Product 3</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 3 Image">
+                  
+                  <p>
+                    <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                     <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                     </p>
+                </div>
+                
+                <div class="product-card">
+                  <h3>Product 4</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 4 Image">
+                 
+                  <p>This is product 4.</p>
+                </div>
+                
+                <div class="product-card">
+                  <h3>Product 5</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 5 Image">
+                  
+                  <p>This is product 5.</p>
+                </div>
+                
+                <div class="product-card">
+                  <h3>Product 6</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 6 Image">
+                  
+                  <p>This is product 6.</p>
+                </div>
+                
+                <div class="product-card">
+                  <h3>Product 7</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 7 Image">
+                  
+                  <p>This is product 7.</p>
+                </div>
+                
+                <div class="product-card">
+                  <h3>Product 8</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 8 Image">
+                  
+                  <p>This is product 8.</p>
+                </div>
+                
+                <div class="product-card">
+                  <h3>Product 9</h3>
+                  <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 9 Image">
+                 
+                  <p>This is product 9.</p>
+                </div>
+              </div>
+            </div>
+            <div id="scrollRightCinema" class="scroll-icon">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+        </div>
+          </section>
+
+          <div class="container1">
+            <div class="text">
+              <span style="--i:1">A</span>
+              <span style="--i:2">r</span>
+              <span style="--i:3">c</span>
+              <span style="--i:4">a</span>
+              <span style="--i:5">d</span>
+              <span style="--i:6">e</span>
+              
+            </div>
+          </div>
+            <section class="section-container">
+              
+              <div id="scrollLeftArcade" class="scroll-icon">
+                <i class="fas fa-arrow-left"></i>
+              </div>
+              <div class="product-list-container-Arcade">
+                <div class="product-list" id="productList">
+                  <div class="product-card">
+                    <h3>Product 1</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 1 Image">
+                    <p>
+                   <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                    <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                    </p>
+                  </div>
+                 
+                  <div class="product-card">
+                    <h3>Product 2</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 2 Image">
+                    
+                    <p>
+                      <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                       <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                       </p>
+                  </div>
+                  
+                  <div class="product-card">
+                    <h3>Product 3</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 3 Image">
+                    
+                    <p>
+                      <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+                       <a><i class="fas fa-dollar-sign price-icon"> </i> price</a>
+                       </p>
+                  </div>
+                  
+                  <div class="product-card">
+                    <h3>Product 4</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 4 Image">
+                   
+                    <p>This is product 4.</p>
+                  </div>
+                  
+                  <div class="product-card">
+                    <h3>Product 5</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 5 Image">
+                    
+                    <p>This is product 5.</p>
+                  </div>
+                  
+                  <div class="product-card">
+                    <h3>Product 6</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 6 Image">
+                    
+                    <p>This is product 6.</p>
+                  </div>
+                  
+                  <div class="product-card">
+                    <h3>Product 7</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 7 Image">
+                    
+                    <p>This is product 7.</p>
+                  </div>
+                  
+                  <div class="product-card">
+                    <h3>Product 8</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 8 Image">
+                    
+                    <p>This is product 8.</p>
+                  </div>
+                  
+                  <div class="product-card">
+                    <h3>Product 9</h3>
+                    <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Product 9 Image">
+                   
+                    <p>This is product 9.</p>
+                  </div>
+                </div>
+              </div>
+              <div id="scrollRightArcade" class="scroll-icon">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+          </div>
+            </section>
+
+
+
+      <script  src="{{url_for('static',filename='section.js')}}"></script>
 
 </body>
 

@@ -10,7 +10,7 @@ CORS(app)
 def home():
     return render_template("index.html")
 
-@app.route("/about.html")
+@app.route("/profile.html")
 def about():
     return render_template("profile.html")
 

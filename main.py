@@ -10,11 +10,26 @@ CORS(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("home.html")
 
 @app.route("/profile.html")
 def profile():
     return render_template("profile.html")
+
+
+@app.route("/edit.html")
+def edit():
+    return render_template("edit.html")
+
+@app.route("/popup.html")
+def pop():
+    return render_template("popup.html")
+
+
+@app.route("/forget.html")
+def forget():
+    return render_template("forget.html")
+
 
 @app.route("/about.html")
 def about():
@@ -51,6 +66,8 @@ def call_function():
     Title = request.form["Title"]
     Description = request.form["Description"]
     Location = request.form["Location"]
+    range1= request.form["range1"]
+    range2 = request.form["range2"]
     imageFiles = request.files.getlist("imageFiles")  # "imageFiles" should match the name attribute of your file input
 
     results = []
@@ -60,11 +77,11 @@ def call_function():
             file.save(os.path.join("static/images/", filename))  # Save each file to the specified path
             results.append(filename)  # Store the filenames for response
 
-    result = calling_function(Title, imageFiles, Description, Location)
+    result = calling_function(Title, imageFiles, Description, Location,range1,range2)
     return jsonify(result=result)
 
 
-def calling_function(Title, imageFile, Description, Location):
+def calling_function(Title, imageFile, Description, Location,range1,range2):
     return(Title, Description, Location)
     if imageFile == {}:
         imageFile.save("static/images/" + imageFile.filename)

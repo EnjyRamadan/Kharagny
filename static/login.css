@@ -19,6 +19,99 @@ body{
   background: hsla(0, 3%, 7%, 0.721);
   padding: 30px;
 }
+
+
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #068FFF;
+  background: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.img {
+  margin-right: 2px;
+}
+.logo {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%; 
+  padding: 10px; 
+  
+ 
+}
+
+.logo p {
+  margin: 0;
+  margin-left: 80px;
+}
+
+.logo l-hourglass {
+  margin-right: 10px; /* Optional: Add some spacing between the hourglass and text */
+}
+
+.logo {
+  top: 0;
+  margin-top: 0;
+  margin-left: 20px;
+  font-size: 30px;
+  color: #fff;
+  text-shadow:
+      0 0 7px #A2678A,
+      0 0 10px #A2678A,
+      0 0 21px #A2678A,
+      0 0 42px #A2678A,
+      0 0 82px #A2678A,
+      0 0 92px #A2678A,
+      0 0 102px #A2678A,
+      0 0 151px #A2678A;
+}
+
+.pulsate {
+  animation: pulsate 0.2s infinite alternate;
+}
+
+@keyframes pulsate {
+
+  100% {
+
+      text-shadow:
+          0 0 4px #fff,
+          0 0 11px #A2678A,
+          0 0 19px #A2678A,
+          0 0 40px #A2678A,
+          0 0 80px #A2678A,
+          0 0 90px #A2678A,
+          0 0 100px #A2678A,
+          0 0 150px #A2678A;
+
+  }
+
+  0% {
+
+      text-shadow:
+          0 0 2px #fff,
+          0 0 4px #fff,
+          0 0 6px #fff,
+          0 0 10px #A2678A,
+          0 0 45px #A2678A,
+          0 0 55px #A2678A,
+          0 0 70px #A2678A,
+          0 0 80px #A2678A;
+
+  }
+}
+
+
+
 .container{
   position: relative;
   max-width: 850px;

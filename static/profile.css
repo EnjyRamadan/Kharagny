@@ -467,6 +467,22 @@ span{
   color:#A2678A;
 }
 
+.edit-profile-button {
+  margin-top: 10px; 
+}
+
+.edit-profile-button a {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color:var(--light); 
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.edit-profile-button a:hover {
+  background-color: var(--light); 
+}
 
 
 

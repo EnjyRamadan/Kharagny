@@ -27,6 +27,14 @@ def arcade():
 def cinema():
     return render_template("cinema.html")
 
+@app.route("/date.html")
+def date():
+    return render_template("date.html")
+
+@app.route("/food.html")
+def food():
+    return render_template("food.html")
+
 
 @app.route("/place.html")
 def place():

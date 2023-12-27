@@ -3,11 +3,14 @@ body {
     margin: 0;
     background-color: #000;
 }
-:root{
-    --lightblue:#0969b8;
-    --black:hsl(0, 3%, 7%);
 
-}
+  :root {
+    --lightblue: #A2678A;
+    --black: hsl(0, 3%, 7%);
+  }
+  
+
+
   html {
     box-sizing: border-box;
   }
@@ -33,76 +36,8 @@ body {
 .img{
    margin-right: 2px;
 }
-.logo{
-   font-size:27px;
-   color: #fff;
-   text-shadow:
-     0 0 7px blue,
-     0 0 10px blue,
-     0 0 21px blue,
-     0 0 42px blue,
-     0 0 82px blue,
-     0 0 92px blue,
-     0 0 102px blue,
-     0 0 151px blue;
-}
 
-@keyframes pulsate {
-   
-   100% {
- 
-       text-shadow:
-       0 0 4px #fff,
-       0 0 11px blue,
-       0 0 19px blue,
-       0 0 40px blue,
-       0 0 80px blue,
-       0 0 90px blue,
-       0 0 100px blue,
-       0 0 150px blue;
-   
-   }
-   
-   0% {
- 
-     text-shadow:
-     0 0 2px #fff,
-     0 0 4px #fff,
-     0 0 6px #fff,
-     0 0 10px blue,
-     0 0 45px blue,
-     0 0 55px blue,
-     0 0 70px blue,
-     0 0 80px blue;
- 
- }
-}
-nav{
-   font-size: 18px;
-   display:flex ;
-   align-items: center;
-   padding: 20px 8%;
-}
-nav ul{
-   flex:1;
-   text-align: right;
-}
-nav ul li{
-   display: inline-block;
-   list-style: none;
-   margin: 0 20px;
 
-}
-nav ul li a{
-   text-decoration: none;
-   color: #fff;
-   font-weight: bold;
-}
-
-.blue:hover{
-   color: var(--lightblue);
-
-}
   .column {
     float: left;
     width: 33.3%;
@@ -118,7 +53,7 @@ nav ul li a{
   .about-section {
     padding: 50px;
     text-align: center;
-    background-color: #0969b8c5;
+    background-color:var(--lightblue) ;
     color: white;
   }
   
@@ -152,9 +87,7 @@ nav ul li a{
   .button:hover {
     background-color: #555;
   }
-  .enjy{
-    height: 50%;
-  }
+  
   .button, #strategy,#nodeSelect {
     margin-right: 10px;
     padding: 10px 20px;
@@ -235,3 +168,52 @@ nav ul li a{
       display: block;
     }
   }
+  .enjy{
+    height: 48%;
+  }
+  
+  .container1 {
+
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  
+  }
+  
+  .text span {
+    font-size: 60px;
+    padding: 0 10px;
+    text-transform: uppercase;
+    color: white;
+    animation: zoomup 2s linear infinite;
+    animation-delay: calc(200ms * var(--i));
+  }
+  
+  @keyframes zoomup {
+  
+    0%,
+    100% {
+      color: #634e99;
+      filter: blur(1px);
+      text-shadow: 0 0 10px #634e99, 0 0 20px #634e99, 0 0 30px #634e99,
+        0 0 40px #634e99, 0 0 60px #634e99, 0 0 80px #634e99, 0 0 100px #634e99,
+        0 0 120px #634e99;
+      color: black;
+    }
+  
+    5%,
+    95% {
+      filter: blur(0);
+      color: white;
+      text-shadow: none;
+    }
+  }
+  .column img {
+    width: 100%;
+    height: 750px; /* Set the desired height */
+    object-fit: cover; /* This property ensures the image covers the entire container while maintaining its aspect ratio */
+}  
+  

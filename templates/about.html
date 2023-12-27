@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="box">
+        
           <nav>
             <l-hourglass size="40"
               bg-opacity="0.5"
@@ -46,24 +46,31 @@
               </a></li>
             </ul>
           </nav>
-        </div>
+        
         <div class="about-section">
             <h1>About Us Page</h1>
-            <p>We are MazeGraphica, our main purpose is to use AI searching
-                techniques in a more fun and visualized way.</p>
+            <p>We are Kharagny, we offer you outings ideas so you don't have to waist your time thinking about it</p>
             
         </div>
 
-        <h2 style="text-align:center">Our Team</h2>
+        <div class="container1">
+          <div class="text">
+            <span style="--i:1">T</span>
+            <span style="--i:2">e</span>
+            <span style="--i:3">a</span>
+            <span style="--i:4">m</span>
+            
+          </div>
+        </div>
         <div class="row">
             <div class="column">
                 <div class="card">
-                    <img src="{{ url_for('static', filename='enjy.jpeg') }}" alt="Enjy" style="width:100%; height:50%" class="enjy">
+                    <img src="{{url_for('static', filename='images/enjy.jpeg') }}" alt="Enjy" class="enjy">
 
                     <div class="container">
                         <h2>Enjy Ramadan</h2>
                         <p class="title">CS student</p>
-                        <p>An ambitious CS student and a pro Tennis player.</p>
+                        <p>An ambitious CS student.</p>
                         <p>enjy.ramadan@msa.edu.eg</p>
                         <p>
                             <a href="https://www.linkedin.com/in/enjy-ramadan-0a3951158?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button">
@@ -75,26 +82,28 @@
                 </div>
             </div>
 
+            
             <div class="column">
-                <div class="card">
-                    <img src="{{url_for('static',filename='youssef.jpeg')}}" alt="Mike"
-                        style="width:100%">
-                    <div class="container">
-                        <h2>Youssef Makled</h2>
-                        <p class="title">CS Student</p>
-                        <p>An ambitious CS student.</p>
-                        <p>youssef.mohamed88@msa.edu.eg</p>
-                        <p><a href="https://www.linkedin.com/in/youssef-mohamed-635306270?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button">
-                            Contact
-                          </a></p>
-                    </div>
-                </div>
-            </div>
+              <div class="card">
+                  <img src="{{ url_for('static', filename='images/sohaila.jpeg') }}" alt="John"
+                      style="width:100%;" class="enjy">
+                  <div class="container">
+                      <h2>Sohaila Ashraf</h2>
+                      <p class="title">CS Student</p>
+                      <p>An ambitious CS student.</p>
+                      <p>sohaila.ashraf1@msa.edu.eg</p>
+                      <p><a href="https://www.linkedin.com/in/sohaila-ashraf-74b887213?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="button">
+                          Contact
+                        </a></p>
+                  </div>
+              </div>
+          </div>
+           
 
             <div class="column">
                 <div class="card">
-                    <img src="{{ url_for('static', filename='') }}" alt="John"
-                        style="width:100%">
+                    <img src="{{ url_for('static', filename='images/Mazen.jpeg') }}" alt="John"
+                        style="width:100%;" class="enjy">
                     <div class="container">
                         <h2>Mazen Ashraf</h2>
                         <p class="title">CS Student</p>
@@ -106,6 +115,12 @@
                     </div>
                 </div>
             </div>
+
+           
+
+
+
+        </div>
         </div>
         </div>
 </body>

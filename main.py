@@ -132,14 +132,7 @@ def signup():
         username = request.form['username']
         password = request.form['password']
         user_id = SignUp(username, password)
-
-        if isinstance(user_id, int):
-            # Successful signup
-            return f"Signup successful! User ID: {user_id}"
-        else:
-            # Failed signup
-            return f"Signup failed: {user_id}"
-
+        return f"Signup successful! User ID: {user_id}"
 #login
 
 

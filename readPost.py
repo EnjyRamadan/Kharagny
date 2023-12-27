@@ -3,7 +3,7 @@ from post import Post
 
 def getCategoryPost(categoryName):
     temp = Post()
-    posts = temp.getAllPostsForCategory(categoryName)
+    posts = temp.getPostsByCategory(categoryName)
     return posts
 
 

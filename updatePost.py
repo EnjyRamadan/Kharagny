@@ -42,6 +42,7 @@ def changePriceRange(postID, newStart, newEnd):
     post.editData(query, postID)
 
 
-def addImageToPost(postID, imagePath):
+def addImageToPost(postID, imageName):
     post = Post()
+    imagePath = "static/images/" + imageName
     post.addToImages(postID, imagePath)

@@ -86,3 +86,6 @@ class User:
             self.setUserName(result["userName"])
             self.setPassword(result["password"])
             self.setProfilePicture(result["profilePicture"])
+
+    def deleteAccount(self):
+        Database().DeleteID(self.getID())

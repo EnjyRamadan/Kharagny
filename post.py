@@ -104,4 +104,19 @@ class Post:
         Database().AddToRecord("Post", ID, imagePath)
 
     def getPostsByCategory(self, categoryName):
-        
+        data = Database().SelectRecordCollection(
+            "employees", {"Category": categoryName}, None
+        )
+        posts = []
+        for record in data:
+            post = Post()
+            post.setID(record["_id"])
+            post.setTitle(record["Title"])
+            post.setLocation(record["Location"])
+            post.setDescription(record["Description"])
+            post.setStartPrice(record["StartPrice"])
+            post.setEndPrice(record["EndPrice"])
+            post.setImages(record["Images"])
+            post.setCategory(record["Category"])
+            posts.append(post)
+        return posts

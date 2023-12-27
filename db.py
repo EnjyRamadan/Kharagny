@@ -48,11 +48,14 @@ class Database:
     @staticmethod
     def SelectRecordCollection(collectionName, param, col):
         collection = Database().getCollection(collectionName)
-        col = {key: 1 for key in col}
-        if param:
-            result = collection.find({param}, col)
+        if col:
+            col = {key: 1 for key in col}
         else:
-            result = collection.find()
+            col = None
+        if param:
+            result = collection.find(param, col)
+        else:
+            result = collection.find({}, col)
         data = list(result)
         return data
 

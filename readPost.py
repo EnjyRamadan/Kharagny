@@ -3,5 +3,9 @@ from post import Post
 
 def getCategoryPost(categoryName):
     temp = Post()
-    temp.getAllPostsForCategory(categoryName)
-    
+    posts = temp.getAllPostsForCategory(categoryName)
+    return posts
+
+
+def readPost(postID):
+    post = Post()

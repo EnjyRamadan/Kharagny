@@ -126,28 +126,32 @@ def SignUp(userName, password):
 
 @app.route("/login", methods=["POST"])
 def login():
+    alert_message = None
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         user_id = Login(username, password)
 
         if user_id == "User Not Found":
-            # Successful login
-            return f"Login failed!: {user_id}"
+            alert_message = "Login failed! User not found."
         elif user_id == "Wrong Password":
-            # Failed login
-            return f"Login failed: {user_id}"
+            alert_message = "Login failed! Wrong password."
         else:
-            return f"Successfully: The userID is: {user_id}"
+            alert_message = f"Login successful! User ID: {user_id}"
+
+    return render_template("login.html", alert_message=alert_message)
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
+    alert_message = None
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         user_id = SignUp(username, password)
-        return f"Signup successful! User ID: {user_id}"
+        alert_message = f"Signup successful! User ID: {user_id}"
+
+    return render_template("signup.html", alert_message=alert_message)
 
 
 # login

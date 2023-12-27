@@ -1,5 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, jsonify, request
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
+import os
 
 
 app = Flask(__name__)
@@ -46,20 +48,24 @@ def place():
 
 @app.route("/call_function", methods=["POST"])
 def call_function():
-    data = request.get_json()
-    Title = data.get("Title")
+    Title = request.form["Title"]
+    Description = request.form["Description"]
+    Location = request.form["Location"]
+    imageFiles = request.files.getlist("imageFiles")  # "imageFiles" should match the name attribute of your file input
 
-    imageFile = data.get("imageFile")
+    results = []
+    for file in imageFiles:
+        if file and isinstance(file.filename, str) and file.filename != "":
+            filename = secure_filename(file.filename)
+            file.save(os.path.join("static/images/", filename))  # Save each file to the specified path
+            results.append(filename)  # Store the filenames for response
 
-    Description = data.get("Description")
-    Location = data.get("Location")
-
-    result = calling_function(Title, imageFile, Description, Location)
+    result = calling_function(Title, imageFiles, Description, Location)
     return jsonify(result=result)
 
 
 def calling_function(Title, imageFile, Description, Location):
-    # return(imageFile)
+    return(Title, Description, Location)
     if imageFile == {}:
         imageFile.save("static/images/" + imageFile.filename)
 

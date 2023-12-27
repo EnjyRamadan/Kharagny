@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css"
       href="{{url_for('static',filename='nav.css')}}" />
     <link rel="stylesheet" type="text/css"
-      href="{{url_for('static',filename='place.css')}}" />
+      href="{{url_for('static',filename='popup.css')}}" />
     <link rel="stylesheet" type="text/css"
       href="{{url_for('static',filename='footer.css')}}" />
     <link rel="stylesheet"
@@ -46,30 +46,6 @@
     </nav>
   </div>
   <br>
-  <div class="container">
-    <h1 style="color: black; text-align: center">ADD NEW PLACE</h1>
-    <br>
-  
-    <form id="uploadForm" enctype="multipart/form-data" onsubmit="event.preventDefault(); sendData()">
-      <label for="imageFiles" class="image-upload">
-        <input type="file" id="imageFiles" accept="image/*" multiple required onchange="previewImages(event)">
-        <!-- <span class="upload-text">Upload Pictures</span> -->
-        <br>
-        <br>
-        <div id="uploadedImagesContainer" class="uploaded-images-container"></div>
-      </label>
-      <input type="text" id="Title" placeholder="Enter Title" required>
-      <input type="text" id="Location" placeholder="Enter Location" required>
-      <input type="number" id="range1" placeholder="Enter price start " required>
-      <input type="number" id="range2" placeholder="Enter price end " required>
-      <textarea id="Description" placeholder="Enter Description" required></textarea>
-      <button type="submit">Add Place</button>
-    </form>
-    
-  
-    <div id="gallery" class="gallery"></div>
-  </div>
-   
 
   <footer class="footer">
     <div class="container2">
@@ -104,14 +80,25 @@
         </div>
       </div>
     </div>
+    <section class="gallery">
+    <div class="gallery-item">
+        <div class="item-content">
+          <div class="info">
+            <h3>Title:</h3>
+            <img src="{{url_for('static',filename='images/download.jpg')}}" alt="Image 1" />
+            <p> 
+            <a><i class="fas fa-dollar-sign price-icon"> </i> price</a><br>
+            <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
+            <i class="fas fa-info-circle description-icon"> </i> Description</a><br></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
  </footer>
-
-
-
-  <script src="{{url_for('static',filename='place.js')}}"></script>
-  
-  
-  
 </body>
-
 </html>

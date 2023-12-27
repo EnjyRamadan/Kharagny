@@ -11,12 +11,19 @@ class Post:
         self.desc = None
         self.startPrice = None
         self.endPrice = None
+        self.category = None
 
     def setID(self, ID):
         self._id = ID
 
     def getID(self):
         return self._id
+
+    def setCategory(self, category):
+        self.category = category
+
+    def getCategory(self):
+        return self.category
 
     def setStartPrice(self, price):
         self.startPrice = price
@@ -93,4 +100,8 @@ class Post:
         images = self.getImages()
         images.append(imagePath)
         self.setImages(images)
-        Database().AddToRecord("Post",)
+        data = {""}
+        Database().AddToRecord("Post", ID, imagePath)
+
+    def getPostsByCategory(self, categoryName):
+        

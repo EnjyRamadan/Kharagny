@@ -85,9 +85,9 @@ class Database:
     @staticmethod
     def AddToRecord(collectionName, ID, data):
         collection = Database().getCollection(collectionName)
-        collection.update_one({"_id": ObjectId(ID)}, {"$push": {data}})
+        collection.update_one({"_id": ObjectId(ID)}, {"$push": data})
 
     @staticmethod
     def RemoveFromRecord(collectionName, ID, data):
         collection = Database().getCollection(collectionName)
-        collection.update_one({"_id": ObjectId(ID)}, {"$pull": {data}})
+        collection.update_one({"_id": ObjectId(ID)}, {"$pull": data})

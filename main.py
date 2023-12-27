@@ -2,15 +2,22 @@ from flask import Flask, redirect, url_for, render_template, jsonify, request
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
-
+from user import User
 
 app = Flask(__name__)
 CORS(app)
 
 
 @app.route("/")
+def login1():
+    return render_template("login.html")
+
+@app.route("/home.html")
 def home():
     return render_template("home.html")
+
+
+
 
 @app.route("/profile.html")
 def profile():
@@ -88,6 +95,63 @@ def calling_function(Title, imageFile, Description, Location,range1,range2):
 
     else:
         return "kkkk"
+    
+
+#login
+    
+def Login(userName, password):
+    temp = User()
+    respond = temp.Login(userName, password)
+    if respond == True:
+        return temp.getID()
+    else:
+        return respond
+
+def SignUp(userName, password):
+    temp = User()
+    _id = temp.SignUp(userName, password)
+    return _id
+    
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user_id = Login(username, password)
+
+        if isinstance(user_id, int):
+            # Successful login
+            return f"Login successful! User ID: {user_id}"
+        else:
+            # Failed login
+            return f"Login failed: {user_id}"
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user_id = SignUp(username, password)
+
+        if isinstance(user_id, int):
+            # Successful signup
+            return f"Signup successful! User ID: {user_id}"
+        else:
+            # Failed signup
+            return f"Signup failed: {user_id}"
+
+#login
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

@@ -2,9 +2,17 @@
 @import url(https://fonts.googleapis.com/css?family=Montez);
 
 body{
-  background-color: #f5f5f5;  
+  background-color: hsla(0, 3%, 7%, 0.721);  
   font-family: Lato;
 }
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+}
+
 .profile,.content{
   -webkit-transition: 0.5s ease;
   -moz-transition: 0.5s ease;
@@ -17,19 +25,19 @@ body{
   left: 0;
   right: 0;
   min-height: 100%;
-  height: auto;
+  height: 40%;
   width: 75%;
   margin: 20px auto;
   margin-bottom: 100px;
   background-color: #fff;
-  border-top: 5px solid #39cb58;
+  border-top: 5px solid #A2678A;
   border-radius: 0 0 5px 5px;
   box-shadow: 0 2.5px 5px #ccc;
 }
 .content{
   /* position: absolute; */
   min-height: 100%;
-  height: 100%;
+  height: 50%;
   width: 95%;
   margin: 2.5% auto;
   left: 0;
@@ -43,13 +51,13 @@ body{
 .short-info{
   position: relative;
   min-height: 100px;
-  height: auto;
+  height: 50%;
   width: 97.5%;
   margin: 1.5% auto;
   /*background-color: #f5f5f5;*/
   background-color: #fff;
   background-color: #f2ecee;
-  /*border-top: 2px solid #39cb58;*/
+  /*border-top: 2px solid #A2678A;*/
   border-radius: 2.5px;
   /*box-shadow: inset 0 -1.5px #ddd;*/
 }
@@ -66,7 +74,7 @@ body{
   height: 200px;
   width: 97.5%;
   margin: 0 auto;
-  /* border-top: 2.5px solid #39cb58; */
+  /* border-top: 2.5px solid #A2678A; */
   background-color: #f2ecee;
   border-radius: 2.5px;
   /* background-color: #f3f3f3; */
@@ -75,7 +83,7 @@ span.fa-envelope{
   position: absolute;
   top: 22%;
   left: 56%;
-  color: #39cb58;
+  color: #A2678A;
 }
 span.photo{
   position: relative;
@@ -154,16 +162,16 @@ label[for="avatar"]{
   background-color: #ddd;
   padding: 10px 15px;
   border-radius: 3px;
-  box-shadow: inset 0 0 0 2px #39cb58,
-              0 2px 0 0 rgba(57,203,88,0.5);
+  box-shadow: inset 0 0 0 2px #A2678A,
+              0 2px 0 0 #a2678ac9;
   cursor: pointer;
   transition: 0.5s ease;
 }
 span.btn:hover{
   opacity: 1;
   color: #fff;
-  background-color: rgba(57,203,88,1);
-  /* background-color: #39cb58; */
+  background-color: #a2678ac9;
+  /* background-color: #A2678A; */
 }
 .profile:hover .btn{
     opacity: 1;
@@ -235,7 +243,7 @@ fieldset textarea,input{
   font-size: 15px;
   color: #333;
   background-color: #f7f7f7;
-  box-shadow: 0 0 0 1px #39cb58;
+  box-shadow: 0 0 0 1px #A2678A;
   padding: 5px;
   width: 75%;
   margin: 5px auto;
@@ -249,11 +257,11 @@ fieldset textarea{
   max-height: 60px;
 }
 fieldset textarea:hover,input:hover{
-  box-shadow: 0 0 0 1px #39cb58;
+  box-shadow: 0 0 0 1px #A2678A;
   background-color: #fff;
 }
 fieldset textarea:focus,input:focus{
-  box-shadow: 0 0 0 1px #39cb58,
+  box-shadow: 0 0 0 1px #A2678A,
               inset 0 2px 5px -1px rgba(0,0,0,0.25);
 }
 
@@ -332,7 +340,7 @@ fieldset textarea:focus,input:focus{
 }
 .ui-state-active{
   color: #38cc85;
-  border-bottom: 2.5px solid #39cb58;
+  border-bottom: 2.5px solid #A2678A;
 }
 
 /* #CLEARFIX HACK
@@ -357,7 +365,7 @@ select{
   width: 80%;
   padding: 7px 10px;
   background-color: #f5f5f5;
-  border: 1px solid #39cb58;
+  border: 1px solid #A2678A;
   border-radius: 2.5px;
   outline: 0;
 }
@@ -385,13 +393,13 @@ input.Btn{
   font-size: 16px;
   color: #fff;
   cursor: pointer;
-  background-color: rgba(57,203,88,0.65);
-  box-shadow: inset 0 0 0 2px #39cb58,
-              0 2px 0 0 rgba(57,203,88,0.5);
+  background-color: #a2678ac9;
+  box-shadow: inset 0 0 0 2px #A2678A,
+              0 2px 0 0 #a2678ac9;
   transition: 0.5s ease;
 }
 input.Btn:hover{
-  background-color: rgba(57,203,88,1);
+  background-color: #a2678ac9;
 }
 
 /* Header Bar 
@@ -405,7 +413,7 @@ div.logo{
 /*    text-align: center;*/
     font-size: 30px;
     font-family:"Source Sans Pro";
-    color:#39cb58;
+    color:#A2678A;
     width: 100%;
 /*    display: inline-block;*/
     /*    position: absolute;*/
@@ -416,7 +424,7 @@ div.logo{
 }
 span.logo-part{
     color:#fff;
-    background-color: #39cb58;
+    background-color: #A2678A;
     padding: 2px 5.5px 0px 10px;
     border-radius:100%;
     margin-bottom:15px;
@@ -497,4 +505,16 @@ span.logo-part{
     width: 90%;
   }
 }
-
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color:#A2678A ;
+    border-radius: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 6px;
+  }

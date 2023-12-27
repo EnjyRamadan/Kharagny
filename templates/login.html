@@ -3,12 +3,12 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <title> Login and Registration Form in HTML & CSS | CodingLab </title>
+    <title> Kharagny </title>
     <link rel="stylesheet" href="style.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      <script type="module"
+    <script type="module"
       src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/hourglass.js"></script>
     <link rel="stylesheet" type="text/css"
       href="{{url_for('static',filename='login.css')}}" />
@@ -16,11 +16,11 @@
   </head>
   <body>
     <div class="logo">
-    <l-hourglass size="40"
-      bg-opacity="0.5"
-      speed="1.75"
-      color="purple"></l-hourglass>
-    <p class="logo pulsate">Kharagny</p>
+      <l-hourglass size="40"
+        bg-opacity="0.5"
+        speed="1.75"
+        color="purple"></l-hourglass>
+      <p class="logo pulsate">Kharagny</p>
     </div>
     <div class="container">
       <input type="checkbox" id="flip">
@@ -28,8 +28,8 @@
         <div class="front">
           <img src="static/images/Ski_Famille_-_Family_Ski_Holidays.jpg" alt>
           <div class="text">
-            <span class="text-1">Every new friend is a <br> new adventure</span>
-            <span class="text-2">Let's get connected</span>
+            <span class="text-1">Every new place is a <br> new adventure</span>
+            <span class="text-2">Let's Go</span>
           </div>
         </div>
         <div class="back">
@@ -45,50 +45,47 @@
         <div class="form-content">
           <div class="login-form">
             <div class="title">Login</div>
-            <form action="#">
-              <div class="input-boxes">
-                <div class="input-box">
-                  <i class="fas fa-envelope"></i>
-                  <input type="text" placeholder="Enter your email" required>
-                </div>
-                <div class="input-box">
-                  <i class="fas fa-lock"></i>
-                  <input type="password" placeholder="Enter your password"
-                    required>
-                </div>
-                <div class="text"><a href="forget.html">Forgot
-                    password?</a></div>
-                <div class="button input-box">
-                  <input type="submit" value="Sumbit">
-                </div>
-                <div class="text sign-up-text">Don't have an account? <label
-                    for="flip">Sigup now</label></div>
+            <form action="{{ url_for('login') }}" method="post">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your username"
+                  name="username" id="username" required>
               </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password"
+                  name="password" id="password" required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+              </div>
+              <div class="text sign-up-text">Don't have an account? <label
+                  for="flip">Signup now</label></div>
             </form>
           </div>
           <div class="signup-form">
             <div class="title">Signup</div>
-            <form action="#">
-              <div class="input-boxes">
-                <div class="input-box">
-                  <i class="fas fa-user"></i>
-                  <input type="text" placeholder="Enter your name" required>
-                </div>
-                <div class="input-box">
-                  <i class="fas fa-envelope"></i>
-                  <input type="text" placeholder="Enter your email" required>
-                </div>
-                <div class="input-box">
-                  <i class="fas fa-lock"></i>
-                  <input type="password" placeholder="Enter your password"
-                    required>
-                </div>
-                <div class="button input-box">
-                  <input type="submit" value="Sumbit">
-                </div>
-                <div class="text sign-up-text">Already have an account? <label
-                    for="flip">Login now</label></div>
+            <form action="{{ url_for('signup') }}" method="post">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" placeholder="Enter your name" name="username"
+                  id="signup-username" required>
               </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" name="email"
+                  id="signup-email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password"
+                  name="password" id="signup-password" required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+              </div>
+              <div class="text sign-up-text">Already have an account? <label
+                  for="flip">Login now</label></div>
             </form>
           </div>
         </div>

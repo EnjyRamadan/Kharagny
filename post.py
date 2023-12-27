@@ -71,12 +71,14 @@ class Post:
         data = {
             "Images": binaryData,
             "Title": info["title"],
+            "Category": info["category"],
             "Location": info["location"],
             "Description": info["desc"],
             "StartPrice": info["StartPrice"],
             "EndPrice": info["EndPrice"],
         }
         self.setID(Database().Insert("Post", data))
+        self.setCategory(info["category"])
         self.setDescription(info["desc"])
         self.setImages(imagesPath)
         self.setLocation(info["location"])
@@ -88,6 +90,7 @@ class Post:
         result = Database().SelectByID("Post", ID)
         if result:
             self.setDescription(result["desc"])
+            self.setCategory(result["category"])
             self.setImages(result["images"])
             self.setLocation(result["location"])
             self.setTitle(result["title"])

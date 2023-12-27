@@ -94,5 +94,12 @@ class User:
         posts = self.getFavorite()
         posts.remove(postID)
         self.setFavorite(posts)
-        query = {"$pull"}
-        user.editData()
+        data = {"Favorite": postID}
+        Database().RemoveFromRecord("User", self.getID(), data)
+
+    def addToFavorite(self,  postID):
+        posts = self.getImages()
+        images.append(imagePath)
+        self.setImages(images)
+        data = {"Images": imagePath}
+        Database().AddToRecord("Post", ID, data)

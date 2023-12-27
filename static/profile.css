@@ -1,7 +1,10 @@
 @import url("reset.css");
 @import url("common.css");
+:root {
+  --light: #A2678A;
+  --black: hsl(0, 3%, 7%);
 
-/* Navigation */
+}
 .nav-content .logo {
   height: 29px;
   color: #fff;
@@ -446,6 +449,24 @@ nav ul li a {
 footer{
   margin-top:10px;
 }
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color:#A2678A ;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 6px;
+}
+span{
+  color:#A2678A;
+}
+
 
 
 

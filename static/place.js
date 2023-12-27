@@ -1,34 +1,46 @@
 
-function previewImage(event) {
-  const uploadedImage = document.getElementById('uploadedImage');
-  uploadedImage.style.display = 'block';
-  uploadedImage.src = URL.createObjectURL(event.target.files[0]);
+function previewImages(event) {
+  const files = event.target.files;
+
+  const imagesContainer = document.getElementById('uploadedImagesContainer');
+  imagesContainer.innerHTML = ''; // Clear previous images
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const img = document.createElement('img');
+      img.src = e.target.result;
+      img.className = 'uploaded-image';
+      imagesContainer.appendChild(img);
+    };
+
+    reader.readAsDataURL(file);
+  }
 }
 
 function sendData() {
-  const imageFile = document.getElementById('imageFile').files[0];
+  const imageFiles = document.getElementById('imageFiles').files; // Updated to get all files
   const Title = document.getElementById('Title').value;
   const Location = document.getElementById('Location').value;
   const Description = document.getElementById('Description').value;
-  
+
+  const formData = new FormData();
+  for (let i = 0; i < imageFiles.length; i++) {
+    formData.append('imageFiles', imageFiles[i]);
+  }
+  formData.append('Title', Title);
+  formData.append('Location', Location);
+  formData.append('Description', Description);
+
   fetch("http://localhost:5000/call_function", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      imageFile: imageFile,
-      Title: Title,
-      Location: Location,
-      Description: Description,
-
-    }),
-    
+    body: formData,
   })
     .then((response) => response.json())
     .then((data) => {
-      // Log the result in the console
-      console.log("Result:", data.image,data.Title,data.Desc,data.Loc);
+      console.log("Result:", data.image, data.Title, data.Desc, data.Loc);
     })
     .catch((error) => console.error("Error:", error));
 }

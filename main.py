@@ -12,11 +12,10 @@ CORS(app)
 def login1():
     return render_template("login.html")
 
+
 @app.route("/home.html")
 def home():
     return render_template("home.html")
-
-
 
 
 @app.route("/profile.html")
@@ -27,6 +26,7 @@ def profile():
 @app.route("/edit.html")
 def edit():
     return render_template("edit.html")
+
 
 @app.route("/popup.html")
 def pop():
@@ -43,21 +43,26 @@ def about():
     return render_template("about.html")
 
 
-
 @app.route("/categories.html")
 def category():
     return render_template("categories.html")
+
 
 @app.route("/arcade.html")
 def arcade():
     return render_template("arcade.html")
 
+
 @app.route("/cinema.html")
 def cinema():
     return render_template("cinema.html")
+
+
 @app.route("/food.html")
 def food():
     return render_template("food.html")
+
+
 @app.route("/date.html")
 def date():
     return render_template("date.html")
@@ -73,32 +78,37 @@ def call_function():
     Title = request.form["Title"]
     Description = request.form["Description"]
     Location = request.form["Location"]
-    range1= request.form["range1"]
+    range1 = request.form["range1"]
     range2 = request.form["range2"]
-    imageFiles = request.files.getlist("imageFiles")  # "imageFiles" should match the name attribute of your file input
+    imageFiles = request.files.getlist(
+        "imageFiles"
+    )  # "imageFiles" should match the name attribute of your file input
 
     results = []
     for file in imageFiles:
         if file and isinstance(file.filename, str) and file.filename != "":
             filename = secure_filename(file.filename)
-            file.save(os.path.join("static/images/", filename))  # Save each file to the specified path
+            file.save(
+                os.path.join("static/images/", filename)
+            )  # Save each file to the specified path
             results.append(filename)  # Store the filenames for response
 
-    result = calling_function(Title, imageFiles, Description, Location,range1,range2)
+    result = calling_function(Title, imageFiles, Description, Location, range1, range2)
     return jsonify(result=result)
 
 
-def calling_function(Title, imageFile, Description, Location,range1,range2):
-    return(Title, Description, Location)
+def calling_function(Title, imageFile, Description, Location, range1, range2):
+    return (Title, Description, Location)
     if imageFile == {}:
         imageFile.save("static/images/" + imageFile.filename)
 
     else:
         return "kkkk"
-    
 
-#login
-    
+
+# login
+
+
 def Login(userName, password):
     temp = User()
     respond = temp.Login(userName, password)
@@ -107,44 +117,40 @@ def Login(userName, password):
     else:
         return respond
 
+
 def SignUp(userName, password):
     temp = User()
     _id = temp.SignUp(userName, password)
     return _id
-    
-@app.route('/login', methods=['POST'])
+
+
+@app.route("/login", methods=["POST"])
 def login():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
         user_id = Login(username, password)
 
-        if isinstance(user_id, int):
+        if user_id == "User Not Found":
             # Successful login
-            return f"Login successful! User ID: {user_id}"
-        else:
+            return f"Login failed!: {user_id}"
+        elif user_id == "Wrong Password":
             # Failed login
             return f"Login failed: {user_id}"
+        else:
+            return f"Successfully: The userID is: {user_id}"
 
-@app.route('/signup', methods=['POST'])
+
+@app.route("/signup", methods=["POST"])
 def signup():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
         user_id = SignUp(username, password)
         return f"Signup successful! User ID: {user_id}"
-#login
 
 
-
-
-
-
-
-
-
-
-
+# login
 
 
 if __name__ == "__main__":

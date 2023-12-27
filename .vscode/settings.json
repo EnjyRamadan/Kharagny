@@ -2,10 +2,11 @@
     "liveServer.settings.port": 5501,
     "cSpell.words": [
         "BSON",
+        "favs",
         "Kharagny",
         "Mazen",
         "pymongo"
     ],
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.autoImportCompletions": false
 }

@@ -89,3 +89,10 @@ class User:
 
     def deleteAccount(self):
         Database().DeleteID(self.getID())
+
+    def removeFromFavorite(self, postID):
+        posts = self.getFavorite()
+        posts.remove(postID)
+        self.setFavorite(posts)
+        query = {"$pull"}
+        user.editData()

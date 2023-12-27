@@ -20,4 +20,15 @@ def removeProfilePicture(ID):
     }
     user.editData(query, ID)
 
-# def remove
+
+# _id = None
+# _userName = None
+# _password = None
+# _favorite = []
+# _profilePicture = None
+
+
+def removeFromFavorite(ID, postID):
+    user = User
+    user.getUserByID(ID)
+    

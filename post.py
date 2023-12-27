@@ -63,8 +63,9 @@ class Post:
 
     def createPost(self, imagesPath, info):
         binaryData = []
-        for imageData in imagesPath:
-            with open("static/images/defaultProfilePicture.jpg", "rb") as file:
+        for path in imagesPath:
+            imagePath = "static/images/" + path
+            with open(imagePath, "rb") as file:
                 imageData = file.read()
                 binaryData.append(Binary(imageData))
         data = {

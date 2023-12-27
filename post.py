@@ -100,8 +100,15 @@ class Post:
         images = self.getImages()
         images.append(imagePath)
         self.setImages(images)
-        data = {""}
-        Database().AddToRecord("Post", ID, imagePath)
+        data = {"Images": imagePath}
+        Database().AddToRecord("Post", ID, data)
+
+    def removeFromImages(self, ID, imagePath):
+        images = self.getImages()
+        images.remove(imagePath)
+        self.setImages(images)
+        data = {"Images": imagePath}
+        Database().RemoveFromRecord("Post", ID, data)
 
     def getPostsByCategory(self, categoryName):
         data = Database().SelectRecordCollection(

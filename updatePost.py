@@ -44,6 +44,4 @@ def changePriceRange(postID, newStart, newEnd):
 
 def addImageToPost(postID, imagePath):
     post = Post()
-    post.getPostByID(postID)
-    query = {"$push": {"Images": imagePath}}
-    
+    post.addToImages(postID, imagePath)

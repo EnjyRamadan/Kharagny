@@ -1,12 +1,15 @@
 from user import User
 from io import BytesIO
 from PIL import Image
-
+import json
 
 def getProfilePicture(userID):
     user = User()
     user.getUserByID(userID)
-    return Image.open(BytesIO(user.getProfilePicture()))
+    image_path = BytesIO(user.getProfilePicture())
+    data = {"imagePath": image_path}
+    json_data = json.dumps(data)
+    return json_data
 
 
 # def getUserFavorite(userID):

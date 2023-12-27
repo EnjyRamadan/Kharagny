@@ -9,3 +9,5 @@ def getCategoryPost(categoryName):
 
 def readPost(postID):
     post = Post()
+    post.getPostByID(postID)
+    return post

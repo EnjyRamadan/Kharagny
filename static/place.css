@@ -62,6 +62,7 @@ form {
   color: #888;
 }
 
+
 .upload-text:hover {
   background-color: #f0f0f0;
 }
@@ -73,6 +74,22 @@ form {
   border-radius: 5px;
   object-fit: cover;
   /* Maintain aspect ratio */
+}
+#category {
+  color: black; /* Set the font color to black */
+  margin-bottom: 10px;
+}
+
+#category option {
+  color: black; /* Set the font color of options to black */
+}
+input[type="number"]{
+  width: 100px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: black;
 }
 
 input[type="url"],

@@ -71,7 +71,7 @@
               {% for post in adventure_posts %}
               <div class="product-card">
                   <h3>{{ post.getTitle() }}</h3>
-                  <img src="{{ url_for('static', filename='images/' + post.getImages()[0]) }}" alt="Product Image">
+                  <img src="{{post.getImages()[0]}}" alt="Product Image">
 
                   <p>
                       <a><i class="fas fa-map-marker-alt location-icon"></i> {{ post.getLocation() }}</a><br>
@@ -108,7 +108,7 @@
                 {% for post in Dates_posts %}
                 <div class="product-card">
                     <h3>{{ post.getTitle() }}</h3>
-                    <img src="{{ url_for('static', filename='images/' + post.getImages()[0]) }}" alt="Product Image">
+                    <img src="{{post.getImages()[0]}}" alt="Product Image">
                     <p>
                         <a><i class="fas fa-map-marker-alt location-icon"></i> {{ post.getLocation() }}</a><br>
                         <a><i class="fas fa-dollar-sign price-icon"></i> {{ post.getStartPrice() }} - {{ post.getEndPrice() }}</a>
@@ -141,7 +141,7 @@
                 {% for post in Food_posts %}
                 <div class="product-card">
                     <h3>{{ post.getTitle() }}</h3>
-                    <img src="{{ url_for('static', filename='images/' + post.getImages()[0]) }}" alt="Product Image">
+                    <img src="{{post.getImages()[0]}}" alt="Product Image">
                     <p>
                         <a><i class="fas fa-map-marker-alt location-icon"></i> {{ post.getLocation() }}</a><br>
                         <a><i class="fas fa-dollar-sign price-icon"></i> {{ post.getStartPrice() }} - {{ post.getEndPrice() }}</a>
@@ -174,7 +174,7 @@
                   {% for post in Cinema_posts %}
                   <div class="product-card">
                       <h3>{{ post.getTitle() }}</h3>
-                      <img src="{{ url_for('static', filename='images/' + post.getImages()[0]) }}" alt="Product Image">
+                      <img src="{{post.getImages()[0]}}" alt="Product Image">
                       <p>
                           <a><i class="fas fa-map-marker-alt location-icon"></i> {{ post.getLocation() }}</a><br>
                           <a><i class="fas fa-dollar-sign price-icon"></i> {{ post.getStartPrice() }} - {{ post.getEndPrice() }}</a>
@@ -209,7 +209,7 @@
                     {% for post in Arcade_posts %}
                     <div class="product-card">
                         <h3>{{ post.getTitle() }}</h3>
-                        <img src="{{ url_for('static', filename='images/' + post.getImages()[0]) }}" alt="Product Image">
+                        <img src="{{post.getImages()[0]}}" alt="Product Image">
                         <p>
                             <a><i class="fas fa-map-marker-alt location-icon"></i> {{ post.getLocation() }}</a><br>
                             <a><i class="fas fa-dollar-sign price-icon"></i> {{ post.getStartPrice() }} - {{ post.getEndPrice() }}</a>

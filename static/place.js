@@ -27,6 +27,7 @@ function sendData() {
   const Description = document.getElementById('Description').value;
   const range1 = document.getElementById('range1').value;
   const range2 = document.getElementById('range2').value;
+  const category = document.getElementById('category').value;
 
   const formData = new FormData();
   for (let i = 0; i < imageFiles.length; i++) {
@@ -37,6 +38,7 @@ function sendData() {
   formData.append('Description', Description);
   formData.append('range1', range1);
   formData.append('range2', range2);
+  formData.append('category', category);
   
 
   fetch("http://localhost:5000/call_function", {
@@ -45,7 +47,7 @@ function sendData() {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Result:", data.image, data.Title, data.Desc, data.Loc,data.range1,data.range2);
+      console.log("Result:", data.image, data.Title, data.Desc, data.Loc,data.range1,data.range2,data.category);
     })
     .catch((error) => console.error("Error:", error));
 }

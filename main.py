@@ -70,12 +70,13 @@ def place():
 
 @app.route("/call_function", methods=["POST"])
 def call_function():
+    post = Post()
     Title = request.form["Title"]
     Description = request.form["Description"]
     Location = request.form["Location"]
     range1 = request.form["range1"]
     range2 = request.form["range2"]
-    selectedCategory = request.form["category"]
+    category = request.form["category"]
     imageFiles = request.files.getlist(
         "imageFiles"
     )  # "imageFiles" should match the name attribute of your file input
@@ -89,17 +90,27 @@ def call_function():
             )  # Save each file to the specified path
             results.append(filename)  # Store the filenames for response
 
-    result = calling_function(Title, imageFiles, Description, Location, range1, range2)
-    return jsonify(result=result)
+    info = {
+        "title": Title,
+        "location": Location,
+        "desc": Description,
+        "StartPrice": range1,
+        "EndPrice": range2,
+        "Category": category
+    }
 
+    post.createPost(results, info)  # Save data to MongoDB
 
-def calling_function(Title, imageFile, Description, Location, range1, range2):
-    return (Title, Description, Location)
-    if imageFile == {}:
-        imageFile.save("static/images/" + imageFile.filename)
-
-    else:
-        return "kkkk"
+    return jsonify({
+        'message': 'Data received and stored successfully!',
+        'image': filename,
+        'Title': Title,
+        'Desc': Description,
+        'Loc': Location,
+        'range1': range1,
+        'range2': range2,
+        "category": category
+    })
 
 
 # login

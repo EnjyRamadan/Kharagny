@@ -1,9 +1,8 @@
 from user import User
-import hashlib
 from bson import Binary
 
 
-def changeProfilePicture(userID, imageName):
+def removeProfilePicture(userID, imageName):
     user = User()
     imagePath = "static/images/" + imageName
     with open(imagePath, "rb") as file:
@@ -12,28 +11,17 @@ def changeProfilePicture(userID, imageName):
     query = {"$set": {"ProfilePicture": binaryData}}
     user.editData(query, userID)
     user.setProfilePicture(binaryData)
+    return user
 
 
-def changeUserName(userID, newUserName):
-    user = User()
-    query = {"$set": {"Username": newUserName}}
-    user.editData(query, userID)
-    user.setUserName(newUserName)
+def removePostFromFavorite(ID, postID):
+    user = User
+    user.getUserByID(ID)
+    user.removeFromFavorite(postID)
+    return user
 
 
-def changePassword(userID, newPassword, oldPassword):
-    user = User()
-    user.getUserByID(userID)
-    hashedPassword = hashlib.sha256(oldPassword.encode()).hexdigest()
-    if hashedPassword == user.getPassword():
-        query = {"$set": {"Password": newPassword}}
-        user.editData(query, userID)
-        user.setPassword(newPassword)
-
-
-def addFavorite(userID, post):
-    pass
-
-
-def deleteFavorite(userID, post):
-    pass
+def deleteProfile(ID):
+    user = User
+    user.getUserByID(ID)
+    user.deleteAccount()

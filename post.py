@@ -67,6 +67,7 @@ class Post:
             imagePath = "static/images/" + path
             with open(imagePath, "rb") as file:
                 imageData = file.read()
+                
                 binaryData.append(Binary(imageData))
         data = {
             "Images": binaryData,

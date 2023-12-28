@@ -7,6 +7,7 @@ def changeDescription(postID, newDisc):
     query = {"$set": {"Description": newDisc}}
     post.setDescription(newDisc)
     post.editData(query, postID)
+    return post
 
 
 def changeLocation(postID, newLoc):
@@ -15,6 +16,7 @@ def changeLocation(postID, newLoc):
     query = {"$set": {"Location": newLoc}}
     post.setLocation(newLoc)
     post.editData(query, postID)
+    return post
 
 
 def changeTitle(postID, newTitle):
@@ -23,14 +25,16 @@ def changeTitle(postID, newTitle):
     query = {"$set": {"Title": newTitle}}
     post.setTitle(newTitle)
     post.editData(query, postID)
+    return post
 
 
-def changeTitle(postID, newTitle):
+def changeCategory(postID, newCategory):
     post = Post()
     post.getPostByID(postID)
-    query = {"$set": {"Title": newTitle}}
-    post.setTitle(newTitle)
+    query = {"$set": {"Category": newCategory}}
+    post.setCategory(newCategory)
     post.editData(query, postID)
+    return post
 
 
 def changePriceRange(postID, newStart, newEnd):
@@ -40,9 +44,11 @@ def changePriceRange(postID, newStart, newEnd):
     post.setStartPrice(newStart)
     post.setEndPrice(newEnd)
     post.editData(query, postID)
+    return post
 
 
 def addImageToPost(postID, imageName):
     post = Post()
     imagePath = "static/images/" + imageName
     post.addToImages(postID, imagePath)
+    return post

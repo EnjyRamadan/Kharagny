@@ -31,9 +31,7 @@ def changePassword(userID, newPassword, oldPassword):
         user.setPassword(newPassword)
 
 
-def addFavorite(userID, post):
-    pass
-
-
-def deleteFavorite(userID, post):
-    pass
+def addPostToFavorite(ID, postID):
+    user = User
+    user.getUserByID(ID)
+    user.addToFavorite(postID)

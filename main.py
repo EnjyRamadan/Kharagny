@@ -43,31 +43,31 @@ def about():
 @app.route("/categories.html")
 def category():
     adventure_posts = getCategoryPost("Adventure")
-    return render_template("categories.html",adventure_posts=adventure_posts)
+    return render_template("categories.html", adventure_posts=adventure_posts)
 
 
 @app.route("/arcade.html")
 def arcade():
     Arcade_posts = getCategoryPost("Arcade")
-    return render_template("arcade.html",Arcade_posts = Arcade_posts )
+    return render_template("arcade.html", Arcade_posts=Arcade_posts)
 
 
 @app.route("/cinema.html")
 def cinema():
     Cinema_posts = getCategoryPost("Cinema")
-    return render_template("cinema.html",Cinema_posts=Cinema_posts)
+    return render_template("cinema.html", Cinema_posts=Cinema_posts)
 
 
 @app.route("/food.html")
 def food():
-    Food_posts = getCategoryPost("Food") 
-    return render_template("food.html",Food_posts=Food_posts)
+    Food_posts = getCategoryPost("Food")
+    return render_template("food.html", Food_posts=Food_posts)
 
 
 @app.route("/date.html")
 def date():
     Dates_posts = getCategoryPost("Dates")
-    return render_template("date.html",Dates_posts=Dates_posts)
+    return render_template("date.html", Dates_posts=Dates_posts)
 
 
 @app.route("/place.html")
@@ -78,38 +78,35 @@ def place():
 @app.route("/call_function", methods=["POST"])
 def call_function():
     post = Post()
-    Title = Title = request.form.get('Title', '')
+    Title = request.form.get("Title")
 
-    Location = request.form.get('Location', '')
+    Location = request.form.get("Location")
 
-    Description = request.form.get('Description', '')
+    Description = request.form.get("Description")
 
-    range1 = request.form.get('range1', '')
-    range2 = request.form.get('range2', '')
+    range1 = request.form.get("range1")
+    range2 = request.form.get("range2")
 
-    selectedCategory = request.form.get('category', '')
+    selectedCategory = request.form.get("category")
 
-    imageFiles = request.files.getlist(
-        "imageFiles"
-    )  # "imageFiles" should match the name attribute of your file input
+    imageFiles = request.files.getlist("imageFiles")
 
     results = []
-    for file in imageFiles:
-        if file and isinstance(file.filename, str) and file.filename != "":
+    if imageFiles:
+        for file in imageFiles:
             filename = secure_filename(file.filename)
             file.save(
                 os.path.join("static/images/", filename)
             )  # Save each file to the specified path
             results.append(filename)  # Store the filenames for response
     info = {
-    "Title": Title,
-    "Location": Location,
-    "Description": Description,
-    "range1": range1,
-    "range2": range2,
-    "category": selectedCategory  # Use lowercase 'category' here
+        "Title": Title,
+        "Location": Location,
+        "Description": Description,
+        "range1": range1,
+        "range2": range2,
+        "category": selectedCategory,  # Use lowercase 'category' here
     }
-
 
     post.createPost(results, info)  # Save data to MongoDB
     return render_template("home.html")
@@ -118,8 +115,8 @@ def call_function():
     # return jsonify(Title=Title, Description=Description, Location=Location,imageFile=imageFile,range1=range1,range2=range2,strategy=strategy)
 
 
-def calling_function(Title, imageFile, Description, Location, range1, range2,category):
-    return (Title, Description, Location,imageFile,range1,range2,category)
+def calling_function(Title, imageFile, Description, Location, range1, range2, category):
+    return (Title, Description, Location, imageFile, range1, range2, category)
     if imageFile == {}:
         imageFile.save("static/images/" + imageFile.filename)
 
@@ -208,8 +205,7 @@ def home():
         Dates_posts=Dates_posts,
         Food_posts=Food_posts,
         Cinema_posts=Cinema_posts,
-        Arcade_posts=Arcade_posts
-
+        Arcade_posts=Arcade_posts,
     )
     return render_template("home.html")
 

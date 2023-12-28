@@ -62,25 +62,24 @@ class Post:
         return self.desc
 
     def createPost(self, imagesPath, info):
-      data = {
-          "Images": imagesPath,
-          "Title": info["Title"],
-          "Category": info["category"],
-          "Location": info["Location"],
-          "Description": info["Description"],
-          "StartPrice": info["range1"],
-          "EndPrice": info["range2"],
-      }
-      self.setID(Database().Insert("Post", data))
-      self.setCategory(info["category"])  # Use lowercase 'category'
+        data = {
+            "Images": imagesPath,
+            "Title": info["Title"],
+            "Category": info["category"],
+            "Location": info["Location"],
+            "Description": info["Description"],
+            "StartPrice": info["range1"],
+            "EndPrice": info["range2"],
+        }
+        self.setID(Database().Insert("Post", data))
+        self.setCategory(info["category"])  # Use lowercase 'category'
 
-      self.setDescription(info["Description"])
-      self.setImages(imagesPath)
-      self.setLocation(info["Location"])
-      self.setTitle(info["Title"])
-      self.setStartPrice(info["range1"])
-      self.setEndPrice(info["range2"])
-
+        self.setDescription(info["Description"])
+        self.setImages(imagesPath)
+        self.setLocation(info["Location"])
+        self.setTitle(info["Title"])
+        self.setStartPrice(info["range1"])
+        self.setEndPrice(info["range2"])
 
     def getPostByID(self, ID):
         result = Database().SelectByID("Post", ID)
@@ -121,7 +120,7 @@ class Post:
             post.setTitle(record["Title"])
             post.setImages(record["Images"])
             post.setEndPrice(record["EndPrice"])
-            post.setCategory(record["category"])
+            post.setCategory(record["Category"])
             post.setLocation(record["Location"])
             post.setStartPrice(record["StartPrice"])
             post.setDescription(record["Description"])

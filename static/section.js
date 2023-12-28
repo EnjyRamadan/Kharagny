@@ -153,15 +153,15 @@ function toggleDropdown() {
   console.log("Redirecting to ");
   var dropdown = document.getElementById("categoryDropdown");
 
-  
+
   var computedStyle = window.getComputedStyle(dropdown);
 
   if (computedStyle.display === "block") {
-      
-      dropdown.style.display = "none";
+
+    dropdown.style.display = "none";
   } else {
-      
-      dropdown.style.display = "block";
+
+    dropdown.style.display = "block";
   }
 }
 

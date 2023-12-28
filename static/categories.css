@@ -2,6 +2,7 @@
   --light: #A2678A;
   --black: hsl(0, 3%, 7%);
 }
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -23,7 +24,7 @@
   max-width: 100%;
   height: auto;
   border-radius: 1px;
-  
+
   /* Optionally adjust border radius */
 }
 
@@ -33,7 +34,7 @@
   border-radius: 8px;
   background: #ffffffab;
 
-  
+
 }
 
 .info {
@@ -46,10 +47,11 @@
   color: black;
 }
 
-.info p ,i {
+.info p, i {
   font-size: 20px;
   text-align: left;
 }
+
 .container1 {
 
 
@@ -90,12 +92,14 @@
   }
 
 }
+
 .price-icon,
 .location-icon,
 .description-icon {
   color: var(--light);
 }
-.location-icon,.description-icon{
+
+.location-icon, .description-icon {
   margin-top: 10px;
-  
+
 }

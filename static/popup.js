@@ -47,7 +47,7 @@ wrapper.addEventListener("mouseleave", autoSlide);
 const favoriteButtons = document.querySelectorAll('.favorite-btn');
 
 favoriteButtons.forEach(button => {
-  button.addEventListener('click', function() {
+  button.addEventListener('click', function () {
     const imageId = this.getAttribute('data-id');
 
     // Perform action with the imageId (e.g., store it as a favorite)
@@ -63,14 +63,14 @@ favoriteButtons.forEach(button => {
       },
       body: JSON.stringify({ imageId }) // Send the imageId to the server
     })
-    .then(response => {
-      if (response.ok) {
-        console.log('Like status updated successfully.');
-      } else {
-        console.error('Failed to update like status.');
-      }
-    })
-    .catch(error => console.error('Error:', error));
+      .then(response => {
+        if (response.ok) {
+          console.log('Like status updated successfully.');
+        } else {
+          console.error('Failed to update like status.');
+        }
+      })
+      .catch(error => console.error('Error:', error));
   });
 });
 

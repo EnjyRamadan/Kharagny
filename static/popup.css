@@ -1,89 +1,99 @@
 :root {
-    --light: #A2678A;
-    --black: hsl(0, 3%, 7%);
-  }
-  
-  .wrapper {
-    margin-left: 400px;
-    display: flex;
-    max-width: 750px;
-    width: 100%;
-    height: 400px;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border-radius: 12px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  }
-  .wrapper i.button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 36px;
-    width: 36px;
-    background-color: #343f4f;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 36px;
-    font-size: 15px;
-    transition: all 0.3s linear;
-    z-index: 100;
-    cursor: pointer;
-  }
-  i.button:active {
-    transform: scale(0.94) translateY(-50%);
-  }
-  i#prev {
-    left: 25px;
-  }
-  i#next {
-    right: 25px;
-  }
-  .image-container {
-    height: 320px;
-    max-width: 600px;
-    width: 100%;
-    overflow: hidden;
-  }
-  .image-container .carousel {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    transition: all 0.4s ease;
-  }
-  .carousel img {
-    height: 100%;
-    width: 100%;
-    border-radius: 18px;
-    border: 10px solid #fff;
-    object-fit: cover;
-  }
-  .favorite-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: white; /* Initial color set to white */
-    cursor: pointer;
-    z-index: 10;
-    font-size: 24px; /* Adjust the font size to increase the button's size */
-  }
-  
-  .favorite-btn.liked {
-    color: red !important; /* Ensure color change to red */
-  }
-  
-  
-  
-  .price-icon,
-  .location-icon,
-  .description-icon {
-    color: var(--light);
-    margin-left: 150px;
-    font-size:30px;
-  }
-  
-  .location-icon,
-  .description-icon {
-    margin-top: 30px;
-  }
-  
+  --light: #A2678A;
+  --black: hsl(0, 3%, 7%);
+}
+
+.wrapper {
+  margin-left: 400px;
+  display: flex;
+  max-width: 750px;
+  width: 100%;
+  height: 400px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper i.button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 36px;
+  width: 36px;
+  background-color: #343f4f;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 36px;
+  font-size: 15px;
+  transition: all 0.3s linear;
+  z-index: 100;
+  cursor: pointer;
+}
+
+i.button:active {
+  transform: scale(0.94) translateY(-50%);
+}
+
+i#prev {
+  left: 25px;
+}
+
+i#next {
+  right: 25px;
+}
+
+.image-container {
+  height: 320px;
+  max-width: 600px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-container .carousel {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: all 0.4s ease;
+}
+
+.carousel img {
+  height: 100%;
+  width: 100%;
+  border-radius: 18px;
+  border: 10px solid #fff;
+  object-fit: cover;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: white;
+  /* Initial color set to white */
+  cursor: pointer;
+  z-index: 10;
+  font-size: 24px;
+  /* Adjust the font size to increase the button's size */
+}
+
+.favorite-btn.liked {
+  color: red !important;
+  /* Ensure color change to red */
+}
+
+
+
+.price-icon,
+.location-icon,
+.description-icon {
+  color: var(--light);
+  margin-left: 150px;
+  font-size: 30px;
+}
+
+.location-icon,
+.description-icon {
+  margin-top: 30px;
+}

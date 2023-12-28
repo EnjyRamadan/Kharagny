@@ -21,7 +21,7 @@ button {
   font-weight: 600;
   font-size: 14px;
   color: #A2678A;
-  
+
   line-height: 18px;
   padding: 5px 9px;
   border-radius: 4px;
@@ -85,4 +85,3 @@ button.primary {
   width: 32px;
   height: 32px;
 }
-

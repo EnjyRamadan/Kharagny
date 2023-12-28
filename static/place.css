@@ -1,10 +1,12 @@
 body {
   color: black;
 }
+
 :root {
   --light: #A2678A;
   --black: hsl(0, 3%, 7%);
 }
+
 .container {
   max-width: 800px;
   margin: 20px auto;
@@ -13,6 +15,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .uploaded-image {
   display: none;
   max-width: 100%;
@@ -75,15 +78,19 @@ form {
   object-fit: cover;
   /* Maintain aspect ratio */
 }
+
 #category {
-  color: black; /* Set the font color to black */
+  color: black;
+  /* Set the font color to black */
   margin-bottom: 10px;
 }
 
 #category option {
-  color: black; /* Set the font color of options to black */
+  color: black;
+  /* Set the font color of options to black */
 }
-input[type="number"]{
+
+input[type="number"] {
   width: 100px;
   margin-bottom: 20px;
   padding: 10px;
@@ -105,7 +112,7 @@ textarea {
 
 button {
   padding: 8px 16px;
-  background-color:hsl(0, 3%, 18%);
+  background-color: hsl(0, 3%, 18%);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -113,5 +120,5 @@ button {
 }
 
 button:hover {
-  background-color:black
+  background-color: black
 }

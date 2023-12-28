@@ -93,7 +93,7 @@ input[type="submit"],
 input[type="reset"],
 input[type="file"] {
   border-radius: 0;
-  
+
 }
 
 input[type="text"]::-ms-clear {

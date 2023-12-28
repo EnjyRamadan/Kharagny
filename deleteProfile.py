@@ -1,34 +1,39 @@
 from user import User
+import hashlib
 from bson import Binary
 
 
-def deleteAccount(ID):
-    user = User
-    user.getUserByID(ID)
-    user.deleteAccount()
+def changeProfilePicture(userID, imageName):
+    user = User()
+    imagePath = "static/images/" + imageName
+    with open(imagePath, "rb") as file:
+        imageData = file.read()
+        binaryData = Binary(imageData)
+    query = {"$set": {"ProfilePicture": binaryData}}
+    user.editData(query, userID)
+    user.setProfilePicture(binaryData)
 
 
-def removeProfilePicture(ID):
-    user = User
-    with open("static/images/defaultProfilePicture.jpg", "rb") as file:
-        image_data = file.read()
-    binaryData = Binary(image_data)
-    query = {
-        "$set": {
-            "profilePicture": binaryData,
-        }
-    }
-    user.editData(query, ID)
+def changeUserName(userID, newUserName):
+    user = User()
+    query = {"$set": {"Username": newUserName}}
+    user.editData(query, userID)
+    user.setUserName(newUserName)
 
 
-# _id = None
-# _userName = None
-# _password = None
-# _favorite = []
-# _profilePicture = None
+def changePassword(userID, newPassword, oldPassword):
+    user = User()
+    user.getUserByID(userID)
+    hashedPassword = hashlib.sha256(oldPassword.encode()).hexdigest()
+    if hashedPassword == user.getPassword():
+        query = {"$set": {"Password": newPassword}}
+        user.editData(query, userID)
+        user.setPassword(newPassword)
 
 
-def removeFromFavorite(ID, postID):
-    user = User
-    user.getUserByID(ID)
-    
+def addFavorite(userID, post):
+    pass
+
+
+def deleteFavorite(userID, post):
+    pass

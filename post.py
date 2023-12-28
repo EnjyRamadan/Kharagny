@@ -3,7 +3,7 @@ from bson import Binary
 
 
 class Post:
-    def _init_(self):
+    def __init__(self):
         self._id = None
         self.images = []
         self.title = None
@@ -92,7 +92,7 @@ class Post:
             self.setDescription(result["Description"])
             self.setCategory(result["Category"])
             self.setImages(result["Images"])
-            self.setLocation(result["location"])
+            self.setLocation(result["Location"])
             self.setTitle(result["Title"])
             self.setStartPrice(result["StartPrice"])
             self.setEndPrice(result["EndPrice"])
@@ -116,18 +116,18 @@ class Post:
 
     def getPostsByCategory(self, categoryName):
         data = Database().SelectRecordCollection(
-            "employees", {"Category": categoryName}, None
+            "Post", {"Category": categoryName}, None
         )
         posts = []
         for record in data:
             post = Post()
             post.setID(record["_id"])
             post.setTitle(record["Title"])
-            post.setLocation(record["Location"])
-            post.setDescription(record["Description"])
-            post.setStartPrice(record["StartPrice"])
-            post.setEndPrice(record["EndPrice"])
             post.setImages(record["Images"])
+            post.setEndPrice(record["EndPrice"])
             post.setCategory(record["Category"])
+            post.setLocation(record["Location"])
+            post.setStartPrice(record["StartPrice"])
+            post.setDescription(record["Description"])
             posts.append(post)
         return posts

@@ -42,17 +42,17 @@ class User:
         return self._id
 
     def Login(self, userName, password):
-        data = {"userName": userName}
+        data = {"Username": userName}
         result = Database().SelectCollection("User", data)
         if result:
             hashedPassword = hashlib.sha256(password.encode()).hexdigest()
-            if result[0]["password"] == hashedPassword:
+            if result[0]["Password"] == hashedPassword:
                 self.setID(result[0]["_id"])
-                self.setUserName(result[0]["userName"])
-                self.setPassword(result[0]["password"])
-                self.setProfilePicture(result[0]["profilePicture"])
-                if "favorite" in result[0]:
-                    self.setFavorite(result[0]["favorite"])
+                self.setUserName(result[0]["Username"])
+                self.setPassword(result[0]["Password"])
+                self.setProfilePicture(result[0]["ProfilePicture"])
+                if "Favorite" in result[0]:
+                    self.setFavorite(result[0]["Favorite"])
                 return True
             else:
                 return "Wrong Password"
@@ -61,14 +61,14 @@ class User:
 
     def SignUp(self, userName, password):
         hashedPassword = hashlib.sha256(password.encode()).hexdigest()
-        data = {"userName": userName, "password": hashedPassword}
+        data = {"Username": userName, "Password": hashedPassword}
         _id = Database().Insert("User", data)
         with open("static/images/defaultProfilePicture.jpg", "rb") as file:
             image_data = file.read()
         binaryData = Binary(image_data)
         query = {
             "$set": {
-                "profilePicture": binaryData,
+                "ProfilePicture": binaryData,
             }
         }
         self.editData(query, _id)
@@ -80,12 +80,12 @@ class User:
     def getUserByID(self, ID):
         result = Database().SelectByID("User", ID)
         if result:
-            if "favorite" in result:
-                self.setFavorite(result["favorite"])
+            if "Favorite" in result:
+                self.setFavorite(result["Favorite"])
             self.setID(result["_id"])
-            self.setUserName(result["userName"])
-            self.setPassword(result["password"])
-            self.setProfilePicture(result["profilePicture"])
+            self.setUserName(result["Username"])
+            self.setPassword(result["Password"])
+            self.setProfilePicture(result["ProfilePicture"])
 
     def deleteAccount(self):
         Database().DeleteID(self.getID())
@@ -97,9 +97,9 @@ class User:
         data = {"Favorite": postID}
         Database().RemoveFromRecord("User", self.getID(), data)
 
-    def addToFavorite(self,  postID):
-        posts = self.getImages()
-        images.append(imagePath)
-        self.setImages(images)
-        data = {"Images": imagePath}
-        Database().AddToRecord("Post", ID, data)
+    def addToFavorite(self, postID):
+        posts = self.getFavorite()
+        posts.append(postID)
+        self.setFavorite(posts)
+        data = {"Favorite": postID}
+        Database().AddToRecord("User", self.getID(), data)

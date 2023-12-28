@@ -34,7 +34,11 @@
             <!-- Add more dropdown items here -->
           </div>
         </div></li>
-        <li><a href class="blue"></a></li>
+        <li><a href="/profile.html">
+          <div class="profile-picture">
+            <img src="static\images\profile.jpeg" alt="Profile">
+          </div>
+        </a></li>
       </ul>
     </nav>
   </div>
@@ -57,7 +61,7 @@
 
 
   <section class="gallery">
-    {% for post inCinema_posts %}
+    {% for post in Cinema_posts %}
         <div class="gallery-item">
             <a href="popup.html">
                 <div class="item-content">

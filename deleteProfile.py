@@ -17,7 +17,6 @@ def removePostFromFavorite(ID, postID):
     user.removeFromFavorite(postID)
     return user
 
-
 def deleteProfile(ID):
     user = User
     user.getUserByID(ID)

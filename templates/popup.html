@@ -47,17 +47,17 @@
   </div>
   <br>
   <div class="wrapper">
-    <i class="fa-solid fa-heart favorite-btn" data-id="1"></i>
+    <i class="fa-solid fa-heart favorite-btn" data-id="{{ post_id }}"></i>
     <i class="fa-solid fa-arrow-left button" id="prev"></i>
     <div class="image-container">
-      <div class="carousel">
-          <img src="{{url_for('static',filename='images/download.jpg')}}" alt="" />
-            <img src="{{url_for('static',filename='images/sawsan2.jpg')}}" alt="" />
-            <img src="{{url_for('static',filename='images/ski.jpeg')}}" alt="" />
+        <div class="carousel">
+            {% for image_url in image_urls %}
+                <img src="{{ image_url }}" alt="" />
+            {% endfor %}
         </div>
-      </div>
+    </div>
     <i class="fa-solid fa-arrow-right button" id="next"></i>
-  </div>
+</div>
   
 
    <br>

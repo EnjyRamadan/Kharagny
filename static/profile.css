@@ -487,3 +487,23 @@ span{
 
 
 
+.deleteButton {
+  margin-top: 10px; 
+}
+
+.deleteButton a {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color:var(--light); 
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.deleteButton a:hover {
+  background-color: var(--light); 
+}
+
+
+
+

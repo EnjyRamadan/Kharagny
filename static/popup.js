@@ -49,11 +49,30 @@ const favoriteButtons = document.querySelectorAll('.favorite-btn');
 favoriteButtons.forEach(button => {
   button.addEventListener('click', function() {
     const imageId = this.getAttribute('data-id');
+
     // Perform action with the imageId (e.g., store it as a favorite)
     console.log(`Image ${imageId} is liked.`);
     // Toggle the 'liked' class to change the heart color
     this.classList.toggle('liked');
+
+    // Send a request to the backend to store or remove the liked image
+    fetch('/like', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ imageId }) // Send the imageId to the server
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Like status updated successfully.');
+      } else {
+        console.error('Failed to update like status.');
+      }
+    })
+    .catch(error => console.error('Error:', error));
   });
 });
+
 
 

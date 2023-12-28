@@ -99,3 +99,8 @@ class User:
         self.setFavorite(posts)
         data = {"Favorite": postID}
         Database().AddToRecord("User", self.getID(), data)
+
+    def getFieldFromUser(self, col):
+        param = {"_id": self.getID()}
+        data = Database().SelectRecordCollection("User", param, col)
+        return data

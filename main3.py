@@ -185,23 +185,40 @@ def signup():
 
 
 ## update
-@app.route("/update", methods=["POST"])
-def changeUserName(userID, newUserName):
-    user = User()
-    query = {"$set": {"Username": newUserName}}
-    user.editData(query, userID)
-    user.setUserName(newUserName)
+def edit_profile():
+    return render_template('edit.html')
 
-
-
-def changePassword(userID, newPassword, oldPassword):
-    user = User()
-    user.getUserByID(userID)
-    hashedPassword = hashlib.sha256(oldPassword.encode()).hexdigest()
-    if hashedPassword == user.getPassword():
-        query = {"$set": {"Password": newPassword}}
-        user.editData(query, userID)
-        user.setPassword(newPassword)
+@app.route('/update', methods=['POST'])
+def update_profile():
+    # Retrieve form data
+    new_username = request.form['new_username']
+    old_password = request.form['old_password']
+    new_password = request.form['new_password']
+    email = request.form['email']
+    
+    document =  user.getFieldFromUser({"username":  new_username})
+    user_id = document['user_id']  # Replace with the actual user ID
+    user = User()  # Assuming User is a class handling database operations
+    
+    # Check if old password matches
+    user_data = user.getUserByID(user_id)
+    hashed_old_password = hashlib.sha256(old_password.encode()).hexdigest()
+    if hashed_old_password != user_data['password']:
+        return "Old password incorrect. Please try again."
+    
+    # Update username if provided
+    if new_username:
+        user.editData({"$set": {"username": new_username}}, user_id)
+        # user.setUserName(new_username)  # Set username in the user object if needed
+    
+    # Update password if provided
+    if new_password:
+        hashed_new_password = hashlib.sha256(new_password.encode()).hexdigest()
+        user.editData({"$set": {"password": hashed_new_password}}, user_id)
+        # user.setPassword(hashed_new_password)  # Set password in the user object if needed
+    
+    
+    return "Profile updated successfully!"
 
 
 # login

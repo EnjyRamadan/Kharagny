@@ -50,7 +50,7 @@
     <h1 style="color: black; text-align: center">ADD NEW PLACE</h1>
     <br>
   
-    <form id="uploadForm" enctype="multipart/form-data" onsubmit="event.preventDefault(); sendData()">
+    <form id="uploadForm"  action="{{ url_for('call_function') }}" method="post">
       <label for="imageFiles" class="image-upload">
         <input type="file" id="imageFiles" accept="image/*" multiple required onchange="previewImages(event)">
         <!-- <span class="upload-text">Upload Pictures</span> -->
@@ -61,16 +61,21 @@
       <h3 style="color: black;"> Enter price range</h3>
       <input type="number" id="range1" placeholder=" start " required>
       <input type="number" id="range2" placeholder="end " required>
+      
       <select id="category" required>
         <option value="" disabled selected>Select a category</option>
         <option value="Adventures">Adventures</option>
         <option value="Dates">Dates</option>
         <option value="Food">Food</option>
         <option value="Cinema">Cinema</option>
-      </select>
+    </select>
+    
       <input type="text" id="Title" placeholder="Enter Title" required>
+
       <input type="text" id="Location" placeholder="Enter Location" required>
+
       <textarea id="Description" placeholder="Enter Description" required></textarea>
+
       <button type="submit">Add Place</button>
     </form>
     

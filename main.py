@@ -77,12 +77,18 @@ def place():
 
 @app.route("/call_function", methods=["POST"])
 def call_function():
-    Title = request.form["Title"]
-    Description = request.form["Description"]
-    Location = request.form["Location"]
-    range1 = request.form["range1"]
-    range2 = request.form["range2"]
-    selectedCategory = request.form["category"]
+    post = Post()
+    Title = Title = request.form.get('Title', '')
+
+    Location = request.form.get('Location', '')
+
+    Description = request.form.get('Description', '')
+
+    range1 = request.form.get('range1', '')
+    range2 = request.form.get('range2', '')
+
+    selectedCategory = request.form.get('category', '')
+
     imageFiles = request.files.getlist(
         "imageFiles"
     )  # "imageFiles" should match the name attribute of your file input
@@ -95,13 +101,25 @@ def call_function():
                 os.path.join("static/images/", filename)
             )  # Save each file to the specified path
             results.append(filename)  # Store the filenames for response
+    info = {
+    "Title": Title,
+    "Location": Location,
+    "Description": Description,
+    "range1": range1,
+    "range2": range2,
+    "category": selectedCategory  # Use lowercase 'category' here
+    }
 
-    result = calling_function(Title, imageFiles, Description, Location, range1, range2)
-    return jsonify(result=result)
+
+    post.createPost(results, info)  # Save data to MongoDB
+    return render_template("home.html")
+
+    # Title, Description, Location,imageFile,range1,range2,strategy = calling_function(Title, imageFiles, Description, Location, range1, range2,selectedCategory)
+    # return jsonify(Title=Title, Description=Description, Location=Location,imageFile=imageFile,range1=range1,range2=range2,strategy=strategy)
 
 
-def calling_function(Title, imageFile, Description, Location, range1, range2):
-    return (Title, Description, Location)
+def calling_function(Title, imageFile, Description, Location, range1, range2,category):
+    return (Title, Description, Location,imageFile,range1,range2,category)
     if imageFile == {}:
         imageFile.save("static/images/" + imageFile.filename)
 
@@ -124,10 +142,6 @@ def SignUp(userName, password):
     _id = temp.SignUp(userName, password)
     return _id
 
-
-def removePost():
-    post=Post
-    post.deletePost()
 
 @app.route("/login", methods=["POST"])
 def login():

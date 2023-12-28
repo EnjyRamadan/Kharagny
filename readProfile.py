@@ -1,12 +1,10 @@
 from user import User
-from io import BytesIO
-from PIL import Image
 
 
 def getProfilePicture(userID):
     user = User()
     user.getUserByID(userID)
-    return BytesIO(user.getProfilePicture())
+    return user.getProfilePicture()
 
 
 # def getUserFavorite(userID):

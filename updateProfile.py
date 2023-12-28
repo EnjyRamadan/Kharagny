@@ -1,17 +1,13 @@
 from user import User
 import hashlib
-from bson import Binary
 
 
 def changeProfilePicture(userID, imageName):
     user = User()
     imagePath = "static/images/" + imageName
-    with open(imagePath, "rb") as file:
-        imageData = file.read()
-        binaryData = Binary(imageData)
-    query = {"$set": {"ProfilePicture": binaryData}}
+    query = {"$set": {"ProfilePicture": imagePath}}
     user.editData(query, userID)
-    user.setProfilePicture(binaryData)
+    user.setProfilePicture(imagePath)
 
 
 def changeUserName(userID, newUserName):

@@ -1,6 +1,5 @@
 from db import Database
 import hashlib
-from bson import Binary
 
 
 class User:
@@ -63,12 +62,9 @@ class User:
         hashedPassword = hashlib.sha256(password.encode()).hexdigest()
         data = {"Username": userName, "Password": hashedPassword}
         _id = Database().Insert("User", data)
-        with open("static/images/defaultProfilePicture.jpg", "rb") as file:
-            image_data = file.read()
-        binaryData = Binary(image_data)
         query = {
             "$set": {
-                "ProfilePicture": binaryData,
+                "ProfilePicture": "static/images/defaultProfilePicture.jpg",
             }
         }
         self.editData(query, _id)

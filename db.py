@@ -10,12 +10,11 @@ class Database:
     dbName = "Kharagny"
     client = MongoClient()
 
-    def _new_(cls, *args, **kwargs):
+    def __new__(cls, *args, **kwargs):
         if cls._instance is None:
-            cls.instance = super().new_(cls)
-            # Use the connection string for a local MongoDB instance
-            uri = "mongodb://localhost:27017/"
-            cls._instance.client = MongoClient(uri)
+            cls._instance = super().__new__(cls)
+            uri = "mongodb+srv://Kharagny:Kharagny221875@kharagny.ac1lbwv.mongodb.net/?retryWrites=true&w=majority"
+            cls._instance.client = MongoClient(uri, server_api=ServerApi("1"))
         return cls._instance
 
     @staticmethod

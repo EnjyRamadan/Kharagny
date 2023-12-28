@@ -53,7 +53,7 @@ favoriteButtons.forEach(button => {
     // Perform action with the imageId (e.g., store it as a favorite)
     console.log(`Image ${imageId} is liked.`);
     // Toggle the 'liked' class to change the heart color
-    this.classList.toggle('liked');
+
 
     // Send a request to the backend to store or remove the liked image
     fetch('/like', {
@@ -76,3 +76,24 @@ favoriteButtons.forEach(button => {
 
 
 
+const favoriteBtn = document.querySelector('.favorite-btn');
+
+favoriteBtn.addEventListener('click', async () => {
+  const postId = favoriteBtn.getAttribute('data-id');
+  this.classList.toggle('liked');
+  try {
+    const response = await fetch(`/add_to_favorites/${postId}`, {
+      method: 'POST',
+      // Add any necessary headers or body data
+    });
+    if (response.ok) {
+      // Handle success, maybe update UI to indicate the post is now a favorite
+      console.log('Post added to favorites!');
+    } else {
+      // Handle error case
+      console.error('Failed to add post to favorites');
+    }
+  } catch (error) {
+    console.error('Error occurred:', error);
+  }
+});

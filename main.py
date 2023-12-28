@@ -227,14 +227,13 @@ def getUserFavorite(userID):
 
 @app.route("/profile.html")
 def profile():
-    user_id = session.get('user_id')
+   
 
-    if user_id is None:
-        # Handle the case where user_id is not in the session (e.g., not logged in)
-        return redirect(url_for('login'))
+    
 
     # Use the user_id to fetch user information
     user_instance = User()
+    user_id= user_instance.getID()
     user_instance.getUserByID(user_id)
 
     # Get user information

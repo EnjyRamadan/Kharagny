@@ -57,7 +57,7 @@
                     </div>
                     <div class="profile-info">
                         <div class="title row">
-                            <h2>{{name2}}</h2>
+                            <h2>{{username}}</h2>
                             <span class="verfied-icon"></span>
 
                         </div>
@@ -132,7 +132,7 @@
                       <div class="info">
                         <h3>{{ post.getTitle() }}</h3>
                         {% set image_filename = post.getImages()[0] %}
-                        <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Image 1" />
+                        <img src="{{ url_for('static', filename='images/' + image_filename) }}" href="popup.html" alt="Image 1" />
                         <p>
                           <a><i class="fas fa-dollar-sign price-icon"> </i>{{
                             post.getStartPrice() }} - {{ post.getEndPrice() }}</a><br>

@@ -42,27 +42,32 @@ def about():
 
 @app.route("/categories.html")
 def category():
-    return render_template("categories.html")
+    adventure_posts = getCategoryPost("Adventure")
+    return render_template("categories.html",adventure_posts=adventure_posts)
 
 
 @app.route("/arcade.html")
 def arcade():
-    return render_template("arcade.html")
+    Arcade_posts = getCategoryPost("Arcade")
+    return render_template("arcade.html",Arcade_posts = Arcade_posts )
 
 
 @app.route("/cinema.html")
 def cinema():
-    return render_template("cinema.html")
+    Cinema_posts = getCategoryPost("Cinema")
+    return render_template("cinema.html",Cinema_posts=Cinema_posts)
 
 
 @app.route("/food.html")
 def food():
-    return render_template("food.html")
+    Food_posts = getCategoryPost("Food") 
+    return render_template("food.html",Food_posts=Food_posts)
 
 
 @app.route("/date.html")
 def date():
-    return render_template("date.html")
+    Dates_posts = getCategoryPost("Dates")
+    return render_template("date.html",Dates_posts=Dates_posts)
 
 
 @app.route("/place.html")
@@ -77,7 +82,7 @@ def call_function():
     Location = request.form["Location"]
     range1 = request.form["range1"]
     range2 = request.form["range2"]
-    category = request.form["category"]
+    selectedCategory = request.form["category"]
     imageFiles = request.files.getlist(
         "imageFiles"
     )  # "imageFiles" should match the name attribute of your file input
@@ -91,29 +96,17 @@ def call_function():
             )  # Save each file to the specified path
             results.append(filename)  # Store the filenames for response
 
-    info = {
-        "title": Title,
-        "location": Location,
-        "desc": Description,
-        "StartPrice": range1,
-        "EndPrice": range2,
-        "Category": category,
-        "images": imageFiles,
-    }
-    post = Post
-    data = info[:]
-    del data["images"]
-    post.createPost(info["images"], data)
-    # return jsonify({
-    #     'message': 'Data received and stored successfully!',
-    #     'image': filename,
-    #     'Title': Title,
-    #     'Desc': Description,
-    #     'Loc': Location,
-    #     'range1': range1,
-    #     'range2': range2,
-    #     "category": category
-    # })
+    result = calling_function(Title, imageFiles, Description, Location, range1, range2)
+    return jsonify(result=result)
+
+
+def calling_function(Title, imageFile, Description, Location, range1, range2):
+    return (Title, Description, Location)
+    if imageFile == {}:
+        imageFile.save("static/images/" + imageFile.filename)
+
+    else:
+        return "kkkk"
 
 
 # login
@@ -197,7 +190,8 @@ def home():
         Dates_posts=Dates_posts,
         Food_posts=Food_posts,
         Cinema_posts=Cinema_posts,
-        Arcade_posts=Arcade_posts,
+        Arcade_posts=Arcade_posts
+
     )
     return render_template("home.html")
 

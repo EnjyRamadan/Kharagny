@@ -84,7 +84,7 @@ class User:
             self.setProfilePicture(result["ProfilePicture"])
 
     def deleteAccount(self):
-        Database().DeleteID(self.getID())
+        Database().DeleteID("User",self.getID())
 
     def removeFromFavorite(self, postID):
         posts = self.getFavorite()

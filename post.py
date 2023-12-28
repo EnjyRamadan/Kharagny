@@ -125,3 +125,6 @@ class Post:
             post.setDescription(record["Description"])
             posts.append(post)
         return posts
+
+    def deletePost(self):
+        Database().DeleteID("Post",self.getID())

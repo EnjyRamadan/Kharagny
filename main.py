@@ -125,6 +125,10 @@ def SignUp(userName, password):
     return _id
 
 
+def removePost():
+    post=Post
+    post.deletePost()
+
 @app.route("/login", methods=["POST"])
 def login():
     alert_message = None

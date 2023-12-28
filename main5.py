@@ -1,14 +1,12 @@
-from flask import Flask, redirect, url_for, render_template, jsonify, request,session
+from flask import Flask, redirect, url_for, render_template, jsonify, request,app,session
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
 from user import User
 from post import Post
 import createPost
-import secrets
-
+app.secret_key = 'your_secret_key'
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)
 CORS(app)
 
 
@@ -155,7 +153,7 @@ def login():
             alert_message = "Login failed! Wrong password."
         else:
             alert_message = f"Login successful! User ID: {user_id}"
-            session['user_id'] = str(user_id)
+            session['user_id'] = user_id
             return render_template(
                 "/profile.html", alert_message=alert_message, username=username
             )
@@ -175,7 +173,7 @@ def signup():
         password = request.form["password"]
         user_id = SignUp(username, password)
         alert_message = f"Signup successful! User ID: {user_id}"
-        session['user_id'] = str(user_id)
+        session['user_id'] = user_id
     return render_template(
         "/profile.html", alert_message=alert_message, username=username
     )
@@ -241,9 +239,10 @@ def profile():
     name2 = user_instance.getUserName()
     favorite_posts = getUserFavorite(user_id)
 
-    return render_template("profile.html", favorite_posts=favorite_posts, name2=name2,num_favorite_posts=len(favorite_posts))
+    return render_template("profile.html", favorite_posts=favorite_posts, name2=name2)
 
 
+#favourites
 
 if __name__ == "__main__":
     app.run(debug=True)

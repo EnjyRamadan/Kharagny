@@ -3,7 +3,7 @@ from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
 from user import User
-
+from post import Post
 app = Flask(__name__)
 CORS(app)
 
@@ -11,11 +11,6 @@ CORS(app)
 @app.route("/")
 def login1():
     return render_template("login.html")
-
-
-@app.route("/home.html")
-def home():
-    return render_template("home.html")
 
 
 @app.route("/profile.html")
@@ -80,6 +75,7 @@ def call_function():
     Location = request.form["Location"]
     range1 = request.form["range1"]
     range2 = request.form["range2"]
+    selectedCategory = request.form["category"]
     imageFiles = request.files.getlist(
         "imageFiles"
     )  # "imageFiles" should match the name attribute of your file input
@@ -107,8 +103,6 @@ def calling_function(Title, imageFile, Description, Location, range1, range2):
 
 
 # login
-
-
 def Login(userName, password):
     temp = User()
     respond = temp.Login(userName, password)
@@ -127,6 +121,8 @@ def SignUp(userName, password):
 @app.route("/login", methods=["POST"])
 def login():
     alert_message = None
+    username = None
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -138,24 +134,62 @@ def login():
             alert_message = "Login failed! Wrong password."
         else:
             alert_message = f"Login successful! User ID: {user_id}"
+            return render_template(
+                "/profile.html", alert_message=alert_message, username=username
+            )
 
-    return render_template("login.html", alert_message=alert_message)
+    return render_template(
+        "/login.html", alert_message=alert_message, username=username
+    )
 
 
 @app.route("/signup", methods=["POST"])
 def signup():
     alert_message = None
+    username = None
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         user_id = SignUp(username, password)
         alert_message = f"Signup successful! User ID: {user_id}"
 
-    return render_template("signup.html", alert_message=alert_message)
+    return render_template(
+        "/profile.html", alert_message=alert_message, username=username
+    )
 
 
 # login
 
+
+# home
+def getCategoryPost(categoryName):
+    temp = Post()
+    posts = temp.getPostsByCategory(categoryName)
+    return posts
+
+
+@app.route("/home.html")
+def home():
+    adventure_posts = getCategoryPost("Adventure")
+    Dates_posts = getCategoryPost("Dates")
+    Food_posts = getCategoryPost("Food")
+    Cinema_posts = getCategoryPost("Cinema")
+    Arcade_posts = getCategoryPost("Arcade")
+
+    return render_template(
+        "/home.html",
+        adventure_posts=adventure_posts,
+        Dates_posts=Dates_posts,
+        Food_posts=Food_posts,
+        Cinema_posts=Cinema_posts,
+        Arcade_posts=Arcade_posts
+
+    )
+    return render_template("home.html")
+
+
+# home
 
 if __name__ == "__main__":
     app.run(debug=True)

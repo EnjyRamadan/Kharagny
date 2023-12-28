@@ -4,6 +4,8 @@ from werkzeug.utils import secure_filename
 import os
 from user import User
 from post import Post
+import createPost
+
 app = Flask(__name__)
 CORS(app)
 
@@ -70,7 +72,6 @@ def place():
 
 @app.route("/call_function", methods=["POST"])
 def call_function():
-    post = Post()
     Title = request.form["Title"]
     Description = request.form["Description"]
     Location = request.form["Location"]
@@ -96,21 +97,23 @@ def call_function():
         "desc": Description,
         "StartPrice": range1,
         "EndPrice": range2,
-        "Category": category
+        "Category": category,
+        "images": imageFiles,
     }
-
-    post.createPost(results, info)  # Save data to MongoDB
-
-    return jsonify({
-        'message': 'Data received and stored successfully!',
-        'image': filename,
-        'Title': Title,
-        'Desc': Description,
-        'Loc': Location,
-        'range1': range1,
-        'range2': range2,
-        "category": category
-    })
+    post = Post
+    data = info[:]
+    del data["images"]
+    post.createPost(info["images"], data)
+    # return jsonify({
+    #     'message': 'Data received and stored successfully!',
+    #     'image': filename,
+    #     'Title': Title,
+    #     'Desc': Description,
+    #     'Loc': Location,
+    #     'range1': range1,
+    #     'range2': range2,
+    #     "category": category
+    # })
 
 
 # login
@@ -194,8 +197,7 @@ def home():
         Dates_posts=Dates_posts,
         Food_posts=Food_posts,
         Cinema_posts=Cinema_posts,
-        Arcade_posts=Arcade_posts
-
+        Arcade_posts=Arcade_posts,
     )
     return render_template("home.html")
 

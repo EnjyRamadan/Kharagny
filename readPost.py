@@ -1,17 +1,15 @@
 from post import Post
-from io import BytesIO
-from PIL import Image
+
 
 def getCategoryPost(categoryName):
     temp = Post()
     posts = temp.getPostsByCategory(categoryName)
     for post in posts:
-        images = []
+        imagesPath = []
         for image in post.getImages():
-            images.append(BytesIO(image))
-            Image.open(image)
-        post.setImages(images)
-
+            imagesPath.append("static/images/" + image)
+            print("static/images/" + image)
+        post.setImages(imagesPath)
     return posts
 
 

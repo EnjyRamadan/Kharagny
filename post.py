@@ -62,15 +62,8 @@ class Post:
         return self.desc
 
     def createPost(self, imagesPath, info):
-        binaryData = []
-        for path in imagesPath:
-            imagePath = "static/images/" + path
-            with open(imagePath, "rb") as file:
-                imageData = file.read()
-                
-                binaryData.append(Binary(imageData))
         data = {
-            "Images": binaryData,
+            "Images": imagesPath,
             "Title": info["title"],
             "Category": info["category"],
             "Location": info["location"],

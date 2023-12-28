@@ -84,7 +84,7 @@ class User:
             self.setProfilePicture(result["ProfilePicture"])
 
     def deleteAccount(self):
-        Database().DeleteID("User",self.getID())
+        Database().DeleteID("User", self.getID())
 
     def removeFromFavorite(self, postID):
         posts = self.getFavorite()
@@ -100,7 +100,6 @@ class User:
         data = {"Favorite": postID}
         Database().AddToRecord("User", self.getID(), data)
 
-    def getFieldFromUser(self, col):
-        param = {"_id": self.getID()}
+    def getFieldFromUser(self, param, col):
         data = Database().SelectRecordCollection("User", param, col)
         return data

@@ -46,39 +46,22 @@
     <i class="fa-solid fa-arrow-left button" id="prev"></i>
     <div class="image-container">
       <div class="carousel">
-        {% for image_url in image_urls %}
-        <img src="{{ image_url }}" alt="" />
+        {% for imageURL in imageURLs %}
+        <img src="{{ imageURL }}" alt="" />
         {% endfor %}
       </div>
     </div>
     <i class="fa-solid fa-arrow-right button" id="next"></i>
   </div>
-
-
   <br>
   <div id="info">
     <p>
-      <a><i class="fas fa-dollar-sign price-icon"> </i> price</a><br>
-      <a><i class="fas fa-map-marker-alt location-icon"> </i> Location</a><br>
-      <i class="fas fa-info-circle description-icon"> </i> Description</a><br>
+    <h2>{{ title }}</h2>
+    <p><strong>Price Range:</strong> {{startPrice }} - {{ endPrice }}</p>
+    <p><strong>Description:</strong> {{ des }}</p>
     </p>
   </div>
   <script src="{{url_for('static',filename='popup.js')}}"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <footer class="footer">
     <div class="container2">
       <div class="row">
@@ -88,7 +71,6 @@
           <ul>
             <li><a href="/home.html">Home</a></li>
             <li><a href="/about.html">About</a></li>
-
           </ul>
         </div>
         <div class="footer-col">

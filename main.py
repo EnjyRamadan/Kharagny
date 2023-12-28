@@ -1,11 +1,10 @@
-from flask import Flask, redirect, url_for, render_template, jsonify, request,session
+from flask import Flask, redirect, url_for, render_template, jsonify, request
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import os
 from user import User
 from post import Post
-import createPost
-import secrets
+import hashlib
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
@@ -17,16 +16,28 @@ def login1():
     return render_template("login.html")
 
 
-
-
 @app.route("/edit.html")
 def edit():
     return render_template("edit.html")
 
 
-@app.route("/popup.html")
-def pop():
-    return render_template("popup.html")
+@app.route("/popup.html/<postID>")
+def popup(postID):
+    post = Post
+    post.getPostByID(postID)
+    imageURLs = post.getImages()
+    Title = post.getTitle()
+    des = post.getDescription()
+    startPrice, endPrice = post.getStartPrice(), post.getEndPrice()
+    return render_template(
+        "popup.html",
+        imageURLs=imageURLs,
+        postID=postID,
+        startPrice=startPrice,
+        endPrice=endPrice,
+        title=Title,
+        des=des,
+    )
 
 
 @app.route("/forget.html")
@@ -72,6 +83,13 @@ def date():
 @app.route("/place.html")
 def place():
     return render_template("place.html")
+
+
+@app.route("/like", methods=["POST"])
+def like_image():
+    if request.method == "POST":
+        image_id = request.json.get("imageId")
+        return "Liked"
 
 
 @app.route("/call_function", methods=["POST"])
@@ -123,6 +141,35 @@ def calling_function(Title, imageFile, Description, Location, range1, range2, ca
         return "kkkk"
 
 
+def edit_profile():
+    return render_template("edit.html")
+
+
+@app.route("/update", methods=["POST"])
+def update_profile():
+    new_username = request.form["new_username"]
+    old_password = request.form["old_password"]
+    new_password = request.form["new_password"]
+    email = request.form["email"]
+    user = User()
+    document = user.getFieldFromUser({"Username": new_username}, {"Password": 1})
+    user_id = document[0]["_id"]
+    user.getUserByID(user_id)
+    hashedPassword = hashlib.sha256(old_password.encode()).hexdigest()
+    print(hashedPassword, user.getPassword())
+    if hashedPassword != user.getPassword():
+        return "Old password incorrect. Please try again."
+
+    if new_username:
+        user.editData({"$set": {"Username": new_username}}, user_id)
+
+    if new_password:
+        hashedPassword = hashlib.sha256(new_password.encode()).hexdigest()
+        user.editData({"$set": {"Password": hashedPassword}}, user_id)
+
+    return "Profile updated successfully!"
+
+
 # login
 def Login(userName, password):
     temp = User()
@@ -143,7 +190,7 @@ def SignUp(userName, password):
 def login():
     alert_message = None
     username = None
-    
+
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
@@ -155,7 +202,7 @@ def login():
             alert_message = "Login failed! Wrong password."
         else:
             alert_message = f"Login successful! User ID: {user_id}"
-            session['user_id'] = str(user_id)
+            session["user_id"] = str(user_id)
             return render_template(
                 "/profile.html", alert_message=alert_message, username=username
             )
@@ -175,7 +222,7 @@ def signup():
         password = request.form["password"]
         user_id = SignUp(username, password)
         alert_message = f"Signup successful! User ID: {user_id}"
-        session['user_id'] = str(user_id)
+        session["user_id"] = str(user_id)
     return render_template(
         "/profile.html", alert_message=alert_message, username=username
     )
@@ -211,9 +258,11 @@ def home():
 
 
 # home
-#favourites
+# favourites
 from user import User
 from post import Post
+
+
 def getUserFavorite(userID):
     user = User()
     user.getUserByID(userID)
@@ -227,21 +276,19 @@ def getUserFavorite(userID):
 
 @app.route("/profile.html")
 def profile():
-   
-
-    
-
     # Use the user_id to fetch user information
     user_instance = User()
-    user_id= user_instance.getID()
+    user_id = user_instance.getID()
     user_instance.getUserByID(user_id)
-
     # Get user information
     name2 = user_instance.getUserName()
     favorite_posts = getUserFavorite(user_id)
-
-    return render_template("profile.html", favorite_posts=favorite_posts, name2=name2,num_favorite_posts=len(favorite_posts))
-
+    return render_template(
+        "profile.html",
+        favorite_posts=favorite_posts,
+        name2=name2,
+        num_favorite_posts=len(favorite_posts),
+    )
 
 
 if __name__ == "__main__":

@@ -49,6 +49,5 @@ def changePriceRange(postID, newStart, newEnd):
 
 def addImageToPost(postID, imageName):
     post = Post()
-    imagePath = "static/images/" + imageName
-    post.addToImages(postID, imagePath)
+    post.addToImages(postID, imageName)
     return post

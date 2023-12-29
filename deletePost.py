@@ -6,6 +6,6 @@ def removeImageFromPost(postID, imagePath):
     post.removeFromImages(postID, imagePath)
 
 
-def removePost(ID):
+def removePost():
     post = Post
     post.deletePost()

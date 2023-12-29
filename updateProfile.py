@@ -4,10 +4,9 @@ import hashlib
 
 def changeProfilePicture(userID, imageName):
     user = User()
-    imagePath = "static/images/" + imageName
-    query = {"$set": {"ProfilePicture": imagePath}}
+    query = {"$set": {"ProfilePicture": imageName}}
     user.editData(query, userID)
-    user.setProfilePicture(imagePath)
+    user.setProfilePicture(imageName)
 
 
 def changeUserName(userID, newUserName):

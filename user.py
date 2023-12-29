@@ -64,7 +64,7 @@ class User:
         _id = Database().Insert("User", data)
         query = {
             "$set": {
-                "ProfilePicture": "static/images/defaultProfilePicture.jpg",
+                "ProfilePicture": "defaultProfilePicture.jpg",
             }
         }
         self.editData(query, _id)

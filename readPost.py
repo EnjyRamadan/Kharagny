@@ -7,8 +7,8 @@ def getCategoryPost(categoryName):
     for post in posts:
         imagesPath = []
         for image in post.getImages():
-            imagesPath.append("static/images/" + image)
-            print("static/images/" + image)
+            imagesPath.append(image)
+            print(image)
         post.setImages(imagesPath)
     return posts
 

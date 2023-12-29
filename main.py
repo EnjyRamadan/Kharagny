@@ -9,6 +9,7 @@ from bson import ObjectId
 from flask import  session
 from bson import ObjectId
 from json import JSONEncoder
+from bson import ObjectId
 app = Flask(__name__)
 
 app.secret_key = 'hi'
@@ -33,14 +34,21 @@ def edit():
     return render_template("edit.html")
 
 
-@app.route("/popup.html/<postID>")
+from flask import render_template
+
+@app.route("/popup/<postID>")
 def popup(postID):
-    post = Post
+    # Convert the string postID back to ObjectId
+    postID = ObjectId(postID)
+    
+    post = Post()
     post.getPostByID(postID)
+    
     imageURLs = post.getImages()
     Title = post.getTitle()
     des = post.getDescription()
     startPrice, endPrice = post.getStartPrice(), post.getEndPrice()
+    
     return render_template(
         "popup.html",
         imageURLs=imageURLs,
@@ -50,7 +58,6 @@ def popup(postID):
         title=Title,
         des=des,
     )
-
 
 @app.route("/forget.html")
 def forget():

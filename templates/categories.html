@@ -70,8 +70,8 @@
 
   <section class="gallery">
     {% for post in adventure_posts %}
-    <div class="gallery-item">
-      <a href="popup.html">
+    <div class="gallery-item" data-post-id="{{ post.getID() }}">
+      <a href="{{ url_for('popup', postID=post.getID() | string) }}">
         <div class="item-content">
           <div class="info">
             <h3>{{ post.getTitle() }}</h3>

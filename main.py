@@ -5,9 +5,10 @@ import os
 from user import User
 from post import Post
 import hashlib
+from bson import ObjectId
+
 
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(16)
 CORS(app)
 
 
@@ -150,9 +151,10 @@ def update_profile():
     new_username = request.form["new_username"]
     old_password = request.form["old_password"]
     new_password = request.form["new_password"]
-    email = request.form["email"]
     user = User()
-    document = user.getFieldFromUser({"Username": new_username}, {"Password": 1})
+    document = user.getFieldFromUser(
+        {"Username": new_username}, {"Password": 1, "_id": 1}
+    )
     user_id = document[0]["_id"]
     user.getUserByID(user_id)
     hashedPassword = hashlib.sha256(old_password.encode()).hexdigest()
@@ -202,7 +204,6 @@ def login():
             alert_message = "Login failed! Wrong password."
         else:
             alert_message = f"Login successful! User ID: {user_id}"
-            session["user_id"] = str(user_id)
             return render_template(
                 "/profile.html", alert_message=alert_message, username=username
             )
@@ -222,7 +223,6 @@ def signup():
         password = request.form["password"]
         user_id = SignUp(username, password)
         alert_message = f"Signup successful! User ID: {user_id}"
-        session["user_id"] = str(user_id)
     return render_template(
         "/profile.html", alert_message=alert_message, username=username
     )
@@ -289,6 +289,27 @@ def profile():
         name2=name2,
         num_favorite_posts=len(favorite_posts),
     )
+
+
+def removeProfilePicture(userID, imageName):
+    user = User()
+    imagePath = "static/images/" + imageName
+    query = {"$set": {"ProfilePicture": imagePath}}
+    user.editData(query, userID)
+    user.setProfilePicture(imagePath)
+    return user
+
+
+@app.route("/call_function2")
+def remove():
+    user = User()
+    username = request.args.get("username")
+    document = user.getFieldFromUser({"Username": username}, {"_id": 1})
+    user_id = document[0]["_id"]
+    string_id = str(user_id)
+    user.getUserByID(string_id)
+    image = user.getProfilePicture()
+    removeProfilePicture(string_id, image)
 
 
 if __name__ == "__main__":

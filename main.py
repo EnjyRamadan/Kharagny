@@ -6,11 +6,22 @@ from user import User
 from post import Post
 import hashlib
 from bson import ObjectId
-
-
+from flask import  session
+from bson import ObjectId
+from json import JSONEncoder
 app = Flask(__name__)
+
+app.secret_key = 'hi'
+
 CORS(app)
 
+class CustomJSONEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        return super().default(obj)
+
+app.json_encoder = CustomJSONEncoder
 
 @app.route("/")
 def login1():
@@ -199,13 +210,14 @@ def login():
         user_id = Login(username, password)
 
         if user_id == "User Not Found":
-            alert_message = "Login failed! User not found."
+            alert_message = "User not found."
         elif user_id == "Wrong Password":
-            alert_message = "Login failed! Wrong password."
+            alert_message = "Wrong password."
         else:
             alert_message = f"Login successful! User ID: {user_id}"
+            session['user_id'] = user_id
             return render_template(
-                "/profile.html", alert_message=alert_message, username=username
+                "/profile.html", username=username
             )
 
     return render_template(
@@ -223,8 +235,9 @@ def signup():
         password = request.form["password"]
         user_id = SignUp(username, password)
         alert_message = f"Signup successful! User ID: {user_id}"
+        session['user_id'] = user_id
     return render_template(
-        "/profile.html", alert_message=alert_message, username=username
+        "/profile.html",  username=username
     )
 
 
@@ -258,6 +271,7 @@ def home():
 
 
 # home
+
 # favourites
 from user import User
 from post import Post
@@ -276,18 +290,14 @@ def getUserFavorite(userID):
 
 @app.route("/profile.html")
 def profile():
-    # Use the user_id to fetch user information
-    user_instance = User()
-    user_id = user_instance.getID()
-    user_instance.getUserByID(user_id)
-    # Get user information
-    name2 = user_instance.getUserName()
-    favorite_posts = getUserFavorite(user_id)
+    
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+
     return render_template(
-        "profile.html",
-        favorite_posts=favorite_posts,
-        name2=name2,
-        num_favorite_posts=len(favorite_posts),
+        "profile.html",username=username
     )
 
 

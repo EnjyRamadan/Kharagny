@@ -21,6 +21,7 @@ body {
   margin: auto;
   padding: 20px;
   display: flex;
+  
   align-items: center;
 }
 
@@ -34,10 +35,11 @@ body {
   cursor: pointer;
 }
 
-.product-list {
+/* .product-list {
   display: flex;
   flex-direction: row;
-}
+ 
+} */
 
 .product-card {
   position: relative;
@@ -68,27 +70,27 @@ body {
 }
 
 
-.product-list-container-Adventures::-webkit-scrollbar,
-.product-list-container-Date::-webkit-scrollbar,
-body::-webkit-scrollbar, .product-list-container-Food::-webkit-scrollbar, .product-list-container-Cinema::-webkit-scrollbar, .product-list-container-Arcade::-webkit-scrollbar {
+.product-list-Adventure::-webkit-scrollbar,
+.product-list-Date::-webkit-scrollbar,
+body::-webkit-scrollbar, .product-list-Food::-webkit-scrollbar, .product-list-Cinema::-webkit-scrollbar, .product-list-Arcade::-webkit-scrollbar {
   width: 0.5em;
 }
 
-.product-list-container-Adventures::-webkit-scrollbar-thumb,
-.product-list-container-Date::-webkit-scrollbar-thumb,
-body::-webkit-scrollbar-thumb, .product-list-container-Food::-webkit-scrollbar-thumb, .product-list-container-Arcade::-webkit-scrollbar-thumb, .product-list-container-Cinema::-webkit-scrollbar-thumb {
+.product-list-Adventure::-webkit-scrollbar-thumb,
+.product-list-Date::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb, .product-list-Food::-webkit-scrollbar-thumb, .product-list-Arcade::-webkit-scrollbar-thumb, .product-list-Cinema::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
-.product-list-container-Adventures::-webkit-scrollbar-thumb:hover,
-.product-list-container-Date::-webkit-scrollbar-thumb:hover,
-body::-webkit-scrollbar-thumb:hover, .product-list-container-Food::-webkit-scrollbar-thumb:hover, .product-list-container-Arcade::-webkit-scrollbar-thumb:hover, .product-list-container-Cinema::-webkit-scrollbar-thumb:hover {
+.product-list-Adventure::-webkit-scrollbar-thumb:hover,
+.product-list-Date::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover, .product-list-Food::-webkit-scrollbar-thumb:hover, .product-list-Arcade::-webkit-scrollbar-thumb:hover, .product-list-Cinema::-webkit-scrollbar-thumb:hover {
   background-color: transparent;
 }
 
-.product-list-container-Adventures::-webkit-scrollbar-track,
-.product-list-container-Date::-webkit-scrollbar-track,
-body::-webkit-scrollbar-thumb:hover, .product-list-container-Food::-webkit-scrollbar-track, .product-list-container-Arcade::-webkit-scrollbar-track, .product-list-container-Cinema::-webkit-scrollbar-track {
+.product-list-Adventure::-webkit-scrollbar-track,
+.product-list-Date::-webkit-scrollbar-track,
+body::-webkit-scrollbar-thumb:hover, .product-list-Food::-webkit-scrollbar-track, .product-list-Arcade::-webkit-scrollbar-track, .product-list-Cinema::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
@@ -264,3 +266,40 @@ ul {
     width: 100%;
   }
 }
+
+.product-list-container-Adventure {
+ 
+  overflow-x: hidden;
+}
+
+.product-list-Adventure, .product-list-Cinema, .product-list-Date, .product-list-Food, .product-list-Arcade {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto; 
+  margin-bottom: 20px; 
+}
+
+.product-card {
+  
+  min-width: 300px; 
+  min-height: 300px;
+}
+h3, .info{
+  color: black;
+}
+/* ::-webkit-scrollbar {
+  width: 6px; 
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #A2678A;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  
+} */
+

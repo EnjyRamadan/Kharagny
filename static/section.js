@@ -1,8 +1,9 @@
+
 document.addEventListener("DOMContentLoaded", function () {
-  const scrollRight = document.getElementById("scrollRightAdventures");
-  const scrollLeft = document.getElementById("scrollLeftAdventures");
+  const scrollRight = document.getElementById("scrollRightAdventure");
+  const scrollLeft = document.getElementById("scrollLeftAdventure");
   const productListContainer = document.querySelector(
-    ".product-list-container-Adventures"
+    ".product-list-Adventure"
   );
 
   console.log("Initial Scroll Left:", productListContainer.scrollLeft);
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollRight = document.getElementById("scrollRightDate");
   const scrollLeft = document.getElementById("scrollLeftDate");
   const productListContainer = document.querySelector(
-    ".product-list-container-Date"
+    ".product-list-Date"
   );
 
   console.log("Initial Scroll Left:", productListContainer.scrollLeft);
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollRight = document.getElementById("scrollRightFood");
   const scrollLeft = document.getElementById("scrollLeftFood");
   const productListContainer = document.querySelector(
-    ".product-list-container-Food"
+    ".product-list-Food"
   );
 
   console.log("Initial Scroll Left:", productListContainer.scrollLeft);
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollRight = document.getElementById("scrollRightCinema");
   const scrollLeft = document.getElementById("scrollLeftCinema");
   const productListContainer = document.querySelector(
-    ".product-list-container-Cinema"
+    ".product-list-Cinema"
   );
 
   console.log("Initial Scroll Left:", productListContainer.scrollLeft);
@@ -123,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const scrollRight = document.getElementById("scrollRightArcade");
   const scrollLeft = document.getElementById("scrollLeftArcade");
   const productListContainer = document.querySelector(
-    ".product-list-container-Arcade"
+    ".product-list-Arcade"
   );
 
   console.log("Initial Scroll Left:", productListContainer.scrollLeft);

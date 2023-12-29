@@ -1,6 +1,6 @@
 from db import Database
 import hashlib
-
+from bson import ObjectId 
 
 class User:
     def __init__(self):
@@ -23,7 +23,7 @@ class User:
         self._favorite = Favorite
 
     def setID(self, ID):
-        self._id = ID
+        self._id = str(ID)
 
     def getProfilePicture(self):
         return self._profilePicture

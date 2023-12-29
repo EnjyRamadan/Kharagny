@@ -68,8 +68,8 @@ class Post:
             "Category": info["Category"],
             "Location": info["Location"],
             "Description": info["Description"],
-            "StartPrice": info["startPrice"],
-            "EndPrice": info["endPrice"],
+            "StartPrice": info["StartPrice"],
+            "EndPrice": info["EndPrice"],
         }
         self.setID(Database().Insert("Post", data))
         self.setCategory(info["Category"])
@@ -77,8 +77,8 @@ class Post:
         self.setImages(imagesPath)
         self.setLocation(info["Location"])
         self.setTitle(info["Title"])
-        self.setStartPrice(info["startPrice"])
-        self.setEndPrice(info["endPrice"])
+        self.setStartPrice(info["StartPrice"])
+        self.setEndPrice(info["EndPrice"])
 
     def getPostByID(self, ID):
         result = Database().SelectByID("Post", ID)

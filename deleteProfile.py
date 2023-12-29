@@ -3,7 +3,7 @@ from user import User
 
 def removeProfilePicture(userID, imageName):
     user = User()
-    imagePath = "" + imageName
+    imagePath = imageName
     query = {"$set": {"ProfilePicture": imagePath}}
     user.editData(query, userID)
     user.setProfilePicture(imagePath)

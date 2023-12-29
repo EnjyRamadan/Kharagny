@@ -65,21 +65,20 @@ class Post:
         data = {
             "Images": imagesPath,
             "Title": info["Title"],
-            "Category": info["category"],
+            "Category": info["Category"],
             "Location": info["Location"],
             "Description": info["Description"],
-            "StartPrice": info["range1"],
-            "EndPrice": info["range2"],
+            "StartPrice": info["startPrice"],
+            "EndPrice": info["endPrice"],
         }
         self.setID(Database().Insert("Post", data))
-        self.setCategory(info["category"])  # Use lowercase 'category'
-
+        self.setCategory(info["Category"])
         self.setDescription(info["Description"])
         self.setImages(imagesPath)
         self.setLocation(info["Location"])
         self.setTitle(info["Title"])
-        self.setStartPrice(info["range1"])
-        self.setEndPrice(info["range2"])
+        self.setStartPrice(info["startPrice"])
+        self.setEndPrice(info["endPrice"])
 
     def getPostByID(self, ID):
         result = Database().SelectByID("Post", ID)

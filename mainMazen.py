@@ -59,7 +59,12 @@ def popup(postID):
     des = post.getDescription()
     startPrice, endPrice = post.getStartPrice(), post.getEndPrice()
     user_id = session.get("user_id")
-    username, profile_image = getUserData(user_id)
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    favorite_posts = result_user.getFavorite()
+    is_in_favorites = str(postID) in favorite_posts
     return render_template(
         "popup.html",
         imageURLs=imageURLs,
@@ -70,6 +75,7 @@ def popup(postID):
         des=des,
         loc=loc,
         profile_image=profile_image,
+        isInFavorites=is_in_favorites,
     )
 
 
@@ -148,10 +154,25 @@ def addPostToFavorite(ID, postID):
     user.addToFavorite(postID)
 
 
+def removePostFromFavorite(ID, postID):
+    user = User()
+    user.getUserByID(ID)
+    user.removeFromFavorite(postID)
+    return user
+
+
 @app.route("/like/<postID>", methods=["POST"])
 def like_post(postID):
+    user = User()
     userID = session.get("user_id")
-    addPostToFavorite(userID, postID)
+    user.getUserByID(userID)
+    fav = user.getFavorite()
+    isInFavorites = str(postID) in fav
+    print(isInFavorites)
+    if isInFavorites:
+        removePostFromFavorite(userID, postID)
+    else:
+        addPostToFavorite(userID, postID)
     return jsonify({"message": "Post liked successfully"})
 
 

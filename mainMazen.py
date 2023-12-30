@@ -199,6 +199,8 @@ def home():
 @app.route("/call_function", methods=["POST"])
 def call_function():
     post = Post()
+    user = User()
+    user.getUserByID(session.get("user_id"))
     Title = request.form.get("Title")
     Location = request.form.get("Location")
     Description = request.form.get("Description")
@@ -221,6 +223,7 @@ def call_function():
         "Category": selectedCategory,
     }
     post.createPost(results, info)
+    user.addPost(post.getID())
     message = "Place added successfully"
     return render_template("/place.html", message=message)
 

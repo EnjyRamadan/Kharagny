@@ -29,7 +29,18 @@ likeButton.addEventListener('click', function () {
 autoSlide();
 document.addEventListener('DOMContentLoaded', function () {
   const heartIcon = document.getElementById('heart');
-
+  let isFavorite = heartIcon.dataset.isFavorite === 'true';
+  // Accessing the custom attribute
+  // Function to update the heart icon based on the current state
+  const updateHeartIcon = () => {
+    if (isFavorite) {
+      heartIcon.classList.add('active'); // Add a class for the red heart icon
+    } else {
+      heartIcon.classList.remove('active'); // Remove the class for the white heart icon
+    }
+  };
+  // Update the heart icon on page load
+  updateHeartIcon();
   heartIcon.addEventListener('click', function () {
     const postId = heartIcon.dataset.id;
     console.log(postId)
@@ -38,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
     })
       .then(response => {
         if (response.ok) {
+          isFavorite = !isFavorite; // Toggle the favorite state on successful response
+          updateHeartIcon(); // Update the heart icon appearance
           return response.json(); // Parse the JSON response
         } else {
           throw new Error('Network response was not ok.');

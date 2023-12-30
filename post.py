@@ -83,6 +83,7 @@ class Post:
     def getPostByID(self, ID):
         result = Database().SelectByID("Post", ID)
         if result:
+            self.setID(ID)
             self.setDescription(result["Description"])
             self.setCategory(result["Category"])
             self.setImages(result["Images"])

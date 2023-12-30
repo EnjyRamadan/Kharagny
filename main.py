@@ -175,7 +175,6 @@ def like_post(postID):
     user.getUserByID(userID)
     fav = user.getFavorite()
     isInFavorites = str(postID) in fav
-    print(isInFavorites)
     if isInFavorites:
         removePostFromFavorite(userID, postID)
     else:
@@ -273,7 +272,6 @@ def update_profile():
     fav = len(favorite_posts)
     if old_password is not None and old_password != "":
         hashed_old_password = hashlib.sha256(old_password.encode()).hexdigest()
-        print(hashed_old_password, user.getPassword())
         if hashed_old_password != user.getPassword():
             alert_message = "Old password incorrect. Please try again."
             return render_template("/edit.html", alert_message=alert_message)
@@ -404,7 +402,6 @@ def profile():
     favorite_posts = getFavoritePost(favorite_posts)
     posts = result_user.getPosts()
     posts = getFavoritePost(posts)
-    print(posts[0].getID())
     return render_template(
         "profile.html",
         username=username,

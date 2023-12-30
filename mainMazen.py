@@ -23,6 +23,13 @@ class CustomJSONEncoder(JSONEncoder):
 app.json_encoder = CustomJSONEncoder
 
 
+def getFavoritePost(posts):
+    accPost = []
+    for post in posts:
+        accPost.append(readPost(post))
+    return accPost
+
+
 @app.route("/")
 def login1():
     return render_template("login.html")
@@ -265,6 +272,7 @@ def login():
             profile_image = result_user.getProfilePicture()
             favorite_posts = result_user.getFavorite()
             fav = len(favorite_posts)
+            favorite_posts = getFavoritePost(favorite_posts)
             return render_template(
                 "/profile.html",
                 username=username,
@@ -293,6 +301,7 @@ def signup():
         profile_image = result_user.getProfilePicture()
         favorite_posts = result_user.getFavorite()
         fav = len(favorite_posts)
+        favorite_posts = getFavoritePost(favorite_posts)
         alert_message = f"Signup successful! User ID: {user_id_str}"
         session["user_id"] = user_id_str
     return render_template(
@@ -325,13 +334,6 @@ def readPost(postID):
     post = Post()
     post.getPostByID(postID)
     return post
-
-
-def getFavoritePost(posts):
-    accPost = []
-    for post in posts:
-        accPost.append(readPost(post))
-    return accPost
 
 
 @app.route("/profile.html")

@@ -207,8 +207,8 @@
         <section class="added-posts">
             
             {% for post in posts %}
-            <div class="gallery-item">
-                <a href="{{ url_for('popup', postID=post.getID() | string) }}"></a>
+            <div class="gallery-item" data-post-id="{{ post.getID() }}">
+                <a href="{{ url_for('popup', postID=post.getID() | string) }}">
                     <div class="item-content">
                         <div class="info">
                             <h3>{{ post.getTitle() }}</h3>
@@ -227,8 +227,11 @@
                                     post.getLocation() }}</a><br>
                             </a><br>
                         </p>
+                        
                     </div>
+                
                 </div>
+            </a>
         </div>
         {% endfor %}
         </section>

@@ -272,7 +272,7 @@ def update_profile():
     favorite_posts = getFavoritePost(favorite_posts)
     posts = result_user.getPosts()
     posts = getFavoritePost(posts)
-    add=len(posts)
+    add = len(posts)
     fav = len(favorite_posts)
     if old_password is not None and old_password != "":
         hashed_old_password = hashlib.sha256(old_password.encode()).hexdigest()
@@ -300,7 +300,8 @@ def update_profile():
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
-        posts=posts,add=add
+        posts=posts,
+        add=add,
     )
 
 
@@ -344,14 +345,15 @@ def login():
             favorite_posts = getFavoritePost(favorite_posts)
             posts = result_user.getPosts()
             posts = getFavoritePost(posts)
-            add=len(posts)
+            add = len(posts)
             return render_template(
                 "/profile.html",
                 username=username,
                 profile_image=profile_image,
                 fav=fav,
                 favorite_posts=favorite_posts,
-                posts=posts,add=add
+                posts=posts,
+                add=add,
             )
     return render_template(
         "/login.html", alert_message=alert_message, username=username
@@ -379,14 +381,15 @@ def signup():
         favorite_posts = getFavoritePost(favorite_posts)
         posts = result_user.getPosts()
         posts = getFavoritePost(posts)
-        add=len(posts)
+        add = len(posts)
     return render_template(
         "/profile.html",
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
-        posts=posts,add=add
+        posts=posts,
+        add=add,
     )
 
 
@@ -408,20 +411,21 @@ def profile():
     favorite_posts = getFavoritePost(favorite_posts)
     posts = result_user.getPosts()
     posts = getFavoritePost(posts)
-    add=len(posts)
+    add = len(posts)
     return render_template(
         "profile.html",
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
-        posts=posts,add=add
+        posts=posts,
+        add=add,
     )
 
 
-def removeProfilePicture(userID, imageName):
+def removeProfilePicture(userID):
     user = User()
-    imagePath = "static/images/" + imageName
+    imagePath = "defaultProfilePicture.jpg"
     query = {"$set": {"ProfilePicture": imagePath}}
     user.editData(query, userID)
     user.setProfilePicture(imagePath)
@@ -440,14 +444,17 @@ def remove():
     favorite_posts = getFavoritePost(favorite_posts)
     posts = result_user.getPosts()
     posts = getFavoritePost(posts)
-    add=len(posts)
-    removeProfilePicture(user_id, profile_image)
+    add = len(posts)
+    removeProfilePicture(user_id)
     return render_template(
-        "profile.html",username=username,
+        "profile.html",
+        username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
-        posts=posts,add=add)
+        posts=posts,
+        add=add,
+    )
 
 
 if __name__ == "__main__":

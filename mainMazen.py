@@ -223,7 +223,7 @@ def call_function():
         "Category": selectedCategory,
     }
     post.createPost(results, info)
-    user.addPost(post.getID())
+    user.addPost(str(post.getID()))
     message = "Place added successfully"
     return render_template("/place.html", message=message)
 

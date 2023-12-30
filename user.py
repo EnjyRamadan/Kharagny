@@ -58,6 +58,8 @@ class User:
                 self.setUserName(result[0]["Username"])
                 self.setPassword(result[0]["Password"])
                 self.setProfilePicture(result[0]["ProfilePicture"])
+                if "Posts" in result[0]:
+                    self.setPosts(result[0]["Posts"])
                 if "Favorite" in result[0]:
                     self.setFavorite(result[0]["Favorite"])
                 return True
@@ -86,6 +88,8 @@ class User:
         if result:
             if "Favorite" in result:
                 self.setFavorite(result["Favorite"])
+            if "Posts" in result:
+                self.setPosts(result["Posts"])
             self.setID(result["_id"])
             self.setUserName(result["Username"])
             self.setPassword(result["Password"])

@@ -344,12 +344,15 @@ def login():
             favorite_posts = result_user.getFavorite()
             fav = len(favorite_posts)
             favorite_posts = getFavoritePost(favorite_posts)
+            posts = result_user.getPosts()
+            posts = getFavoritePost(posts)
             return render_template(
                 "/profile.html",
                 username=username,
                 profile_image=profile_image,
                 fav=fav,
                 favorite_posts=favorite_posts,
+                posts=posts,
             )
     return render_template(
         "/login.html", alert_message=alert_message, username=username
@@ -375,12 +378,15 @@ def signup():
         favorite_posts = result_user.getFavorite()
         fav = len(favorite_posts)
         favorite_posts = getFavoritePost(favorite_posts)
+        posts = result_user.getPosts()
+        posts = getFavoritePost(posts)
     return render_template(
         "/profile.html",
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
+        posts=posts,
     )
 
 
@@ -411,12 +417,15 @@ def profile():
     favorite_posts = result_user.getFavorite()
     fav = len(favorite_posts)
     favorite_posts = getFavoritePost(favorite_posts)
+    posts = result_user.getPosts()
+    posts = getFavoritePost(posts)
     return render_template(
         "profile.html",
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
+        posts=posts,
     )
 
 

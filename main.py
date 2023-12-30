@@ -269,6 +269,10 @@ def update_profile():
         changeProfilePicture(user_id, result_filename)
         profile_image = result_user.getProfilePicture()
     favorite_posts = result_user.getFavorite()
+    favorite_posts = getFavoritePost(favorite_posts)
+    posts = result_user.getPosts()
+    posts = getFavoritePost(posts)
+    add=len(posts)
     fav = len(favorite_posts)
     if old_password is not None and old_password != "":
         hashed_old_password = hashlib.sha256(old_password.encode()).hexdigest()
@@ -292,11 +296,11 @@ def update_profile():
     alert_message = "Profile updated successfully!"
     return render_template(
         "/profile.html",
-        alert_message=alert_message,
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
+        posts=posts,add=add
     )
 
 
@@ -340,13 +344,14 @@ def login():
             favorite_posts = getFavoritePost(favorite_posts)
             posts = result_user.getPosts()
             posts = getFavoritePost(posts)
+            add=len(posts)
             return render_template(
                 "/profile.html",
                 username=username,
                 profile_image=profile_image,
                 fav=fav,
                 favorite_posts=favorite_posts,
-                posts=posts,
+                posts=posts,add=add
             )
     return render_template(
         "/login.html", alert_message=alert_message, username=username
@@ -374,13 +379,14 @@ def signup():
         favorite_posts = getFavoritePost(favorite_posts)
         posts = result_user.getPosts()
         posts = getFavoritePost(posts)
+        add=len(posts)
     return render_template(
         "/profile.html",
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
-        posts=posts,
+        posts=posts,add=add
     )
 
 
@@ -402,13 +408,14 @@ def profile():
     favorite_posts = getFavoritePost(favorite_posts)
     posts = result_user.getPosts()
     posts = getFavoritePost(posts)
+    add=len(posts)
     return render_template(
         "profile.html",
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
-        posts=posts
+        posts=posts,add=add
     )
 
 
@@ -423,14 +430,24 @@ def removeProfilePicture(userID, imageName):
 
 @app.route("/call_function2")
 def remove():
-    user = User()
-    username = request.args.get("username")
-    document = user.getFieldFromUser({"Username": username}, {"_id": 1})
-    user_id = document[0]["_id"]
-    string_id = str(user_id)
-    user.getUserByID(string_id)
-    image = user.getProfilePicture()
-    removeProfilePicture(string_id, image)
+    user_id = session.get("user_id")
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    favorite_posts = result_user.getFavorite()
+    fav = len(favorite_posts)
+    favorite_posts = getFavoritePost(favorite_posts)
+    posts = result_user.getPosts()
+    posts = getFavoritePost(posts)
+    add=len(posts)
+    removeProfilePicture(user_id, profile_image)
+    return render_template(
+        "profile.html",username=username,
+        profile_image=profile_image,
+        fav=fav,
+        favorite_posts=favorite_posts,
+        posts=posts,add=add)
 
 
 if __name__ == "__main__":

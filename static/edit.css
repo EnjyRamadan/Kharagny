@@ -16,7 +16,10 @@ input {
 }
 body {
   font-family: 'Arial', sans-serif;
-  background-color: var(--black);
+  background-image: url("images/fair.jpg");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .wrapper {

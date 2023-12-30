@@ -18,7 +18,8 @@
 <body>
   <div class="box">
     <nav>
-      <l-hourglass size="40" bg-opacity="0.5" speed="1.75" color="purple"></l-hourglass>
+      <l-hourglass size="40" bg-opacity="0.5" speed="1.75"
+        color="purple"></l-hourglass>
       <p class="logo pulsate">Kharagny</p>
       <ul class="nav">
         <li><a href="/home.html" class="blue">Home</a></li>
@@ -27,24 +28,28 @@
           <div class="dropdown">
             <button class="dropbtn">Category</button>
             <div class="dropdown-content">
-              <a href="categories.html" class="blue">Adventures</a>
-              <a href="date.html" class="blue">Dates</a>
-              <a href="food.html" class="blue">Food</a>
-              <a href="cinema.html" class="blue">Cinema</a>
-              <a href="arcade.html" class="blue">Arcade</a>
-              <!-- Add more dropdown items here -->
+              <a href="/categories.html" class="blue">Adventures</a>
+              <a href="/date.html" class="blue">Dates</a>
+              <a href="/food.html" class="blue">Food</a>
+              <a href="/cinema.html" class="blue">Cinema</a>
+              <a href="/arcade.html" class="blue">Arcade</a>
             </div>
           </div>
         </li>
-        <li><a href class="blue"></a></li>
+        <li><a href="/profile.html">
+            <div class="profile-picture">
+              <img src="static\images\profile.jpeg" alt="Profile">
+            </div>
+          </a></li>
       </ul>
     </nav>
   </div>
   <br>
+  
   <div class="container">
     <h1 style="color: black; text-align: center">ADD NEW PLACE</h1>
     <br>
-
+    
     <form id="uploadForm" action="{{ url_for('call_function') }}" method="post" enctype="multipart/form-data">
       <label for="imageFiles">Upload Images</label>
       <input type="file" id="imageFiles" name="imageFiles" accept="image/*" multiple required
@@ -70,7 +75,11 @@
       <textarea id="Description" name="Description" placeholder="Enter Description" required></textarea>
       <button type="submit">Add Place</button>
     </form>
-
+    {% if message %}
+    <script>
+        alert("{{ message }}");
+    </script>
+    {% endif %}
 
     <div id="gallery" class="gallery"></div>
   </div>

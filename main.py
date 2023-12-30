@@ -175,7 +175,8 @@ def call_function():
     }
 
     post.createPost(results, info)  # Save data to MongoDB
-    return render_template("/home.html")
+    message="Place added successfully"
+    return render_template("/place.html",message =message)
 
     # Title, Description, Location,imageFile,range1,range2,strategy = calling_function(Title, imageFiles, Description, Location, range1, range2,selectedCategory)
     # return jsonify(Title=Title, Description=Description, Location=Location,imageFile=imageFile,range1=range1,range2=range2,strategy=strategy)

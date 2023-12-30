@@ -122,3 +122,46 @@ button {
 button:hover {
   background-color: black
 }
+label{
+  color: black;
+  font-weight: bold;
+}
+#category {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  color: #333;
+  appearance: none;
+}
+
+#category:focus {
+  outline: none;
+  border-color: #A2678A; 
+}
+
+
+#category::after {
+  content: '\25BC';  
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+
+#category option {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+#category option:checked {
+  background-color: #A2678A;
+  color: #fff;
+}

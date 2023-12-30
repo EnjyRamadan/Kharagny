@@ -148,7 +148,6 @@
                 <h2>Liked Posts</h2>
                 {% for post in favorite_posts %}
                 <div class="gallery-item">
-                    <a href="popup.html">
                         <div class="item-content">
                             <div class="info">
                                 <h3>{{ post.getTitle() }}</h3>
@@ -165,14 +164,10 @@
                                             class="fas fa-map-marker-alt location-icon">
                                         </i>{{
                                         post.getLocation() }}</a><br>
-                                    <i
-                                        class="fas fa-info-circle description-icon">
-                                    </i> {{ post.getDescription() }}
                                 </a><br>
                             </p>
                         </div>
                     </div>
-                </a>
             </div>
             {% endfor %}
         </section>
@@ -180,7 +175,6 @@
             <h2>Added Posts</h2>
             {% for post in added_posts %}
             <div class="gallery-item">
-                <a href="popup.html">
                     <div class="item-content">
                         <div class="info">
                             <h3>{{ post.getTitle() }}</h3>
@@ -197,14 +191,10 @@
                                         class="fas fa-map-marker-alt location-icon">
                                     </i>{{
                                     post.getLocation() }}</a><br>
-                                <i
-                                    class="fas fa-info-circle description-icon">
-                                </i> {{ post.getDescription() }}
                             </a><br>
                         </p>
                     </div>
                 </div>
-            </a>
         </div>
         {% endfor %}
         </section>

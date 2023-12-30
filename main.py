@@ -252,28 +252,48 @@ def edit_profile():
 
 @app.route("/update", methods=["POST"])
 def update_profile():
-    new_username = request.form["new_username"]
-    old_password = request.form["old_password"]
-    new_password = request.form["new_password"]
+    new_username = request.form.get("new_username")
+    old_password = request.form.get("old_password")
+    new_password = request.form.get("new_password")
     user = User()
-    document = user.getFieldFromUser(
-        {"Username": new_username}, {"Password": 1, "_id": 1}
-    )
-    user_id = document[0]["_id"]
+    
+    user_id = session.get('user_id')
     user.getUserByID(user_id)
-    hashedPassword = hashlib.sha256(old_password.encode()).hexdigest()
-    print(hashedPassword, user.getPassword())
-    if hashedPassword != user.getPassword():
-        return "Old password incorrect. Please try again."
 
-    if new_username:
+    if 'avatar' in request.files:
+        file = request.files['avatar']
+        user.setProfilePictureFile(file)
+    
+    if old_password is not None and old_password != "":  # Check if old_password is provided and not empty
+        hashed_old_password = hashlib.sha256(old_password.encode()).hexdigest()
+        print(hashed_old_password, user.getPassword())
+        
+        if hashed_old_password != user.getPassword():
+            alert_message= "Old password incorrect. Please try again."
+            return render_template(
+        "/edit.html", alert_message=alert_message
+    )
+
+
+    if new_username is not None and new_username!="" :
         user.editData({"$set": {"Username": new_username}}, user_id)
 
-    if new_password:
-        hashedPassword = hashlib.sha256(new_password.encode()).hexdigest()
-        user.editData({"$set": {"Password": hashedPassword}}, user_id)
+    if new_password is not None and old_password is not None and new_password != "" and old_password != "":  # Check both old and new passwords
+        hashed_new_password = hashlib.sha256(new_password.encode()).hexdigest()
+        
+        if hashed_new_password == user.getPassword():
+            alert_message= "New password must be different from the old password."
+            return render_template(
+        "/edit.html", alert_message=alert_message
+    )
 
-    return "Profile updated successfully!"
+
+        user.editData({"$set": {"Password": hashed_new_password}}, user_id)
+
+    alert_message= "Profile updated successfully!"
+    return render_template(
+        "/profile.html", alert_message=alert_message,username=new_username
+    )
 
 
 # login
@@ -339,6 +359,10 @@ def signup():
 
         # Convert ObjectId to string
         user_id_str = str(user_id)
+       
+
+        alert_message = f"Signup successful! User ID: {user_id_str}"
+        session['user_id'] = user_id_str
         user_id = session.get('user_id')
         result_user = User()
         result_user.getUserByID(user_id)
@@ -346,9 +370,6 @@ def signup():
         profile_image = result_user.getProfilePicture()
         favorite_posts = result_user.getFavorite()
         fav = len(favorite_posts)
-
-        alert_message = f"Signup successful! User ID: {user_id_str}"
-        session['user_id'] = user_id_str
 
     return render_template("/profile.html", username=username, profile_image=profile_image, fav=fav, favorite_posts=favorite_posts)
 

@@ -20,7 +20,7 @@
               <label for="avatar">Your Photo</label>
             </div>
             <div class="grid-65">
-              <span class="photo" title="Upload your Avatar!"></span>
+              <span class="photo" title="Upload your Avatar!"><img src="static/images/defaultProfilePicture.jpg"></span>
               <input type="file" class="btn" />
             </div>
           </fieldset>
@@ -54,12 +54,17 @@
 
           <fieldset>
             <input type="submit" class="Btn" value="Save Changes" />
+            <a href="/profile.html">Cancel</a>
           </fieldset>
         </form>
       </div>
     </div>
   </div>
-
+  {% if alert_message %}
+  <script>
+      alert("{{ alert_message }}");
+  </script>
+  {% endif %}
   <script src="{{url_for('static',filename='edit.js')}}"></script>
 </body>
 

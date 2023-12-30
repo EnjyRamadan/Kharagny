@@ -167,7 +167,11 @@
             </div>
             {% endfor %}
         </section>
-
+        {% if alert_message %}
+        <script>
+            alert("{{ alert_message }}");
+        </script>
+        {% endif %}
     </body>
 
 </html>

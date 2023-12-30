@@ -404,13 +404,14 @@ def profile():
     favorite_posts = getFavoritePost(favorite_posts)
     posts = result_user.getPosts()
     posts = getFavoritePost(posts)
+    print(posts[0].getID())
     return render_template(
         "profile.html",
         username=username,
         profile_image=profile_image,
         fav=fav,
         favorite_posts=favorite_posts,
-        posts=posts,
+        posts=posts
     )
 
 

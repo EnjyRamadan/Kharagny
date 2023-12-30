@@ -10,10 +10,18 @@
         <title>Kharagny</title>
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet"
-            href="{{url_for('static',filename='profile.css')}}" />
-        <link rel="stylesheet" type="text/css"
+            <link rel="stylesheet" type="text/css"
             href="{{url_for('static',filename='nav.css')}}" />
+            
+            <link rel="stylesheet"
+            href="{{url_for('static',filename='profile.css')}}" />
+            <link rel="stylesheet" type="text/css"
+            href="{{url_for('static',filename='categories.css')}}" />
+            <link rel="stylesheet" type="text/css"
+            href="{{url_for('static',filename='pro.css')}}" />
+            
+        
+           
     </head>
 
     <body>
@@ -79,13 +87,12 @@
                             </div>
                             <div class="edit-profile-button">
                                 <a href="/edit.html">Edit Profile</a>
-                            </div>
-                            <div class="edit-profile-button">
                                 <a
                                     href="/call_function2?username={{ username }}">Delete
                                     Photo</a>
 
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -136,45 +143,72 @@
                 </div>
             </div>
 
-            <button onclick="toggleSections()" style="margin-top: 10px;display: inline-block;
+            <!-- <button onclick="showLikedPosts()" style="margin-top: 10px;display: inline-block;
             padding: 10px 15px;
             background-color: var(--light);
             color: #fff;
             text-decoration: none;
-            border-radius: 5px;">Added / liked posts</button>
+            border-radius: 5px;">Liked Posts</button>
 
+        <button onclick="showAddedPosts()" style="margin-top: 10px;display: inline-block;
+            padding: 10px 15px;
+            background-color: var(--light);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;">Added Posts</button> -->
 
-            <section class="gallery">
-                <h2>Liked Posts</h2>
+            <div class="container1">
+                <div class="text">
+                  <span style="--i:1">F</span>
+                  <span style="--i:2">a</span>
+                  <span style="--i:3">v</span>
+                  <span style="--i:4">o</span>
+                  <span style="--i:5">u</span>
+                  <span style="--i:6">r</span>
+                  <span style="--i:7">i</span>
+                  <span style="--i:8">t</span>
+                  <span style="--i:9">e</span>
+                  <span style="--i:10">s</span>
+                </div>
+              </div>
+              <section class="gallery">
                 {% for post in favorite_posts %}
-                <div class="gallery-item">
-                        <div class="item-content">
-                            <div class="info">
-                                <h3>{{ post.getTitle() }}</h3>
-                                {% set image_filename = post.getImages()[0] %}
-                                <img
-                                    src="{{ url_for('static', filename='images/' + image_filename) }}"
-                                    href="popup.html" alt="Image 1" />
-                                <p>
-                                    <a><i class="fas fa-dollar-sign price-icon">
-                                        </i>{{
-                                        post.getStartPrice() }} - {{
-                                        post.getEndPrice() }}</a><br>
-                                    <a><i
-                                            class="fas fa-map-marker-alt location-icon">
-                                        </i>{{
-                                        post.getLocation() }}</a><br>
-                                </a><br>
-                            </p>
-                        </div>
-                    </div>
+
+                <div class="gallery-item" data-post-id="{{ post.getID() }}">
+                  <a href="{{ url_for('popup', postID=post.getID() | string) }}">
+                    <div class="item-content">
+                      <div class="info">
+                        <h3>{{ post.getTitle() }}</h3>
+                        {% set image_filename = post.getImages()[0] %}
+                        <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Image 1" />
+                        <p>
+                          <a><i class="fas fa-dollar-sign price-icon"> </i> {{
+                            post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a><br>
+                          <a><i class="fas fa-map-marker-alt location-icon"> </i> {{
+                            post.getLocation() }}</a><br>
+                  </a><br>
+                  </p>
+                </div>
+                </div>
+                </a>
+                </div>
+                {% endfor %}
+              </section>
+
+        <div class="container1">
+            <div class="text">
+              <span style="--i:1">A</span>
+              <span style="--i:2">D</span>
+              <span style="--i:3">D</span>
+              <span style="--i:4">E</span>
+              <span style="--i:5">D</span>
             </div>
-            {% endfor %}
-        </section>
+          </div>
         <section class="added-posts">
-            <h2>Added Posts</h2>
+            
             {% for post in posts %}
             <div class="gallery-item">
+                <a href="{{ url_for('popup', postID=post.getID() | string) }}"></a>
                     <div class="item-content">
                         <div class="info">
                             <h3>{{ post.getTitle() }}</h3>
@@ -226,6 +260,7 @@
             alert("{{ alert_message }}");
         </script>
         {% endif %}
+        <script src="{{url_for('static',filename='profile.js')}}"></script>
     </body>
 
 </html>

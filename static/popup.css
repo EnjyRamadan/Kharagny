@@ -141,6 +141,6 @@ strong{
     -webkit-text-stroke-width: var(--stroke-width);
   }
   
-  .red-heart {
+  .active {
     color: red;
   }

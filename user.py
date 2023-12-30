@@ -1,6 +1,7 @@
 from db import Database
 import hashlib
-from bson import ObjectId 
+from bson import ObjectId
+
 
 class User:
     def __init__(self):
@@ -8,6 +9,7 @@ class User:
         self._userName = None
         self._password = None
         self._favorite = []
+        self._posts = []
         self._profilePicture = None
 
     def setProfilePicture(self, ProfilePicture):
@@ -24,6 +26,12 @@ class User:
 
     def setID(self, ID):
         self._id = str(ID)
+
+    def setPosts(self, posts):
+        self._posts = posts
+
+    def getPosts(self):
+        return self._posts
 
     def getProfilePicture(self):
         return str(self._profilePicture)
@@ -103,3 +111,10 @@ class User:
     def getFieldFromUser(self, param, col):
         data = Database().SelectRecordCollection("User", param, col)
         return data
+
+    def addPost(self, postID):
+        post = self.getPosts()
+        post.append(postID)
+        self.setPosts(post)
+        data = {"Posts": postID}
+        Database().AddToRecord("User", self.getID(), data)

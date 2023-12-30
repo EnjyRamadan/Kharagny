@@ -15,5 +15,5 @@ def getUserFavorite(userID):
     favs = []
     for fav in favorites:
         post = Post()
-        favs.append(post.getPostFromID())
+        favs.append(post.getPostByID(fav))
     return favs

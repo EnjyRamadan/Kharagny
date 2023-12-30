@@ -144,65 +144,49 @@
             <section class="gallery">
                 <h2>Liked Posts</h2>
                 {% for post in Favorite %}
-                <div class="gallery-item">
-                    <a href="popup.html">
-                        <div class="item-content">
-                            <div class="info">
-                                <h3>{{ post.getTitle() }}</h3>
-                                {% set image_filename = post.getImages()[0] %}
-                                <img
-                                    src="{{ url_for('static', filename='images/' + image_filename) }}"
-                                    href="popup.html" alt="Image 1" />
-                                <p>
-                                    <a><i class="fas fa-dollar-sign price-icon">
-                                        </i>{{
-                                        post.getStartPrice() }} - {{
-                                        post.getEndPrice() }}</a><br>
-                                    <a><i
-                                            class="fas fa-map-marker-alt location-icon">
-                                        </i>{{
-                                        post.getLocation() }}</a><br>
-                                    <i
-                                        class="fas fa-info-circle description-icon">
-                                    </i> {{ post.getDescription() }}
-                                </a><br>
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                <div class="gallery-item" data-post-id="{{ post.getID() }}">
+                    <a href="{{ url_for('popup', postID=post.getID() | string) }}">
+                      <div class="item-content">
+                        <div class="info">
+                          <h3>{{ post.getTitle() }}</h3>
+                          {% set image_filename = post.getImages()[0] %}
+                          <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Image 1" />
+                          <p>
+                            <a><i class="fas fa-dollar-sign price-icon"> </i> {{
+                              post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a><br>
+                            <a><i class="fas fa-map-marker-alt location-icon"> </i> {{
+                              post.getLocation() }}</a><br>
+                            <!-- <a><i class="fas fa-info-circle description-icon"> </i> {{ post.getDescription() }}</a> -->
+                    </a><br>
+                    </p>
+                  </div>
+                  </div>
+                  </a>
+                  </div>
             {% endfor %}
         </section>
         <section class="added-posts" style="display: none;">
             <h2>Added Posts</h2>
             {% for post in Posts %}
-            <div class="gallery-item">
-                <a href="popup.html">
-                    <div class="item-content">
-                        <div class="info">
-                            <h3>{{ post.getTitle() }}</h3>
-                            {% set image_filename = post.getImages()[0] %}
-                            <img
-                                src="{{ url_for('static', filename='images/' + image_filename) }}"
-                                href="popup.html" alt="Image 1" />
-                            <p>
-                                <a><i class="fas fa-dollar-sign price-icon">
-                                    </i>{{
-                                    post.getStartPrice() }} - {{
-                                    post.getEndPrice() }}</a><br>
-                                <a><i
-                                        class="fas fa-map-marker-alt location-icon">
-                                    </i>{{
-                                    post.getLocation() }}</a><br>
-                                <i
-                                    class="fas fa-info-circle description-icon">
-                                </i> {{ post.getDescription() }}
-                                </a><br>
-                           </p>
-                      </div>
-                  </div>
+            <div class="gallery-item" data-post-id="{{ post.getID() }}">
+                <a href="{{ url_for('popup', postID=post.getID() | string) }}">
+                  <div class="item-content">
+                    <div class="info">
+                      <h3>{{ post.getTitle() }}</h3>
+                      {% set image_filename = post.getImages()[0] %}
+                      <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Image 1" />
+                      <p>
+                        <a><i class="fas fa-dollar-sign price-icon"> </i> {{
+                          post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a><br>
+                        <a><i class="fas fa-map-marker-alt location-icon"> </i> {{
+                          post.getLocation() }}</a><br>
+                        <!-- <a><i class="fas fa-info-circle description-icon"> </i> {{ post.getDescription() }}</a> -->
+                </a><br>
+                </p>
+              </div>
+              </div>
               </a>
-         </div>
+              </div>
             {% endfor %}
         </section>
         <script>

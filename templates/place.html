@@ -18,8 +18,7 @@
 <body>
   <div class="box">
     <nav>
-      <l-hourglass size="40" bg-opacity="0.5" speed="1.75"
-        color="purple"></l-hourglass>
+      <l-hourglass size="40" bg-opacity="0.5" speed="1.75" color="purple"></l-hourglass>
       <p class="logo pulsate">Kharagny</p>
       <ul class="nav">
         <li><a href="/home.html" class="blue">Home</a></li>
@@ -39,25 +38,20 @@
         <li><a href="/profile.html">
             <div class="profile-picture">
               {% if profile_image %}
-                        <img
-                            src="{{ url_for('static', filename='images/' + profile_image) }}"
-                            alt="profile-logo" />
-                        {% else %}
-                        <img
-                            src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
-                            alt="default-profile-logo" />
-                        {% endif %}
+              <img src="{{ url_for('static', filename='images/' + profile_image) }}" alt="profile-logo" />
+              {% else %}
+              <img src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
+                alt="default-profile-logo" />
+              {% endif %}
             </div>
           </a></li>
       </ul>
     </nav>
   </div>
   <br>
-  
   <div class="container">
     <h1 style="color: black; text-align: center">ADD NEW PLACE</h1>
     <br>
-    
     <form id="uploadForm" action="{{ url_for('call_function') }}" method="post" enctype="multipart/form-data">
       <label for="imageFiles">Upload Images</label>
       <input type="file" id="imageFiles" name="imageFiles" accept="image/*" multiple required
@@ -85,24 +79,19 @@
     </form>
     {% if message %}
     <script>
-        alert("{{ message }}");
+      alert("{{ message }}");
     </script>
     {% endif %}
-
     <div id="gallery" class="gallery"></div>
   </div>
-
-
   <footer class="footer">
     <div class="container2">
       <div class="row">
-
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
             <li><a href="/home.html">Home</a></li>
             <li><a href="/about.html">About</a></li>
-
           </ul>
         </div>
         <div class="footer-col">
@@ -127,11 +116,7 @@
       </div>
     </div>
   </footer>
-
   <script src="{{url_for('static',filename='place.js')}}"></script>
-
-
-
 </body>
 
 </html>

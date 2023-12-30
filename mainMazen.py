@@ -10,6 +10,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = "hi"
+app.config["UPLOAD_FOLDER"] = "static/images"
 CORS(app)
 
 
@@ -21,6 +22,12 @@ class CustomJSONEncoder(JSONEncoder):
 
 
 app.json_encoder = CustomJSONEncoder
+
+
+def readPost(postID):
+    post = Post()
+    post.getPostByID(postID)
+    return post
 
 
 def getFavoritePost(posts):
@@ -236,27 +243,67 @@ def edit_profile():
     return render_template("edit.html")
 
 
+def changeProfilePicture(userID, imageName):
+    user = User()
+    user.getUserByID(userID)
+    query = {"$set": {"ProfilePicture": imageName}}
+    user.editData(query, userID)
+    user.setProfilePicture(imageName)
+
+
 @app.route("/update", methods=["POST"])
 def update_profile():
-    new_username = request.form["new_username"]
-    old_password = request.form["old_password"]
-    new_password = request.form["new_password"]
+    new_username = request.form.get("new_username")
+    old_password = request.form.get("old_password")
+    new_password = request.form.get("new_password")
+    imageFiles = request.files.getlist("imageFiles")
     user = User()
-    document = user.getFieldFromUser(
-        {"Username": new_username}, {"Password": 1, "_id": 1}
-    )
-    user_id = document[0]["_id"]
-    user.getUserByID(user_id)
-    hashedPassword = hashlib.sha256(old_password.encode()).hexdigest()
-    print(hashedPassword, user.getPassword())
-    if hashedPassword != user.getPassword():
-        return "Old password incorrect. Please try again."
-    if new_username:
+    user_id = session.get("user_id")
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    imageFiles = request.files.getlist("imageFiles")
+    results = []
+    if imageFiles:
+        for file in imageFiles:
+            filename = secure_filename(file.filename)
+            file.save(os.path.join("static/images/", filename))
+            results.append(filename)
+    for result_filename in results:
+        changeProfilePicture(user_id, result_filename)
+        profile_image = result_user.getProfilePicture()
+    favorite_posts = result_user.getFavorite()
+    fav = len(favorite_posts)
+    if old_password is not None and old_password != "":
+        hashed_old_password = hashlib.sha256(old_password.encode()).hexdigest()
+        print(hashed_old_password, user.getPassword())
+        if hashed_old_password != user.getPassword():
+            alert_message = "Old password incorrect. Please try again."
+            return render_template("/edit.html", alert_message=alert_message)
+    if new_username is not None and new_username != "":
         user.editData({"$set": {"Username": new_username}}, user_id)
-    if new_password:
-        hashedPassword = hashlib.sha256(new_password.encode()).hexdigest()
-        user.editData({"$set": {"Password": hashedPassword}}, user_id)
-    return "Profile updated successfully!"
+        username = new_username
+    if (
+        new_password is not None
+        and old_password is not None
+        and new_password != ""
+        and old_password != ""
+    ):
+        hashed_new_password = hashlib.sha256(new_password.encode()).hexdigest()
+        if hashed_new_password == user.getPassword():
+            alert_message = "New password must be different from the old password."
+            return render_template("/edit.html", alert_message=alert_message)
+        user.editData({"$set": {"Password": hashed_new_password}}, user_id)
+    alert_message = "Profile updated successfully!"
+    return render_template(
+        "/profile.html",
+        alert_message=alert_message,
+        username=username,
+        profile_image=profile_image,
+        fav=fav,
+        favorite_posts=favorite_posts,
+    )
 
 
 def Login(userName, password):
@@ -296,7 +343,6 @@ def login():
             profile_image = result_user.getProfilePicture()
             favorite_posts = result_user.getFavorite()
             fav = len(favorite_posts)
-            favorite_posts = getFavoritePost(favorite_posts)
             return render_template(
                 "/profile.html",
                 username=username,
@@ -318,6 +364,8 @@ def signup():
         password = request.form["password"]
         user_id = SignUp(username, password)
         user_id_str = str(user_id)
+        alert_message = f"Signup successful! User ID: {user_id_str}"
+        session["user_id"] = user_id_str
         user_id = session.get("user_id")
         result_user = User()
         result_user.getUserByID(user_id)
@@ -325,9 +373,6 @@ def signup():
         profile_image = result_user.getProfilePicture()
         favorite_posts = result_user.getFavorite()
         fav = len(favorite_posts)
-        favorite_posts = getFavoritePost(favorite_posts)
-        alert_message = f"Signup successful! User ID: {user_id_str}"
-        session["user_id"] = user_id_str
     return render_template(
         "/profile.html",
         username=username,
@@ -352,12 +397,6 @@ def getUserFavorite(userID):
         post = Post()
         favs.append(post.getPostFromID())
     return favs
-
-
-def readPost(postID):
-    post = Post()
-    post.getPostByID(postID)
-    return post
 
 
 @app.route("/profile.html")

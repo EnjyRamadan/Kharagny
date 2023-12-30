@@ -21,8 +21,9 @@
             </div>
             <div class="grid-65">
               <div class="grid-65">
-                <input type="file" id="imageFiles" name="imageFiles" accept="image/*" multiple required onchange="previewImages(event)">
-            </div>
+                <input type="file" id="imageFiles" name="imageFiles" accept="image/*" multiple required
+                  onchange="previewImages(event)">
+              </div>
             </div>
           </fieldset>
           <fieldset>
@@ -33,7 +34,6 @@
               <input type="text" name="new_username" placeholder="New Username" />
             </div>
           </fieldset>
-
           <fieldset>
             <div class="grid-35">
               <label for="fname">Old Password</label>
@@ -42,7 +42,6 @@
               <input type="password" name="old_password" placeholder="Old Password" />
             </div>
           </fieldset>
-
           <fieldset>
             <div class="grid-35">
               <label for="fname"> New Password</label>
@@ -51,8 +50,6 @@
               <input type="password" name="new_password" placeholder="New Password" />
             </div>
           </fieldset>
-
-
           <fieldset>
             <input type="submit" class="Btn" value="Save Changes" />
             <a href="/profile.html">Cancel</a>
@@ -63,7 +60,7 @@
   </div>
   {% if alert_message %}
   <script>
-      alert("{{ alert_message }}");
+    alert("{{ alert_message }}");
   </script>
   {% endif %}
   <script src="{{url_for('static',filename='edit.js')}}"></script>

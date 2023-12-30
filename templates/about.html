@@ -16,7 +16,6 @@
 
 <body>
   <div class="container">
-
     <nav>
       <l-hourglass size="40" bg-opacity="0.5" speed="1.75" color="purple"></l-hourglass>
       <p class="logo pulsate">Kharagny</p>
@@ -38,39 +37,31 @@
         <li><a href="/profile.html">
             <div class="profile-picture">
               {% if profile_image %}
-                        <img
-                            src="{{ url_for('static', filename='images/' + profile_image) }}"
-                            alt="profile-logo" />
-                        {% else %}
-                        <img
-                            src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
-                            alt="default-profile-logo" />
-                        {% endif %}
+              <img src="{{ url_for('static', filename='images/' + profile_image) }}" alt="profile-logo" />
+              {% else %}
+              <img src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
+                alt="default-profile-logo" />
+              {% endif %}
             </div>
           </a></li>
       </ul>
     </nav>
-
     <div class="about-section">
       <h1>About Us Page</h1>
       <p>We are Kharagny, we offer you outings ideas so you don't have to waist your time thinking about it</p>
-
     </div>
-
     <div class="container1">
       <div class="text">
         <span style="--i:1">T</span>
         <span style="--i:2">e</span>
         <span style="--i:3">a</span>
         <span style="--i:4">m</span>
-
       </div>
     </div>
     <div class="row">
       <div class="column">
         <div class="card">
           <img src="{{url_for('static', filename='images/enjy.jpeg') }}" alt="Enjy" class="enjy">
-
           <div class="container">
             <h2>Enjy Ramadan</h2>
             <p class="title">CS student</p>
@@ -86,8 +77,6 @@
           </div>
         </div>
       </div>
-
-
       <div class="column">
         <div class="card">
           <img src="{{ url_for('static', filename='images/sohaila.jpeg') }}" alt="John" style="width:100%;"
@@ -105,8 +94,6 @@
           </div>
         </div>
       </div>
-
-
       <div class="column">
         <div class="card">
           <img src="{{ url_for('static', filename='images/Mazen.jpeg') }}" alt="John" style="width:100%;" class="enjy">
@@ -121,26 +108,17 @@
           </div>
         </div>
       </div>
-
-
-
-
-
     </div>
   </div>
   </div>
-
-
   <footer class="footer">
     <div class="container2">
       <div class="row">
-
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
             <li><a href="//home.html">Home</a></li>
             <li><a href="/about.html">About</a></li>
-
           </ul>
         </div>
         <div class="footer-col">
@@ -165,9 +143,6 @@
       </div>
     </div>
   </footer>
-
-
-
 </body>
 
 </html>

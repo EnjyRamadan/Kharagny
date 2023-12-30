@@ -12,7 +12,6 @@
   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='nav.css')}}" />
   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='categories.css')}}" />
   <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='footer.css')}}" />
-
 </head>
 
 <body>
@@ -39,14 +38,11 @@
         <li><a href="/profile.html">
             <div class="profile-picture">
               {% if profile_image %}
-                        <img
-                            src="{{ url_for('static', filename='images/' + profile_image) }}"
-                            alt="profile-logo" />
-                        {% else %}
-                        <img
-                            src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
-                            alt="default-profile-logo" />
-                        {% endif %}
+              <img src="{{ url_for('static', filename='images/' + profile_image) }}" alt="profile-logo" />
+              {% else %}
+              <img src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
+                alt="default-profile-logo" />
+              {% endif %}
             </div>
           </a></li>
       </ul>
@@ -56,7 +52,6 @@
     <button
       style="background-color: #A2678A; color: hsl(0, 3%, 7%); float: right; margin-right: 50px; font-size: larger; border-radius: 12px; padding: 10px 20px; border: none;font-weight: bold;">ADD
       PLACE</button>
-
   </a>
   <div class="container1">
     <div class="text">
@@ -67,11 +62,8 @@
       <span style="--i:5">d</span>
       <span style="--i:6">e</span>
       <span style="--i:7">s</span>
-
     </div>
   </div>
-
-
   <section class="gallery">
     {% for post in Arcade_posts %}
     <div class="gallery-item" data-post-id="{{ post.getID() }}">
@@ -82,30 +74,25 @@
             {% set image_filename = post.getImages()[0] %}
             <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Image 1" />
             <p>
-              <a><i class="fas fa-dollar-sign price-icon"> </i>  {{
+              <a><i class="fas fa-dollar-sign price-icon"> </i> {{
                 post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a><br>
-              <a><i class="fas fa-map-marker-alt location-icon"> </i>  {{
+              <a><i class="fas fa-map-marker-alt location-icon"> </i> {{
                 post.getLocation() }}</a><br>
-              <!-- <i class="fas fa-info-circle description-icon"> </i> {{ post.getDescription() }}
-      </a><br> -->
-      </p>
-    </div>
-    </div>
-    </a>
+            </p>
+          </div>
+        </div>
+      </a>
     </div>
     {% endfor %}
   </section>
-
   <footer class="footer">
     <div class="container2">
       <div class="row">
-
         <div class="footer-col">
           <h4>Company</h4>
           <ul>
             <li><a href="/home.html">Home</a></li>
             <li><a href="/about.html">About</a></li>
-
           </ul>
         </div>
         <div class="footer-col">
@@ -130,10 +117,6 @@
       </div>
     </div>
   </footer>
-
-
-
-
 </body>
 
 </html>

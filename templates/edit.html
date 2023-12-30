@@ -13,15 +13,16 @@
     <div class="profile">
       <div class="content">
         <h1>Edit Profile</h1>
-        <form action="update" method="post">
+        <form action="/update" method="post" enctype="multipart/form-data">
           <!-- Photo -->
           <fieldset>
             <div class="grid-35">
               <label for="avatar">Your Photo</label>
             </div>
             <div class="grid-65">
-              <span class="photo" title="Upload your Avatar!"><img src="static/images/defaultProfilePicture.jpg"></span>
-              <input type="file" class="btn" />
+              <div class="grid-65">
+                <input type="file" id="imageFiles" name="imageFiles" accept="image/*" multiple required onchange="previewImages(event)">
+            </div>
             </div>
           </fieldset>
           <fieldset>

@@ -30,10 +30,12 @@ body {
   background-color: #f1f1f1;
   padding: 20px;
   border-radius: 10px;
+  width: 70%;
+  height: 60%;
 }
 
 .content {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
 }
 
@@ -47,11 +49,11 @@ fieldset {
 }
 
 .grid-35 {
-  width: 35%;
+  width: 80%;
 }
 
 .grid-65 {
-  width: 65%;
+  width: 80%;
 }
 
 label {
@@ -95,4 +97,8 @@ a {
 }
 label{
   color: #A2678A;
+}
+.wrapper {
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: 0 auto;   /* Center the container */
 }

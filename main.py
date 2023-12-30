@@ -14,6 +14,8 @@ app = Flask(__name__)
 
 app.secret_key = 'hi'
 
+app.config['UPLOAD_FOLDER'] = 'static/images'
+
 CORS(app)
 
 class CustomJSONEncoder(JSONEncoder):
@@ -249,21 +251,49 @@ def calling_function(Title, imageFile, Description, Location, range1, range2, ca
 def edit_profile():
     return render_template("edit.html")
 
+def changeProfilePicture(userID, imageName):
+    user = User()
+    user.getUserByID(userID)  # Use the existing user instance associated with the userID
+    query = {"$set": {"ProfilePicture": imageName}}
+    user.editData(query, userID)
+    user.setProfilePicture(imageName)
 
 @app.route("/update", methods=["POST"])
 def update_profile():
     new_username = request.form.get("new_username")
     old_password = request.form.get("old_password")
     new_password = request.form.get("new_password")
+    imageFiles = request.files.getlist("imageFiles")
+
     user = User()
     
     user_id = session.get('user_id')
-    user.getUserByID(user_id)
-
-    if 'avatar' in request.files:
-        file = request.files['avatar']
-        user.setProfilePictureFile(file)
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
     
+
+   
+
+    imageFiles = request.files.getlist("imageFiles")
+
+    results = []
+    if imageFiles:
+        for file in imageFiles:
+            filename = secure_filename(file.filename)
+            file.save(os.path.join("static/images/", filename))
+            # changeProfilePicture(user_id, filename)
+            results.append(filename)
+        
+
+    for result_filename in results:
+        changeProfilePicture(user_id, result_filename)
+        profile_image = result_user.getProfilePicture()
+
+   
+    favorite_posts = result_user.getFavorite()
+    fav = len(favorite_posts)
     if old_password is not None and old_password != "":  # Check if old_password is provided and not empty
         hashed_old_password = hashlib.sha256(old_password.encode()).hexdigest()
         print(hashed_old_password, user.getPassword())
@@ -274,9 +304,10 @@ def update_profile():
         "/edit.html", alert_message=alert_message
     )
 
-
+    
     if new_username is not None and new_username!="" :
         user.editData({"$set": {"Username": new_username}}, user_id)
+        username=new_username
 
     if new_password is not None and old_password is not None and new_password != "" and old_password != "":  # Check both old and new passwords
         hashed_new_password = hashlib.sha256(new_password.encode()).hexdigest()
@@ -292,7 +323,7 @@ def update_profile():
 
     alert_message= "Profile updated successfully!"
     return render_template(
-        "/profile.html", alert_message=alert_message,username=new_username
+        "/profile.html", alert_message=alert_message,username=username, profile_image=profile_image, fav=fav, favorite_posts=favorite_posts
     )
 
 

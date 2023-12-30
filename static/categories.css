@@ -90,13 +90,22 @@
 }
 h3{
   text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
 }
 .info h3 {
   margin-top: 0;
   font-size: 20px;
   color: black;
   text-decoration: none; /* Add this line to remove underline */
+  font-weight: bold;
+  font-size: 25px;
 }
 a{
   text-decoration: none;
+}
+.gallery-item img {
+  width: 250px; /* Set your desired width */
+  height: 280px; /* Set your desired height */
+  object-fit: cover; /* This property ensures the image maintains its aspect ratio */
 }

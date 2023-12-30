@@ -17,6 +17,7 @@
       href="{{url_for('static',filename='section.css')}}" />
     <link rel="stylesheet" type="text/css"
       href="{{url_for('static',filename='nav.css')}}" />
+      <link rel="icon" href="{{url_for('static',filename='player.png')}}" type="image/x-icon">
 
   </head>
 
@@ -83,7 +84,7 @@
                 <a><i class="fas fa-map-marker-alt location-icon"></i> {{
                   post.getLocation() }}</a><br>
                 <a><i class="fas fa-dollar-sign price-icon"></i> {{
-                  post.getStartPrice() }} - {{ post.getEndPrice() }}</a>
+                  post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a>
               </p>
             </div>
             
@@ -124,7 +125,7 @@
                   <a><i class="fas fa-map-marker-alt location-icon"></i> {{
                     post.getLocation() }}</a><br>
                   <a><i class="fas fa-dollar-sign price-icon"></i> {{
-                    post.getStartPrice() }} - {{ post.getEndPrice() }}</a>
+                    post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a>
                 </p>
               </div>
               {% endfor %}
@@ -162,8 +163,8 @@
                   <a><i class="fas fa-map-marker-alt location-icon"></i> {{
                     post.getLocation() }}</a><br>
                   <a><i class="fas fa-dollar-sign price-icon"></i> {{
-                    post.getStartPrice() }} - {{ post.getEndPrice()
-                    }}</a>
+                    post.getStartPrice() }}$ - {{ post.getEndPrice()
+                    }}$</a>
                 </p>
               </div>
               {% endfor %}
@@ -202,8 +203,7 @@
                   <a><i class="fas fa-map-marker-alt location-icon"></i> {{
                     post.getLocation() }}</a><br>
                   <a><i class="fas fa-dollar-sign price-icon"></i> {{
-                    post.getStartPrice() }} - {{ post.getEndPrice()
-                    }}</a>
+                  post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a>
                 </p>
               </div>
               {% endfor %}
@@ -243,8 +243,7 @@
                   <a><i class="fas fa-map-marker-alt location-icon"></i> {{
                     post.getLocation() }}</a><br>
                   <a><i class="fas fa-dollar-sign price-icon"></i> {{
-                    post.getStartPrice() }} - {{ post.getEndPrice()
-                    }}</a>
+                  post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a>
                 </p>
               </div>
               {% endfor %}

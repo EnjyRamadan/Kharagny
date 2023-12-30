@@ -74,12 +74,12 @@
             {% set image_filename = post.getImages()[0] %}
             <img src="{{ url_for('static', filename='images/' + image_filename) }}" alt="Image 1" />
             <p>
-              <a><i class="fas fa-dollar-sign price-icon"> </i>{{
-                post.getStartPrice() }} - {{ post.getEndPrice() }}</a><br>
-              <a><i class="fas fa-map-marker-alt location-icon"> </i>{{
+              <a><i class="fas fa-dollar-sign price-icon"> </i>  {{
+                post.getStartPrice() }}$ - {{ post.getEndPrice() }}$</a><br>
+              <a><i class="fas fa-map-marker-alt location-icon"> </i>  {{
                 post.getLocation() }}</a><br>
-              <i class="fas fa-info-circle description-icon"> </i> {{ post.getDescription() }}
-      </a><br>
+              <!-- <i class="fas fa-info-circle description-icon"> </i> {{ post.getDescription() }}
+      </a><br> -->
       </p>
     </div>
     </div>

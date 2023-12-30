@@ -40,7 +40,7 @@
                 <a href="/food.html" class="blue">Food</a>
                 <a href="/cinema.html" class="blue">Cinema</a>
                 <a href="/arcade.html" class="blue">Arcade</a>
-                <!-- Add more dropdown items here -->
+
               </div>
             </div>
           </li>
@@ -54,14 +54,16 @@
       </nav>
     </div>
     <br>
+    <h1 >{{ title }}</h1>
     <div class="wrapper">
-      <i class="fa-solid fa-heart favorite-btn" data-id="{{ post_id }}"></i>
+      
+      <i class="fa-solid fa-heart favorite-btn" id="heart" data-id="{{ post_id }}"></i>
       <i class="fa-solid fa-arrow-left button" id="prev"></i>
       <div class="image-container">
         <div class="carousel">
           {% for imageURL in imageURLs %}
           <img src="{{ url_for('static', filename='images/' + imageURL) }}"
-            alt />
+            alt class="img"/>
           {% endfor %}
 
         </div>
@@ -69,13 +71,22 @@
       <i class="fa-solid fa-arrow-right button" id="next"></i>
     </div>
     <br>
-    <div id="info">
-      <p>
-        <h2>{{ title }}</h2>
-        <p><strong>Price Range:</strong> {{startPrice }} - {{ endPrice }}</p>
-        <p><strong>Description:</strong> {{ des }}</p>
-      </p>
-    </div>
+    <p class="product-info">
+      
+      <span class="icon-container">
+        <a><i class="fas fa-dollar-sign price-icon"></i></a>
+        <strong> Price Range:</strong> {{ startPrice }}$ - {{ endPrice }}$
+      </span>
+      <span class="icon-container">
+        <a><i class="fas fa-map-marker-alt location-icon"></i></a>
+        <strong> Location:</strong> {{ loc }}
+      </span>
+      <span class="icon-container">
+        <a><i class="fas fa-info-circle description-icon"></i></a>
+        <strong> Description:</strong> <i class="des">{{ des }}</i>
+      </span>
+    </p>
+
     <script src="{{url_for('static',filename='popup.js')}}"></script>
     <footer class="footer">
       <div class="container2">

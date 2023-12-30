@@ -46,6 +46,7 @@ def popup(postID):
     
     imageURLs = post.getImages()
     Title = post.getTitle()
+    loc=post.getLocation()
     des = post.getDescription()
     startPrice, endPrice = post.getStartPrice(), post.getEndPrice()
     
@@ -57,6 +58,7 @@ def popup(postID):
         endPrice=endPrice,
         title=Title,
         des=des,
+        loc=loc
     )
 
 @app.route("/forget.html")
@@ -111,6 +113,34 @@ def like_image():
         return "Liked"
 
 
+
+
+
+
+@app.route("/home.html")
+def home():
+    adventure_posts = getCategoryPost("Adventure")
+    Dates_posts = getCategoryPost("Dates")
+    Food_posts = getCategoryPost("Food")
+    Cinema_posts = getCategoryPost("Cinema")
+    Arcade_posts = getCategoryPost("Arcade")
+    if adventure_posts is None:
+        adventure_posts = [] 
+    return render_template(
+        "/home.html",
+        adventure_posts=adventure_posts,
+        Dates_posts=Dates_posts,
+        Food_posts=Food_posts,
+        Cinema_posts=Cinema_posts,
+        Arcade_posts=Arcade_posts,
+    )
+   
+
+
+
+
+
+
 @app.route("/call_function", methods=["POST"])
 def call_function():
     post = Post()
@@ -139,13 +169,13 @@ def call_function():
         "Title": Title,
         "Location": Location,
         "Description": Description,
-        "range1": range1,
-        "range2": range2,
-        "category": selectedCategory,  # Use lowercase 'category' here
+        "StartPrice": range1,
+        "EndPrice": range2,
+        "Category": selectedCategory,  # Use lowercase 'category' here
     }
 
     post.createPost(results, info)  # Save data to MongoDB
-    return render_template("home.html")
+    return render_template("/home.html")
 
     # Title, Description, Location,imageFile,range1,range2,strategy = calling_function(Title, imageFiles, Description, Location, range1, range2,selectedCategory)
     # return jsonify(Title=Title, Description=Description, Location=Location,imageFile=imageFile,range1=range1,range2=range2,strategy=strategy)
@@ -258,23 +288,7 @@ def getCategoryPost(categoryName):
     return posts
 
 
-@app.route("/home.html")
-def home():
-    adventure_posts = getCategoryPost("Adventure")
-    Dates_posts = getCategoryPost("Dates")
-    Food_posts = getCategoryPost("Food")
-    Cinema_posts = getCategoryPost("Cinema")
-    Arcade_posts = getCategoryPost("Arcade")
 
-    return render_template(
-        "/home.html",
-        adventure_posts=adventure_posts,
-        Dates_posts=Dates_posts,
-        Food_posts=Food_posts,
-        Cinema_posts=Cinema_posts,
-        Arcade_posts=Arcade_posts,
-    )
-    return render_template("home.html")
 
 
 # home

@@ -65,8 +65,9 @@ body {
   }
    */
 .product-card img {
-  width: 100%;
-  height: auto;
+  width: 100%; /* Set your desired width */
+  height: 350px; /* Set your desired height */
+  object-fit: cover;
 }
 
 
@@ -281,8 +282,8 @@ ul {
 
 .product-card {
   
-  min-width: 300px; 
-  min-height: 300px;
+  min-width: 350px; 
+  min-height: 350px;
 }
 h3, .info{
   color: black;

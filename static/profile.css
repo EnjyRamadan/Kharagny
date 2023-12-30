@@ -334,32 +334,111 @@ header {
 }
 
 /* Gallery */
-.gallery {
+.gallery , .added-posts {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
 
-@media only screen and (max-width: 735px) {
-  .gallery {
-    gap: 3px;
-  }
+.gallery , .added-posts{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; /* Reduce the gap between items */
+  padding: 30px;
 }
 
 .gallery-item {
-  position: relative;
+  text-align: center;
+  width: 100%; /* Make each item take the full width of the column */
+  max-width: 300px; /* Set a maximum width */
+  height: auto;
+  margin: 0 auto; /* Center the items */
 }
 
 .gallery-item img {
-  width: 100%;
-  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-.gallery-item .media-icon {
-  position: absolute;
-  top: 0px;
-  right: 0px;
+.item-content {
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background: #ffffffab;
 }
+
+.info {
+  margin-top: 10px;
+}
+
+.info h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: black;
+}
+
+.info p, i {
+  font-size: 20px;
+  text-align: left;
+}
+
+.text span {
+  font-size: 60px;
+  padding: 0 10px;
+  text-transform: uppercase;
+  color: white;
+  animation: zoomup 2s linear infinite;
+  animation-delay: calc(200ms * var(--i));
+}
+
+@keyframes zoomup {
+  0%, 100% {
+    color: #634e99;
+    filter: blur(1px);
+    text-shadow: 0 0 10px #634e99, 0 0 20px #634e99, 0 0 30px #634e99,
+      0 0 40px #634e99, 0 0 60px #634e99, 0 0 80px #634e99, 0 0 100px #634e99,
+      0 0 120px #634e99;
+    color: black;
+  }
+
+  5%, 95% {
+    filter: blur(0);
+    color: white;
+    text-shadow: none;
+  }
+}
+
+.price-icon, .location-icon, .description-icon {
+  color: var(--light);
+}
+
+.location-icon, .description-icon {
+  margin-top: 10px;
+}
+h3{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+}
+.info h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: black;
+  text-decoration: none; /* Add this line to remove underline */
+  font-weight: bold;
+  font-size: 25px;
+}
+a{
+  text-decoration: none;
+}
+.gallery-item img {
+  width: 250px; /* Set your desired width */
+  height: 280px; /* Set your desired height */
+  object-fit: cover; /* This property ensures the image maintains its aspect ratio */
+}
+
 
 .container2 {
   max-width: 1170px;

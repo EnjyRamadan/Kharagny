@@ -135,12 +135,16 @@
                     </svg>
                 </div>
             </div>
+            
             <button onclick="toggleSections()" style="margin-top: 10px;display: inline-block;
             padding: 10px 15px;
             background-color: var(--light);
             color: #fff;
             text-decoration: none;
             border-radius: 5px;margin-bottom: 10px;">Added / liked posts</button>
+
+
+
             <section class="gallery">
                 <h2>Liked Posts</h2>
                 {% for post in Favorite %}
@@ -165,7 +169,7 @@
                   </div>
             {% endfor %}
         </section>
-        <section class="added-posts" style="display: none;">
+        <section class="added-posts">
             <h2>Added Posts</h2>
             {% for post in Posts %}
             <div class="gallery-item" data-post-id="{{ post.getID() }}">

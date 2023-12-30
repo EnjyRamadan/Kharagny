@@ -343,6 +343,7 @@ def login():
             profile_image = result_user.getProfilePicture()
             favorite_posts = result_user.getFavorite()
             fav = len(favorite_posts)
+            favorite_posts = getFavoritePost(favorite_posts)
             return render_template(
                 "/profile.html",
                 username=username,
@@ -373,6 +374,7 @@ def signup():
         profile_image = result_user.getProfilePicture()
         favorite_posts = result_user.getFavorite()
         fav = len(favorite_posts)
+        favorite_posts = getFavoritePost(favorite_posts)
     return render_template(
         "/profile.html",
         username=username,

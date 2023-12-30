@@ -37,11 +37,9 @@
                                 <!-- Add more dropdown items here -->
                             </div>
                         </div></li>
-                    <li><a href="/profile.html">
-                            <div class="profile-picture">
-                                <img src="static\images\profile.jpeg"
-                                    alt="Profile">
-                            </div>
+                    <li><a href="/">
+                            
+                            Log Out
                         </a></li>
                 </ul>
             </nav>
@@ -52,9 +50,17 @@
 
                 <div class="header-wrap">
                     <div class="profile-pic">
-                        <img src="static\images\profile.jpeg"
+                        {% if profile_image %}
+                        <img
+                            src="{{ url_for('static', filename='images/' + profile_image) }}"
                             alt="profile-logo" />
+                        {% else %}
+                        <img
+                            src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
+                            alt="default-profile-logo" />
+                        {% endif %}
                     </div>
+
                     <div class="profile-info">
                         <div class="title row">
                             <h2>{{username}}</h2>
@@ -64,7 +70,7 @@
                         <div class="desktop-only">
                             <div class="details row">
                                 <ul>
-                                    <li><span>722</span> Favourites</li>
+                                    <li><span>{{fav}}</span> Favourites</li>
 
                                 </ul>
                             </div>
@@ -75,7 +81,9 @@
                                 <a href="/edit.html">Edit Profile</a>
                             </div>
                             <div class="edit-profile-button">
-                                <a href="/call_function2?username={{ username }}">Delete Photo</a>
+                                <a
+                                    href="/call_function2?username={{ username }}">Delete
+                                    Photo</a>
 
                             </div>
                         </div>
@@ -91,7 +99,7 @@
                 </div>
             </header>
             <div class="mobile-tabs mobile-only">
-                <ul>
+                <!-- <ul>
                     <li>
                         <div>722</div>
                         posts
@@ -104,7 +112,7 @@
                         <div>6</div>
                         following
                     </li>
-                </ul>
+                </ul> -->
                 <div class="actions">
                     <svg aria-label="Posts" class="_8-yf5"
                         fill="rgb(0, 149, 246)" height="24" viewBox="0 0 48 48"
@@ -131,27 +139,35 @@
             <section class="gallery">
                 {% for post in favorite_posts %}
                 <div class="gallery-item">
-                  <a href="popup.html">
-                    <div class="item-content">
-                      <div class="info">
-                        <h3>{{ post.getTitle() }}</h3>
-                        {% set image_filename = post.getImages()[0] %}
-                        <img src="{{ url_for('static', filename='images/' + image_filename) }}" href="popup.html" alt="Image 1" />
-                        <p>
-                          <a><i class="fas fa-dollar-sign price-icon"> </i>{{
-                            post.getStartPrice() }} - {{ post.getEndPrice() }}</a><br>
-                          <a><i class="fas fa-map-marker-alt location-icon"> </i>{{
-                            post.getLocation() }}</a><br>
-                          <i class="fas fa-info-circle description-icon"> </i> {{ post.getDescription() }}
-                  </a><br>
-                  </p>
-                </div>
-                </div>
+                    <a href="popup.html">
+                        <div class="item-content">
+                            <div class="info">
+                                <h3>{{ post.getTitle() }}</h3>
+                                {% set image_filename = post.getImages()[0] %}
+                                <img
+                                    src="{{ url_for('static', filename='images/' + image_filename) }}"
+                                    href="popup.html" alt="Image 1" />
+                                <p>
+                                    <a><i class="fas fa-dollar-sign price-icon">
+                                        </i>{{
+                                        post.getStartPrice() }} - {{
+                                        post.getEndPrice() }}</a><br>
+                                    <a><i
+                                            class="fas fa-map-marker-alt location-icon">
+                                        </i>{{
+                                        post.getLocation() }}</a><br>
+                                    <i
+                                        class="fas fa-info-circle description-icon">
+                                    </i> {{ post.getDescription() }}
+                                </a><br>
+                            </p>
+                        </div>
+                    </div>
                 </a>
-                </div>
-                {% endfor %}
-              </section>
-        
+            </div>
+            {% endfor %}
+        </section>
+
     </body>
 
 </html>

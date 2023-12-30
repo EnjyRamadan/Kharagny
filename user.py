@@ -26,7 +26,7 @@ class User:
         self._id = str(ID)
 
     def getProfilePicture(self):
-        return self._profilePicture
+        return str(self._profilePicture)
 
     def getUserName(self):
         return self._userName

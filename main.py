@@ -49,6 +49,12 @@ def popup(postID):
     loc=post.getLocation()
     des = post.getDescription()
     startPrice, endPrice = post.getStartPrice(), post.getEndPrice()
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    
     
     return render_template(
         "popup.html",
@@ -58,7 +64,7 @@ def popup(postID):
         endPrice=endPrice,
         title=Title,
         des=des,
-        loc=loc
+        loc=loc,profile_image=profile_image
     )
 
 @app.route("/forget.html")
@@ -68,42 +74,84 @@ def forget():
 
 @app.route("/about.html")
 def about():
-    return render_template("about.html")
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    
+    return render_template("about.html",profile_image=profile_image)
 
 
 @app.route("/categories.html")
 def category():
     adventure_posts = getCategoryPost("Adventure")
-    return render_template("categories.html", adventure_posts=adventure_posts)
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    
+    return render_template("categories.html", adventure_posts=adventure_posts,profile_image=profile_image)
 
 
 @app.route("/arcade.html")
 def arcade():
     Arcade_posts = getCategoryPost("Arcade")
-    return render_template("arcade.html", Arcade_posts=Arcade_posts)
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    
+    return render_template("arcade.html", Arcade_posts=Arcade_posts,profile_image=profile_image)
 
 
 @app.route("/cinema.html")
 def cinema():
     Cinema_posts = getCategoryPost("Cinema")
-    return render_template("cinema.html", Cinema_posts=Cinema_posts)
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    
+    return render_template("cinema.html", Cinema_posts=Cinema_posts,profile_image=profile_image)
 
 
 @app.route("/food.html")
 def food():
     Food_posts = getCategoryPost("Food")
-    return render_template("food.html", Food_posts=Food_posts)
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+   
+    return render_template("food.html", Food_posts=Food_posts,profile_image=profile_image)
 
 
 @app.route("/date.html")
 def date():
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    
     Dates_posts = getCategoryPost("Dates")
-    return render_template("date.html", Dates_posts=Dates_posts)
+    return render_template("date.html", Dates_posts=Dates_posts,profile_image=profile_image)
 
 
 @app.route("/place.html")
 def place():
-    return render_template("place.html")
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+   
+    return render_template("place.html",profile_image=profile_image)
 
 
 @app.route("/like", methods=["POST"])
@@ -124,6 +172,13 @@ def home():
     Food_posts = getCategoryPost("Food")
     Cinema_posts = getCategoryPost("Cinema")
     Arcade_posts = getCategoryPost("Arcade")
+    user_id = session.get('user_id')
+    result_user = User()
+    result_user.getUserByID(user_id)
+    username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+
+    
     if adventure_posts is None:
         adventure_posts = [] 
     return render_template(
@@ -132,7 +187,7 @@ def home():
         Dates_posts=Dates_posts,
         Food_posts=Food_posts,
         Cinema_posts=Cinema_posts,
-        Arcade_posts=Arcade_posts,
+        Arcade_posts=Arcade_posts,profile_image=profile_image
     )
    
 
@@ -254,14 +309,23 @@ def login():
         else:
             alert_message = f"Login successful! User ID: {user_id}"
             session['user_id'] = user_id
+            user_id = session.get('user_id')
+            result_user = User()
+            result_user.getUserByID(user_id)
+            username = result_user.getUserName()
+            profile_image = result_user.getProfilePicture()
+            favorite_posts = result_user.getFavorite()
+            fav = len(favorite_posts)
             return render_template(
-                "/profile.html", username=username
+                "/profile.html", username=username, profile_image=profile_image, fav=fav, favorite_posts=favorite_posts
             )
 
     return render_template(
         "/login.html", alert_message=alert_message, username=username
     )
 
+
+from bson import ObjectId
 
 @app.route("/signup", methods=["POST"])
 def signup():
@@ -272,11 +336,21 @@ def signup():
         username = request.form["username"]
         password = request.form["password"]
         user_id = SignUp(username, password)
-        alert_message = f"Signup successful! User ID: {user_id}"
-        session['user_id'] = user_id
-    return render_template(
-        "/profile.html",  username=username
-    )
+
+        # Convert ObjectId to string
+        user_id_str = str(user_id)
+        user_id = session.get('user_id')
+        result_user = User()
+        result_user.getUserByID(user_id)
+        username = result_user.getUserName()
+        profile_image = result_user.getProfilePicture()
+        favorite_posts = result_user.getFavorite()
+        fav = len(favorite_posts)
+
+        alert_message = f"Signup successful! User ID: {user_id_str}"
+        session['user_id'] = user_id_str
+
+    return render_template("/profile.html", username=username, profile_image=profile_image, fav=fav, favorite_posts=favorite_posts)
 
 
 # login
@@ -312,15 +386,18 @@ def getUserFavorite(userID):
 
 @app.route("/profile.html")
 def profile():
-    
     user_id = session.get('user_id')
     result_user = User()
     result_user.getUserByID(user_id)
     username = result_user.getUserName()
+    profile_image = result_user.getProfilePicture()
+    favorite_posts = result_user.getFavorite()
+    fav = len(favorite_posts)
 
     return render_template(
-        "profile.html",username=username
+        "profile.html", username=username, profile_image=profile_image, fav=fav, favorite_posts=favorite_posts
     )
+
 
 
 def removeProfilePicture(userID, imageName):

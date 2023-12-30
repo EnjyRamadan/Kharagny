@@ -46,7 +46,15 @@
           </li>
           <li><a href="/profile.html">
               <div class="profile-picture">
-                <img src="{{url_for('static',filename='images/profile.jpeg')}}"
+                {% if profile_image %}
+                        <img
+                            src="{{ url_for('static', filename='images/' + profile_image) }}"
+                            alt="profile-logo" />
+                        {% else %}
+                        <img
+                            src="{{ url_for('static', filename='images/defaultProfilePicture.jpg') }}"
+                            alt="default-profile-logo" />
+                        {% endif %}
                   alt="Profile">
               </div>
             </a></li>

@@ -235,10 +235,6 @@ def call_function():
     return render_template("/place.html", message=message)
 
 
-def calling_function(Title, imageFile, Description, Location, range1, range2, category):
-    return (Title, Description, Location, imageFile, range1, range2, category)
-
-
 def edit_profile():
     return render_template("edit.html")
 
@@ -394,17 +390,6 @@ def getCategoryPost(categoryName):
     temp = Post()
     posts = temp.getPostsByCategory(categoryName)
     return posts
-
-
-def getUserFavorite(userID):
-    user = User()
-    user.getUserByID(userID)
-    favorites = user.getField()
-    favs = []
-    for fav in favorites:
-        post = Post()
-        favs.append(post.getPostFromID())
-    return favs
 
 
 @app.route("/profile.html")

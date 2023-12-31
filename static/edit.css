@@ -10,14 +10,16 @@ input {
   margin: 0;
   padding: 0;
 }
+
 :root {
   --lightblue: #A2678A;
   --black: rgba(0, 0, 0, 0.826);
 }
+
 body {
   font-family: 'Arial', sans-serif;
   background-image: url("images/fair.jpg");
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -98,10 +100,14 @@ a {
   color: var(--lightblue);
   text-decoration: none;
 }
-label{
+
+label {
   color: #A2678A;
 }
+
 .wrapper {
-  max-width: 800px; /* Adjust the max-width as needed */
-  margin: 0 auto;   /* Center the container */
+  max-width: 800px;
+  /* Adjust the max-width as needed */
+  margin: 0 auto;
+  /* Center the container */
 }

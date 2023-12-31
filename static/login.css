@@ -19,7 +19,7 @@ body {
   align-items: center;
   justify-content: center;
   background-image: url("images/fair.jpg");
-  background-size:cover;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding: 30px;
@@ -128,7 +128,7 @@ body {
   padding: 40px 30px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   perspective: 2700px;
-  
+
 }
 
 .container .cover {
@@ -357,8 +357,8 @@ body {
     display: none;
   }
 }
-.alert{
-  color:#A2678A;
+
+.alert {
+  color: #A2678A;
   font-weight: bold;
 }
-

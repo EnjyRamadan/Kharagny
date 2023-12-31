@@ -21,7 +21,7 @@ body {
   margin: auto;
   padding: 20px;
   display: flex;
-  
+
   align-items: center;
 }
 
@@ -65,8 +65,10 @@ body {
   }
    */
 .product-card img {
-  width: 100%; /* Set your desired width */
-  height: 350px; /* Set your desired height */
+  width: 100%;
+  /* Set your desired width */
+  height: 350px;
+  /* Set your desired height */
   object-fit: cover;
 }
 
@@ -269,25 +271,27 @@ ul {
 }
 
 .product-list-container-Adventure {
- 
+
   overflow-x: hidden;
 }
 
 .product-list-Adventure, .product-list-Cinema, .product-list-Date, .product-list-Food, .product-list-Arcade {
   display: flex;
   flex-direction: row;
-  overflow-x: auto; 
-  margin-bottom: 20px; 
+  overflow-x: auto;
+  margin-bottom: 20px;
 }
 
 .product-card {
-  
-  min-width: 350px; 
+
+  min-width: 350px;
   min-height: 350px;
 }
-h3, .info{
+
+h3, .info {
   color: black;
 }
+
 /* ::-webkit-scrollbar {
   width: 6px; 
   height: 6px;
@@ -303,10 +307,10 @@ h3, .info{
   border-radius: 6px;
   
 } */
-h3{
+h3 {
   font-size: 25px;
 }
-p{
+
+p {
   font-size: 18px;
 }
-

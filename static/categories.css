@@ -6,16 +6,20 @@
 .gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px; /* Reduce the gap between items */
+  gap: 30px;
+  /* Reduce the gap between items */
   padding: 30px;
 }
 
 .gallery-item {
   text-align: center;
-  width: 100%; /* Make each item take the full width of the column */
-  max-width: 300px; /* Set a maximum width */
+  width: 100%;
+  /* Make each item take the full width of the column */
+  max-width: 300px;
+  /* Set a maximum width */
   height: auto;
-  margin: 0 auto; /* Center the items */
+  margin: 0 auto;
+  /* Center the items */
 }
 
 .gallery-item img {
@@ -88,24 +92,32 @@
 .location-icon, .description-icon {
   margin-top: 10px;
 }
-h3{
+
+h3 {
   text-decoration: none;
   font-weight: bold;
   font-size: 20px;
 }
+
 .info h3 {
   margin-top: 0;
   font-size: 20px;
   color: black;
-  text-decoration: none; /* Add this line to remove underline */
+  text-decoration: none;
+  /* Add this line to remove underline */
   font-weight: bold;
   font-size: 25px;
 }
-a{
+
+a {
   text-decoration: none;
 }
+
 .gallery-item img {
-  width: 250px; /* Set your desired width */
-  height: 280px; /* Set your desired height */
-  object-fit: cover; /* This property ensures the image maintains its aspect ratio */
+  width: 250px;
+  /* Set your desired width */
+  height: 280px;
+  /* Set your desired height */
+  object-fit: cover;
+  /* This property ensures the image maintains its aspect ratio */
 }
